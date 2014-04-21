@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BetterNote</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if logged_in? %>
+  <p>Welcome, <%= current_user.username %>!</p>
+  <%= button_to "Logout", session_url, method: :delete %>
+<% else %>
+  <a href="<%= new_user_url %>">Sign Up</a>
+  <a href="<%= new_session_url %>">Sign In</a>
+<% end %>
+
+<%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+
+<%= yield %>
+
+</body>
+</html>
