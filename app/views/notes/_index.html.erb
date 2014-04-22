@@ -1,0 +1,9 @@
+<ul>
+  <% current_user.notes.each do |note| %>
+    <li>
+      <a href="<%= user_note_url(current_user, note) %>">
+        <%= note.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>

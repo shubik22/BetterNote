@@ -1,0 +1,10 @@
+<ul>
+  <% comments.each do |comment| %>
+    <li><i>Posted by <%= comment.author.username %> at <%= comment.created_at %></i>
+      <br>
+      <%= comment.body %>
+    </li>
+  <% end %>
+</ul>
+<br>
+<a href="<%= new_user_note_comment_url(current_user, note) %>">Add New Comment</a>

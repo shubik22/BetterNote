@@ -1,0 +1,15 @@
+<h1>Notes in <%= @notebook.name %></h1>
+<ul>
+  <% @notebook.notes.each do |note| %>
+    <li>
+      <a href="<%= user_note_url(current_user, note) %>">
+        <%= note.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<%= render partial: "notes/new", locals: { notebook: @notebook } %>
+<br>
+<%= button_to "Edit Notebook", edit_user_notebook_url(current_user, @notebook), method: :get %>
+<br>
+<%= button_to "Delete Notebook", user_notebook_url(current_user, @notebook), method: :delete %>

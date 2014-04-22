@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  include ApplicationHelper
+  before_action :require_signed_out!, only: [:new, :create]
+  before_action :require_signed_in!, only: [:destroy]
 
   def create
     @user = User.find_by_credentials(
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
       log_in(@user)
       redirect_to user_url(@user)
     else
-      flash.now[:errors] = "Invalid credentials.  Please try again."
+      flash.now[:errors] = ["Invalid credentials.  Please try again."]
       render :new
     end
   end

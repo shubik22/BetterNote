@@ -1,0 +1,9 @@
+<ul>
+  <% current_user.notebooks.each do |notebook| %>
+    <li>
+      <a href="<%= user_notebook_url(current_user, notebook) %>">
+        <%= notebook.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>

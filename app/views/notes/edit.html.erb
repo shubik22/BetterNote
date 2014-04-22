@@ -1,0 +1,46 @@
+<h1>Edit Note</h1>
+<form action="<%= user_note_url(current_user, @note) %>" method="post">
+  <%= auth_token %>
+
+  <input type="hidden" name="_method" value="put">
+
+  <label>
+    Title
+    <input type="text" name="note[title]" value="<%= @note.title %>">
+  </label>
+  <br>
+
+  <label>
+    Body
+    <textarea name="note[body]"><%= @note.body %></textarea>
+  </label>
+  <br>
+
+  <label>
+    Notebook
+    <select name="note[notebook_id]">
+      <% current_user.notebooks.each do |notebook| %>
+        <option value="<%= notebook.id %>" <%= "selected" if (notebook.id == @note.notebook.id) %>>
+          <%= notebook.name %>
+        </option>
+      <% end %>
+    </select>
+  </label>
+  <br>
+
+  <label>
+    Tags<br>
+    <% current_user.tags.each_with_index do |tag, i| %>
+      <input type="checkbox"
+              name="note_tags[<%= i %>][tag_id]"
+              value="<%= tag.id %>"
+              <%= "checked" if @note.tags.include?(tag) %>>
+        <%= tag.name %>
+      </input>
+      <br>
+    <% end %>
+  </label>
+  <br>
+
+  <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,9 @@
+<ul>
+  <% current_user.tags.each do |tag| %>
+    <li>
+      <a href="<%= user_tag_url(current_user, tag) %>">
+        <%= tag.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>

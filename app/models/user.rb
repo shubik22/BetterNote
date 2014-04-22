@@ -4,7 +4,35 @@ class User < ActiveRecord::Base
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :session_token, presence: true
-  after_initialize :ensure_session_token
+  before_validation :ensure_session_token
+
+  has_many(
+    :notes,
+    foreign_key: :author_id,
+    inverse_of: :author,
+    dependent: :destroy
+  )
+
+  has_many(
+    :notebooks,
+    foreign_key: :owner_id,
+    inverse_of: :owner,
+    dependent: :destroy
+  )
+
+  has_many(
+    :tags,
+    foreign_key: :owner_id,
+    inverse_of: :owner,
+    dependent: :destroy
+  )
+
+  has_many(
+    :comments,
+    foreign_key: :author_id,
+    inverse_of: :author,
+    dependent: :destroy
+  )
 
   def self.generate_random_token
     SecureRandom.urlsafe_base64
@@ -17,7 +45,8 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
-    self.password_digest = BCrypt::Password.create(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password) if password
   end
 
   def is_password?(password)

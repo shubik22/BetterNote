@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<% if logged_in? %>
+<% if signed_in? %>
   <p>Welcome, <%= current_user.username %>!</p>
   <%= button_to "Logout", session_url, method: :delete %>
 <% else %>
@@ -16,9 +16,15 @@
   <a href="<%= new_session_url %>">Sign In</a>
 <% end %>
 
+<br>
 <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+<hr>
 
 <%= yield %>
 
+<% if signed_in? %>
+  <hr>
+  <a href="<%= user_url(current_user) %>">Return Home</a>
+<% end %>
 </body>
 </html>

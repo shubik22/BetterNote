@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  include ApplicationHelper
+  before_action :require_signed_out!, only: [:new, :create]
+  before_action :require_signed_in!, only: [:show]
 
   def create
     @user = User.new(user_params)

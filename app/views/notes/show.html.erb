@@ -1,0 +1,15 @@
+<h1>Note Show Page</h1>
+
+<p>Title: <%= @note.title %></p>
+<p>Body: <%= @note.body %></p>
+
+<h2>Note Information:</h2>
+<%= render partial: "info" %>
+
+<h2>Comments:</h2>
+<%= render partial: "comments", locals: { comments: @note.comments, note: @note } %>
+
+<%= button_to "Edit Note", edit_user_note_url(current_user, @note), method: :get %>
+<br>
+<%= button_to "Delete Note", user_note_url(current_user, @note), method: :delete %>
+<br>
