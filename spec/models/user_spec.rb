@@ -17,6 +17,11 @@ describe User do
   it { should have_many(:notebooks) }
   it { should have_many(:tags) }
   it { should have_many(:comments) }
+  it { should have_many(:likes) }
+  it { should have_many(:friends) }
+  it { should have_many(:friendships) }
+  it { should have_many(:friend_requests) }
+  it { should have_many(:pending_friends) }
 
   it "creates a password digest when a password is given" do
     expect(user.password_digest).to_not be_nil

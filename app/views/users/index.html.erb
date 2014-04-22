@@ -1,0 +1,25 @@
+<h1>All Users</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.username %>
+      <% if current_user.friend?(user) %>
+        <%= button_to "Remove Friend",
+          user_friendship_url(current_user, current_user.find_friendship(user)),
+          method: :delete %>
+      <% elsif current_user.pending_friend?(user) %>
+        <br>Friend Request Pending...
+      <% elsif user.pending_friend?(current_user) %>
+        <% friend_request = user.find_friend_request(current_user) %>
+        <%= button_to "Accept Friend Request",
+              user_friend_request_accept_url(current_user, friend_request) %>
+        <%= button_to "Deny Friend Request",
+              user_friend_request_deny_url(current_user, friend_request) %>
+      <% else %>
+        <%= button_to "Add Friend",
+          user_friend_requests_url(user) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

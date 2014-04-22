@@ -9,7 +9,7 @@
 <body>
 
 <% if signed_in? %>
-  <p>Welcome, <%= current_user.username %>!</p>
+  <p>Signed in as <a href="<%= root_url %>"><%= current_user.username %></a></p>
   <%= button_to "Logout", session_url, method: :delete %>
 <% else %>
   <a href="<%= new_user_url %>">Sign Up</a>
@@ -24,7 +24,7 @@
 
 <% if signed_in? %>
   <hr>
-  <a href="<%= user_url(current_user) %>">Return Home</a>
+  <a href="<%= root_url %>">Return Home</a>
 <% end %>
 </body>
 </html>

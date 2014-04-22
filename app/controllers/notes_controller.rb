@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :require_signed_in!
   before_action :user_owns_note?, only: [:edit, :update, :destroy]
+  before_action :authorized?, only: [:show]
 
   def create
     @note = current_user.notes.new(note_params)
@@ -26,7 +27,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
 
     @note.assign_attributes(note_params)
-    @note.note_tags.new(note_tag_params)
+    @note.tag_ids = note_tag_params[:tag_ids]
 
     if @note.save
       redirect_to user_note_url
@@ -50,7 +51,14 @@ class NotesController < ApplicationController
   private
   def user_owns_note?
     @note = Note.find(params[:id])
-    redirect_to user_url(current_user) unless @note.author == current_user
+    redirect_to root_url unless @note.author == current_user
+  end
+
+  def authorized?
+    user = User.find(params[:user_id])
+    unless (current_user == user || user.find_friendship(current_user))
+      redirect_to root_url
+    end
   end
 
   def note_params
@@ -58,9 +66,6 @@ class NotesController < ApplicationController
   end
 
   def note_tag_params
-    params.permit(:note_tags => [:tag_id])
-          .require(:note_tags)
-          .values
-          .reject(&:blank?)
+    params.require(:note_tags).permit(tag_ids: [])
   end
 end

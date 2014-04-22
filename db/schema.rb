@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422050255) do
+ActiveRecord::Schema.define(version: 20140422212639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,39 @@ ActiveRecord::Schema.define(version: 20140422050255) do
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
   add_index "comments", ["note_id"], name: "index_comments_on_note_id", using: :btree
+
+  create_table "friend_requests", force: true do |t|
+    t.integer  "in_friend_id",  null: false
+    t.integer  "out_friend_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "friend_requests", ["in_friend_id", "out_friend_id"], name: "index_friend_requests_on_in_friend_id_and_out_friend_id", unique: true, using: :btree
+  add_index "friend_requests", ["in_friend_id"], name: "index_friend_requests_on_in_friend_id", using: :btree
+  add_index "friend_requests", ["out_friend_id"], name: "index_friend_requests_on_out_friend_id", using: :btree
+
+  create_table "friendships", force: true do |t|
+    t.integer  "in_friend_id",  null: false
+    t.integer  "out_friend_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "friendships", ["in_friend_id", "out_friend_id"], name: "index_friendships_on_in_friend_id_and_out_friend_id", unique: true, using: :btree
+  add_index "friendships", ["in_friend_id"], name: "index_friendships_on_in_friend_id", using: :btree
+  add_index "friendships", ["out_friend_id"], name: "index_friendships_on_out_friend_id", using: :btree
+
+  create_table "likes", force: true do |t|
+    t.integer  "owner_id",   null: false
+    t.integer  "note_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["note_id"], name: "index_likes_on_note_id", using: :btree
+  add_index "likes", ["owner_id", "note_id"], name: "index_likes_on_owner_id_and_note_id", unique: true, using: :btree
+  add_index "likes", ["owner_id"], name: "index_likes_on_owner_id", using: :btree
 
   create_table "note_tags", force: true do |t|
     t.integer  "tag_id",     null: false
@@ -59,6 +92,17 @@ ActiveRecord::Schema.define(version: 20140422050255) do
   add_index "notes", ["author_id"], name: "index_notes_on_author_id", using: :btree
   add_index "notes", ["notebook_id"], name: "index_notes_on_notebook_id", using: :btree
   add_index "notes", ["title"], name: "index_notes_on_title", using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["notifiable_id"], name: "index_notifications_on_notifiable_id", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.text     "name",       null: false

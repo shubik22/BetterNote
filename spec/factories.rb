@@ -31,4 +31,25 @@ FactoryGirl.define do
     author_id { Faker::Number.digit }
     note_id { Faker::Number.digit }
   end
+
+  factory :like do
+    note_id { Faker::Number.digit }
+    owner_id { Faker::Number.digit }
+  end
+
+  factory :friendship do
+    in_friend_id { Faker::Number.digit }
+    out_friend_id { Faker::Number.digit }
+  end
+
+  factory :friend_request do
+    in_friend_id { Faker::Number.digit }
+    out_friend_id { Faker::Number.digit }
+  end
+
+  factory :notification do
+    user_id { Faker::Number.digit }
+    notifiable_id { Faker::Number.digit }
+    notifiable_type { Faker::Lorem.sentence(1) }
+  end
 end

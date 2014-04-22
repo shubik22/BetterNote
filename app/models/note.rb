@@ -12,4 +12,6 @@ class Note < ActiveRecord::Base
   has_many :comments, inverse_of: :note, dependent: :destroy
   has_many :note_tags, inverse_of: :note, dependent: :destroy
   has_many :tags, through: :note_tags, source: :tag
+  has_many :likes, inverse_of: :note, dependent: :destroy
+  has_many :likers, through: :likes, source: :owner
 end

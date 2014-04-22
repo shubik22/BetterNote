@@ -27,6 +27,6 @@ class CommentsController < ApplicationController
 
   def user_owns_comment?
     @comment = comment.find(params[:id])
-    redirect_to user_url(current_user) unless @comment.owner == current_user
+    redirect_to root_url unless @comment.owner == current_user
   end
 end

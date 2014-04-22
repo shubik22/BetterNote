@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   def create
     @tag = current_user.tags.new(tag_params)
     if @tag.save
-      redirect_to user_url(current_user)
+      redirect_to root_url
     else
       flash.now[:errors] = @tag.errors.full_messages
       render :new
@@ -45,13 +45,13 @@ class TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
     @tag.destroy
-    redirect_to user_url(current_user)
+    redirect_to root_url
   end
 
   private
   def user_owns_tag?
     @tag = Tag.find(params[:id])
-    redirect_to user_url(current_user) unless @tag.owner == current_user
+    redirect_to root_url unless @tag.owner == current_user
   end
 
   def tag_params

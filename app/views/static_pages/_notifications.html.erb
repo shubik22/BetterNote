@@ -1,0 +1,19 @@
+<% if signed_in? %>
+  <section class="notifications">
+    <% count = current_user.notifications.count %>
+    <% if count == 0 %>
+      <h3 class="notification-head">No new notifications</h3>
+    <% else %>
+      <h3 class="notification-head">
+        You have <%= count.to_s + " " "notification".pluralize(count) + "."%>
+      </h3>
+      <ul class="notifications-list">
+      <% current_user.notifications.each do |notification| %>
+        <li class="notification">
+          Notification text TK (#<%= notification.id %>)
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </section>
+<% end %>

@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :require_signed_out!, only: [:new, :create]
-  before_action :require_signed_in!, only: [:show]
+  before_action :authorized?, only: [:show]
 
   def create
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to user_url(@user)
+      redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -18,12 +18,25 @@ class UsersController < ApplicationController
     render :new
   end
 
+  def index
+    @users = User.all
+    @users.delete_at(@users.find_index(current_user))
+    render :index
+  end
+
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     render :show
   end
 
   private
+  def authorized?
+    user = User.find(params[:id])
+    unless (current_user == user || user.find_friendship(current_user))
+      redirect_to root_url
+    end
+  end
+
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end

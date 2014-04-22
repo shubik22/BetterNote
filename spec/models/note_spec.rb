@@ -9,6 +9,8 @@ describe Note do
   it { should have_many(:note_tags) }
   it { should have_many(:tags) }
   it { should have_many(:comments) }
+  it { should have_many(:likes) }
+  it { should have_many(:likers) }
 
   it "associates with the correct notebook before save via inverse of" do
     notebook = FactoryGirl.build(:notebook)

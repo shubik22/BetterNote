@@ -1,6 +1,6 @@
 class NotebooksController < ApplicationController
   before_action :require_signed_in!
-  before_action :user_owns_notebook?, only: [:edit, :update, :destroy]
+  before_action :user_owns_notebook?, only: [:edit, :update, :destroy, :show]
 
   def new
     @notebook = current_user.notebooks.new
@@ -10,7 +10,7 @@ class NotebooksController < ApplicationController
   def create
     @notebook = current_user.notebooks.new(notebook_params)
     if @notebook.save
-      redirect_to user_url(current_user)
+      redirect_to root_url
     else
       flash.now[:errors] = @notebook.errors.full_messages
       render :new
@@ -45,7 +45,7 @@ class NotebooksController < ApplicationController
   def destroy
     @notebook = Notebook.find(params[:id])
     @notebook.destroy
-    redirect_to user_url(current_user)
+    redirect_to root_url
   end
 
   private
@@ -55,6 +55,6 @@ class NotebooksController < ApplicationController
 
   def user_owns_notebook?
     @notebook = Notebook.find(params[:id])
-    redirect_to user_url(current_user) unless @notebook.owner == current_user
+    redirect_to root_url unless @notebook.owner == current_user
   end
 end

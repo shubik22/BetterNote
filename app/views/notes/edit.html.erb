@@ -30,9 +30,10 @@
 
   <label>
     Tags<br>
+    <input type="hidden" name="note_tags[tag_ids][]" value="">
     <% current_user.tags.each_with_index do |tag, i| %>
       <input type="checkbox"
-              name="note_tags[<%= i %>][tag_id]"
+              name="note_tags[tag_ids][]"
               value="<%= tag.id %>"
               <%= "checked" if @note.tags.include?(tag) %>>
         <%= tag.name %>

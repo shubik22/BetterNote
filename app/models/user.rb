@@ -34,6 +34,33 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
+  has_many(
+    :likes,
+    foreign_key: :owner_id,
+    inverse_of: :owner,
+    dependent: :destroy
+  )
+
+  has_many(
+    :friendships,
+    foreign_key: :out_friend_id,
+    inverse_of: :out_friend,
+    dependent: :destroy
+  )
+
+  has_many :friends, through: :friendships, source: :in_friend
+
+  has_many(
+    :friend_requests,
+    foreign_key: :out_friend_id,
+    inverse_of: :out_friend,
+    dependent: :destroy
+  )
+
+  has_many :notifications, inverse_of: :user, dependent: :destroy
+
+  has_many :pending_friends, through: :friend_requests, source: :in_friend
+
   def self.generate_random_token
     SecureRandom.urlsafe_base64
   end
@@ -57,6 +84,22 @@ class User < ActiveRecord::Base
     self.session_token = self.class.generate_random_token
     self.save!
     self.session_token
+  end
+
+  def friend?(other_user)
+    self.friends.include?(other_user)
+  end
+
+  def pending_friend?(other_user)
+    self.pending_friends.include?(other_user)
+  end
+
+  def find_friend_request(other_user)
+    self.friend_requests.where({in_friend: other_user}).first
+  end
+
+  def find_friendship(other_user)
+    self.friendships.where({in_friend: other_user}).first
   end
 
   private
