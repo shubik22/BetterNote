@@ -1,0 +1,44 @@
+<form action="<%= user_note_url(current_user, note) %>" method="post" class="note">
+  <%= auth_token %>
+
+  <input type="hidden" name="_method" value="put">
+
+  <div class="input note-title">
+    <input type="text" name="note[title]"
+      id="note-title" value="<%= note.title %>">
+  </div>
+
+  <div class="input note-body">
+    <textarea name="note[body]" id="note-body"><%= note.body %></textarea>
+  </div>
+
+  <div class="input">
+    <label for="note-notebook">Notebook</label>
+    <select name="note[notebook_id]" id="note-notebook">
+      <% current_user.notebooks.each do |notebook| %>
+        <option value="<%= notebook.id %>"
+          <%= "selected" if (notebook.id == note.notebook.id) %>>
+          <%= notebook.name %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="input">
+    <label="note-tags">Tags</label>
+    <input type="hidden" name="note_tags[tag_ids][]" value="">
+    <% current_user.tags.each_with_index do |tag, i| %>
+      <input type="checkbox"
+              name="note_tags[tag_ids][]"
+              value="<%= tag.id %>"
+              <%= "checked" if note.tags.include?(tag) %>>
+        <%= tag.name %>
+      </input>
+      <br>
+    <% end %>
+  </div>
+
+  <div class="submit">
+    <input type="submit" value="Submit">
+  </div>
+</form>

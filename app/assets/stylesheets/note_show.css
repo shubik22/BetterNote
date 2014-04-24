@@ -1,6 +1,7 @@
 .note-show {
   background: #F0F2F4;
   margin-left: 704px;
+  margin-top: 40px;
   display: block;
 }
 
@@ -71,7 +72,7 @@
   margin: 8px;
   padding: 8px;
   height: 280px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .note-title {
@@ -90,10 +91,6 @@
   padding: 4px 8px;
   border-top: 1px solid #B0B0B0;
   border-bottom: 1px solid #B0B0B0;
-}
-
-.comments-list {
-
 }
 
 .comments-list > li {

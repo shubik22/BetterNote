@@ -31,7 +31,7 @@ class NotesController < ApplicationController
     @note.tag_ids = note_tag_params[:tag_ids]
 
     if @note.save
-      redirect_to user_note_url
+      redirect_to user_notebook_url(current_user, @note.notebook, note_id: @note.id)
     else
       flash.now[:errors] = @note.errors.full_messages
       render :edit

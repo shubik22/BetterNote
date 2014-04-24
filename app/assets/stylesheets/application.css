@@ -53,7 +53,7 @@ input[type="submit"] {
 
 body {
   font-family: sans-serif;
-  overflow: hidden;
+  overflow: auto;
 }
 
 a {

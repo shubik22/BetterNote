@@ -5,7 +5,7 @@
   top: 40px;
   left: 302px;
   bottom: 0;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .notes-list-header {
