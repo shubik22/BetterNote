@@ -1,13 +1,22 @@
-<h1>Notes Tagged With <%= @tag.name %></h1>
-<ul>
-  <% @tag.notes.each do |note| %>
+<section class="notes-list">
+  <div class="notes-list-header"><%= @tag.name %></div>
+  <ul class="notes">
+    <% @tag.notes.each do |note| %>
+      <li>
+        <a href="<%= user_note_url(current_user, note) %>">
+          <%= render partial: "notes/preview", locals: { note: note } %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="tag-options">
     <li>
-      <a href="<%= user_note_url(current_user, note) %>">
-        <%= note.title %>
-      </a>
+      <%= button_to "Edit Tag",
+        edit_user_tag_url(current_user, @tag), method: :get %>
     </li>
-  <% end %>
-</ul>
-<%= button_to "Edit Tag", edit_user_tag_url(current_user, @tag), method: :get %>
-<br>
-<%= button_to "Delete Tag", user_tag_url(current_user, @tag), method: :delete %>
+    <li>
+      <%= button_to "Delete Tag",
+        user_tag_url(current_user, @tag), method: :delete %>
+    </li>
+  </ul>
+</section>

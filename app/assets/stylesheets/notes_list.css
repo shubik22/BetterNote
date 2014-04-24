@@ -1,0 +1,46 @@
+.notes-list {
+  float: left;
+  width: 400px;
+  border-right: 2px solid grey;
+}
+
+.notes-list-header {
+  font-weight: bold;
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  padding-left: 4px;
+  background: #CACACA;
+}
+
+.note-preview {
+  background: white;
+  border-bottom: 2px solid grey;
+  padding: 6px;
+  color: #5C5C5C;
+  font-size: 14px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.note-preview:hover {
+  background: #E6ECEF;
+}
+
+.note-preview-title {
+  font-weight: bold;
+  font-size: 15px;
+  padding-bottom: 2px;
+}
+
+.note-preview-time {
+  float: left;
+  display: block;
+  padding-right: 6px;
+  color: #4a8db8;
+  font-weight: bold;
+}
+
+.note-preview-body {
+}

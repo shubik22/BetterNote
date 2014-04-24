@@ -1,27 +1,35 @@
 <h1>Note Show Page</h1>
 
-<p>Title: <%= @note.title %></p>
-<p>Body: <%= @note.body %></p>
+<section class="note-show">
+  <div class="note-title">
+    Title: <%= @note.title %>
+  </div>
+  <div class="note-body">
+    Body: <%= @note.body %>
+  </p>
 
-<h2>Note Information:</h2>
-<%= render partial: "info" %>
+  <div class="note-info">
+    <h2>Note Information:</h2>
+    <%= render partial: "info_old" %>
+  </div>
 
-<p><%= @note.likes.count.to_s + " " + "like".pluralize(@note.likes.count) %></p>
-<% if @note.likers.include?(current_user) %>
-  <%= button_to "Remove Like",
-    user_note_like_url(@note.author, @note, @note.likes.find_by(
-      {owner_id: current_user.id})), method: :delete %>
-<% else %>
-  <%= button_to "Like Note",
-    user_note_likes_url(@note.author, @note), method: :post %>
-<% end %>
+  <div class="note-options">
+    <% if @note.likers.include?(current_user) %>
+      <%= button_to "Remove Like",
+        user_note_like_url(@note.author, @note, @note.likes.find_by(
+          {owner_id: current_user.id})), method: :delete %>
+    <% else %>
+      <%= button_to "Like Note",
+        user_note_likes_url(@note.author, @note), method: :post %>
+    <% end %>
+    <% if current_user == @note.author %>
+      <%= button_to "Edit Note", edit_user_note_url(current_user, @note), method: :get %>
+      <%= button_to "Delete Note", user_note_url(current_user, @note), method: :delete %>
+    <% end %>
+  </div>
 
-<h2>Comments:</h2>
-<%= render partial: "comments", locals: { comments: @note.comments, note: @note } %>
-
-<% if current_user == @note.author %>
-  <%= button_to "Edit Note", edit_user_note_url(current_user, @note), method: :get %>
-  <br>
-  <%= button_to "Delete Note", user_note_url(current_user, @note), method: :delete %>
-  <br>
-<% end %>
+  <div class="note-comments">
+  <h2>Comments:</h2>
+    <%= render partial: "comments", locals: { comments: @note.comments, note: @note } %>
+  </div>
+</section>

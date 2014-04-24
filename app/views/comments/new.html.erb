@@ -1,14 +1,15 @@
-<h1>Post New Comment</h1>
+<h2>Post New Comment</h2>
 <form action="<%= user_note_comments_url(current_user, @note) %>" method="post">
   <%= auth_token %>
 
-  <label>
-    Comment
-    <textarea name="comment[body]"></textarea>
-  </label>
-  <br>
-
   <input type="hidden" name="comment[note_id]" value="<%= @note.id %>">
 
-  <input type="submit" value="Post Comment">
+  <div class="input">
+    <label for="comment-body">Comment</label>
+    <textarea name="comment[body]" for="comment-body"></textarea>
+  </div>
+
+  <div class="submit">
+    <input type="submit" value="Post Comment">
+  </div>
 </form>

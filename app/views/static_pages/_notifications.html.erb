@@ -1,19 +1,28 @@
-<% if signed_in? %>
-  <section class="notifications">
-    <% count = current_user.notifications.count %>
-    <% if count == 0 %>
-      <h3 class="notification-head">No new notifications</h3>
-    <% else %>
-      <h3 class="notification-head">
-        You have <%= count.to_s + " " "notification".pluralize(count) + "."%>
-      </h3>
-      <ul class="notifications-list">
-      <% current_user.notifications.each do |notification| %>
-        <li class="notification">
-          Notification text TK (#<%= notification.id %>)
-        </li>
-      <% end %>
-      </ul>
+<li>
+  <% count = current_user.notifications.count %>
+  <span class="notification-count">
+    Notifications
+    <span class="notifications-circle"><%= count %></span>
+  </span>
+  <ul class="notifications-list">
+    <% current_user.notifications.each do |notification| %>
+      <li>
+        <% if notification.notifiable_type == "Comment" %>
+          <% comment = notification.subject %>
+          <%= comment.author.username %> commented on one of your notes!
+          <a href="<%= user_note_url(current_user, comment.note) %>">View comment.</a>
+        <% elsif notification.notifiable_type == "Like" %>
+          <% like = notification.subject %>
+          <%= like.owner.username %> liked one of your notes!
+          <a href="<%= user_note_url(current_user, like.note) %>">View note.</a>
+        <% elsif notification.notifiable_type == "Friendship" %>
+          <% friend = notification.subject.in_friend %>
+          <%= friend.username %> accepted your friend request!
+          <a href="<%= user_url(friend) %>">
+            View <%= friend.username %>'s notes.
+          </a>
+        <% end %>
+      </li>
     <% end %>
-  </section>
-<% end %>
+  </ul>
+</li>

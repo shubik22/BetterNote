@@ -1,6 +1,7 @@
 class Like < ActiveRecord::Base
   validates :owner, :note, presence: true
   validates :owner, uniqueness: { scope: :note }
+  after_save :create_notification
 
   belongs_to(
     :owner,
@@ -9,4 +10,10 @@ class Like < ActiveRecord::Base
   )
 
   belongs_to :note
+  has_many :notifications, as: :notifiable, dependent: :destroy
+
+  private
+  def create_notification
+    self.notifications.create({user_id: self.note.author_id})
+  end
 end

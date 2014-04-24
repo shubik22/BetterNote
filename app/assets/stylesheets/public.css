@@ -1,0 +1,173 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+
+html, body, header, section, div, h1, h2, h3, a, form, ul, li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: auto;
+  background: transparent;
+  color: inherit;
+}
+
+input[type="submit"] {
+  display: inline;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #00e;
+}
+
+a:visited {
+  color: #551a8b;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  background: #D6DDE2;
+}
+
+header {
+  background: #3FA020;
+}
+
+header > .nav-left {
+  float: left;
+  display: block;
+  padding: 5px 5px 5px 10px;
+}
+
+header > .nav-left > a {
+  color: white;
+}
+
+header > .nav-left > a > .logo {
+  font-size: 16px;
+  padding: 7px;
+  line-height: 1.0;
+  float: left;
+}
+
+header > .nav-left > a > img {
+  height: 30px;
+  width: auto;
+  float: left;
+}
+
+h1 {
+  text-align: center;
+  font-size: 60px;
+  line-height: 1.0;
+  padding-top: 40px;
+  padding-bottom: 15px;
+}
+
+h3 {
+  text-align: center;
+  color: #858585;
+  font-size: 20px;
+  padding-bottom: 40px;
+}
+
+form {
+  width: 340px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border: 1px solid #bdbdbd;
+  box-shadow: 0 1px 1px 0 grey;
+}
+
+h2 {
+  font-size: 30px;
+  float: left;
+}
+
+.new-account {
+  float: right;
+  font-size: 14px;
+}
+
+.input {
+  margin: 15px 0;
+}
+
+.input > label {
+  display: block;
+  color: #606060;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.input > input {
+  border: 2px solid rgb(202, 202, 202);
+  padding: 6px;
+  width: 94%;
+}
+
+.input > input:focus {
+  border-color: #50AAF2;
+  border-radius: 3px;
+  border-opacity: 0.7;
+}
+
+.submit > input {
+  background: #69ad31;
+  padding: 8px 16px;
+  box-shadow: 0 1.5px 0 0 #070;
+  border-radius: 3px;
+  color: white;
+}
+
+.submit > input:hover {
+  background: #56A225;
+}
+
+.submit > input:active {
+  top: 3px;
+  box-shadow: none;
+  background: #488920;
+}
+
+footer {
+  text-align: center;
+  padding-top: 80px;
+  color: #ababab;
+  font-size: 12px;
+}

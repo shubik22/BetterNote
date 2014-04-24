@@ -1,0 +1,18 @@
+<section class="notes-list">
+  <div class="notes-list-header">All Notes</div>
+  <ul class="notes">
+    <% current_user.notes.each do |note| %>
+      <li>
+        <a href="<%= user_notes_url(current_user, note) %>">
+          <%= render partial: "notes/preview", locals: { note: note } %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="note-show">
+  <% note ||= current_user.notes.first  %>
+  <%= render partial: "notes/show",
+    locals: { note: note } %>
+</section>

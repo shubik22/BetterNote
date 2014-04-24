@@ -1,23 +1,29 @@
 <form action="<%= users_url %>" method="post">
   <%= auth_token %>
 
-  <label>
-    Username
-    <input type="text" name="user[username]">
-  </label>
-  <br>
+  <div class="heading group">
+    <h2>Sign Up</h2>
+    <div class="new-account">
+      or <a href="<%= new_session_url %>">Sign In</a>
+    </div>
+  </div>
 
-  <label>
-    Email
-    <input type="text" name="user[email]">
-  </label>
-  <br>
+  <div class="input">
+    <label class="user-username">Username</label>
+    <input type="text" name="user[username]" for="user-username">
+  </div>
 
-  <label>
-    Password
-    <input type="password" name="user[password]">
-  </label>
-  <br>
+  <div class="input">
+    <label class="user-email">Email</label>
+    <input type="email" name="user[email]" for="user-email">
+  </div>
 
-  <input type="submit" value="Submit">
+  <div class="input">
+    <label class="user-password">Password</label>
+    <input type="password" name="user[password]" for="user-password">
+  </div>
+
+  <div class="submit">
+    <input type="submit" value="Submit">
+  </div>
 </form>

@@ -1,7 +1,8 @@
-<ul>
+<ul class="users">
   <% current_user.friends.each do |friend| %>
     <li>
       <a href="<%= user_url(friend) %>"><%= friend.username %></a>
     </li>
   <% end %>
+  <li><%= link_to "View All Users", users_url %></li>
 </ul>

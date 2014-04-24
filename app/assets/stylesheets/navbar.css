@@ -1,0 +1,82 @@
+header {
+  background: #3BAA26;
+  border-bottom: 2px solid grey;
+  color: white;
+}
+
+.nav-left {
+  float: left;
+}
+
+.nav-left > a.nav-logo {
+  padding: 10px;
+  display: block;
+  color: white;
+}
+
+.nav-right {
+  float: right;
+  border-left: 2px solid grey;
+}
+
+.nav-right > li {
+  position: relative;
+  float: left;
+}
+
+.nav-right > li:hover {
+  background: #60B72A;
+}
+
+.nav-right > li > div.nav-right-item {
+  padding: 10px;
+  display: block;
+  border-right: 2px solid grey;
+}
+
+.nav-right > li > span.notification-count {
+  padding: 10px;
+  display: block;
+  border-right: 2px solid grey;
+}
+
+.nav-right input {
+  padding: 10px;
+}
+
+.notifications-list {
+  display: none;
+  position: absolute;
+  color: black;
+  border: 2px solid grey;
+  left: -2px;
+}
+
+.notifications-list > li {
+  background: #E8E8E8;
+  border-bottom: 2px solid grey;
+  font-size: 14px;
+}
+
+.notifications-list > li:hover {
+  background: #D2D2D2;
+}
+
+.notifications-list > li:last-child {
+  border-bottom: 0;
+}
+
+li:hover .notifications-list {
+  display: block;
+}
+
+.sign-out {
+  display: none;
+}
+
+.notifications-circle {
+  background: black;
+  border-radius: 75%;
+  padding: 2px 8px;
+  color: white;
+}

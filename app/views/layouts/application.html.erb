@@ -2,29 +2,22 @@
 <html>
 <head>
   <title>BetterNote</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if signed_in? %>
-  <p>Signed in as <a href="<%= root_url %>"><%= current_user.username %></a></p>
-  <%= button_to "Logout", session_url, method: :delete %>
-<% else %>
-  <a href="<%= new_user_url %>">Sign Up</a>
-  <a href="<%= new_session_url %>">Sign In</a>
-<% end %>
+<%= render partial: "static_pages/nav" %>
+<%= render partial: "static_pages/sidebar" %>
 
-<br>
-<%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
-<hr>
+<div class="errors">
+  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+</div>
 
-<%= yield %>
+<div class=content>
+  <%= yield %>
+</div>
 
-<% if signed_in? %>
-  <hr>
-  <a href="<%= root_url %>">Return Home</a>
-<% end %>
 </body>
 </html>

@@ -9,13 +9,13 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages
-      render :new
+      render :new, layout: "public"
     end
   end
 
   def new
     @user = User.new
-    render :new
+    render :new, layout: "public"
   end
 
   def index

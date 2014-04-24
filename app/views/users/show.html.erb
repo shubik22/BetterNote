@@ -1,10 +1,12 @@
-<h1>Notes by <%= @user.username %></h1>
-<ul>
-  <% @user.notes.each do |note| %>
-    <li>
-      <a href="<%= user_note_url(@user, note) %>">
-        <%= note.title %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<section class="notes-list">
+  <div class="notes-list-header"><%= @user.username %></div>
+  <ul class="notes">
+    <% @user.notes.each do |note| %>
+      <li>
+        <a href="<%= user_note_url(@user, note) %>">
+          <%= render partial: "notes/preview", locals: { note: note } %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</section>

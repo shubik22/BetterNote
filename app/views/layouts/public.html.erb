@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BetterNote</title>
+  <%= stylesheet_link_tag    "public" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header class="group">
+  <div class="nav-left">
+    <a href="<%= root_url %>">
+      <img src="http://upload.wikimedia.org/wikipedia/commons/0/0f/Cat-eo4jhx8y-100503-500-408_reasonably_small.jpg"
+        alt="cat-logo">
+      <span class="logo">BetterNote<span>
+    </a>
+  </div>
+</header>
+
+<div class="errors">
+  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+</div>
+
+<h1>Welcome to BetterNote</h1>
+<h3>Like Evernote.  But Better.</h3>
+
+<div class=content>
+  <%= yield %>
+</div>
+
+
+<footer>
+Copyright 2014 BetterNote Corporation. All rights reserved.
+</footer>
+
+</body>
+</html>

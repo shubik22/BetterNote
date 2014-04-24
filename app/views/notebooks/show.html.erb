@@ -1,15 +1,25 @@
-<h1>Notes in <%= @notebook.name %></h1>
-<ul>
-  <% @notebook.notes.each do |note| %>
+<section class="notes-list">
+  <div class="notes-list-header"><%= @notebook.name %></div>
+  <ul class="notes">
+    <% @notebook.notes.each do |note| %>
+      <li>
+        <a href="<%= user_note_url(current_user, note) %>">
+          <%= render partial: "notes/preview", locals: { note: note } %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="notebook-options">
     <li>
-      <a href="<%= user_note_url(current_user, note) %>">
-        <%= note.title %>
-      </a>
+      <%= render partial: "notes/new", locals: { notebook: @notebook } %>
     </li>
-  <% end %>
-</ul>
-<%= render partial: "notes/new", locals: { notebook: @notebook } %>
-<br>
-<%= button_to "Edit Notebook", edit_user_notebook_url(current_user, @notebook), method: :get %>
-<br>
-<%= button_to "Delete Notebook", user_notebook_url(current_user, @notebook), method: :delete %>
+    <li>
+      <%= button_to "Edit Notebook",
+        edit_user_notebook_url(current_user, @notebook), method: :get %>
+    </li>
+    <li>
+      <%= button_to "Delete Notebook",
+        user_notebook_url(current_user, @notebook), method: :delete %>
+    </li>
+  </ul>
+</section>

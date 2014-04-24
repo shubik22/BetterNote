@@ -1,0 +1,16 @@
+<header class="group">
+  <div class="nav-left">
+    <a href="<%= root_url %>" class="nav-logo">BetterNote</a>
+  </div>
+  <ul class="nav-right">
+    <%= render partial: "static_pages/notifications" %>
+    <li>
+      <div class="nav-right-item">
+        Signed in as <a href="<%= root_url %>"><%= current_user.username %></a>
+      </div>
+    </li>
+    <li>
+      <%= button_to "Sign Out", session_url, method: :delete %>
+    </li>
+  </ul>
+</header>

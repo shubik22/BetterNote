@@ -1,5 +1,5 @@
 BetterNote::Application.routes.draw do
-  root to: "static_pages#home"
+  root to: "notes#index"
   resources :users, only: [:create, :new, :show, :index] do
     resources :notes, only: [:index, :show, :edit, :update, :destroy] do
       resources :comments, only: [:new, :create, :destroy]

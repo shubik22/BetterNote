@@ -9,9 +9,66 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require navbar
+ *= require sidebar
+ *= require notes_list
  */
+
+html, body, header, section, div, h1, h2, h3, a, form, ul, li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+input[type="text"],
+input[type="textarea"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: auto;
+  background: transparent;
+  color: inherit;
+}
+
+input[type="submit"] {
+  display: inline;
+  cursor: pointer;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
 
 body {
   font-family: sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+

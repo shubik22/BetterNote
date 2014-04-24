@@ -1,19 +1,20 @@
-<ul>
-  <li><em>Title:</em> <%= @note.title %></li>
-  <li><em>Author:</em> <%= @note.author.username %></li>
-  <li><em>Created At:</em> <%= @note.created_at %></li>
-  <li><em>Updated At:</em> <%= @note.updated_at %></li>
+<ul class="note-info">
+  <li><span class="note-info-field">Title:</span> <%= note.title %></li>
+  <li><span class="note-info-field">Author:</span> <%= note.author.username %></li>
+  <li><span class="note-info-field">Created At:</span> <%= note.created_at %></li>
+  <li><span class="note-info-field">Updated At:</span> <%= note.updated_at %></li>
   <li>
-    <em>Notebook:</em>
-    <a href="<%= user_notebook_url(current_user, @note.notebook) %>">
-      <%= @note.notebook.name %>
+    <span class="note-info-field">Notebook:</span>
+    <a href="<%= user_notebook_url(current_user, note.notebook) %>">
+      <%= note.notebook.name %>
     </a>
   </li>
   <li>
-    <em>Tags:</em>
-    <% tags = @note.tags.map do |tag| %>
+    <span class="note-info-field">Tags:</span>
+    <% tags = note.tags.map do |tag| %>
       <% "<a href='#{user_tag_url(current_user, tag)}'>#{tag.name}</a>" %>
     <% end.join(", ").html_safe %>
     <%= tags %>
   </li>
+  <li><%= note.likes.count.to_s + " " + "like".pluralize(note.likes.count) %></li>
 </ul>

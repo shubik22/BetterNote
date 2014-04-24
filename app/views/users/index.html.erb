@@ -1,6 +1,6 @@
 <h1>All Users</h1>
 
-<ul>
+<ul class="users">
   <% @users.each do |user| %>
     <li>
       <%= user.username %>
@@ -9,7 +9,7 @@
           user_friendship_url(current_user, current_user.find_friendship(user)),
           method: :delete %>
       <% elsif current_user.pending_friend?(user) %>
-        <br>Friend Request Pending...
+        <div class="friend-pending">Friend Request Pending...</div>
       <% elsif user.pending_friend?(current_user) %>
         <% friend_request = user.find_friend_request(current_user) %>
         <%= button_to "Accept Friend Request",

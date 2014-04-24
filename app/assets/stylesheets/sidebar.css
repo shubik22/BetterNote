@@ -1,0 +1,28 @@
+.sidebar {
+  width: 300px;
+  border-right: 2px solid gray;
+  background: #E7E7E7;
+  float: left;
+}
+
+.sidebar-header {
+  font-weight: bold;
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  padding-left: 4px;
+  background: #CACACA;
+}
+
+.sidebar-item a {
+  padding-left: 10px;
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  color: #585858;
+}
+
+.sidebar-item li:hover{
+  background: #B4B4B4;
+}
