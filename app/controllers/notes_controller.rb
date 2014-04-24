@@ -15,6 +15,7 @@ class NotesController < ApplicationController
 
   def index
     @notes = current_user.notes
+    @note = Note.find(params[:note_id]) if params[:note_id]
     render :index
   end
 

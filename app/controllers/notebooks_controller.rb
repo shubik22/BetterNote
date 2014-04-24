@@ -24,6 +24,7 @@ class NotebooksController < ApplicationController
 
   def show
     @notebook = Notebook.find(params[:id])
+    @note = Note.find(params[:note_id]) if params[:note_id]
     render :show
   end
 

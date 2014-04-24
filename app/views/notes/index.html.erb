@@ -3,7 +3,7 @@
   <ul class="notes">
     <% current_user.notes.each do |note| %>
       <li>
-        <a href="<%= user_notes_url(current_user, note) %>">
+        <a href="<%= user_notes_url(current_user, note_id: note.id) %>">
           <%= render partial: "notes/preview", locals: { note: note } %>
         </a>
       </li>
@@ -11,8 +11,7 @@
   </ul>
 </section>
 
-<section class="note-show">
-  <% note ||= current_user.notes.first  %>
-  <%= render partial: "notes/show",
-    locals: { note: note } %>
-</section>
+</div> <!-- closes "left-absolute div" -->
+
+<%= render partial: "notes/show",
+  locals: { note: @note || current_user.notes.first } %>

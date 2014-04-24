@@ -1,18 +1,30 @@
 .sidebar {
   width: 300px;
   border-right: 2px solid gray;
-  background: #E7E7E7;
+  background: #E4E8EA;
   float: left;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
 }
 
 .sidebar-header {
+  font-size: 18px;
   font-weight: bold;
-  border-top: 2px solid grey;
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid grey;
   margin-bottom: 5px;
-  margin-top: 10px;
   padding-left: 4px;
-  background: #CACACA;
+  background: #DBDFE2;
+}
+
+.sidebar-header:hover {
+  background: #B2B5B9;
+}
+
+.sidebar-item {
+  margin-bottom: 8px;
 }
 
 .sidebar-item a {

@@ -195,3 +195,5 @@ Notification.create({
   notifiable_type: "friendship",
   notifiable_id: 1
 })
+
+

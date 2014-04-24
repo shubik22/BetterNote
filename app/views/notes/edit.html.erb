@@ -7,17 +7,17 @@
   <div class="input">
     <label for="note-title">Title</label>
     <input type="text" name="note[title]"
-      for="note-title" value="<%= @note.title %>">
+      id="note-title" value="<%= @note.title %>">
   </div>
 
   <div class="input">
     <label for="note-body"> Body</label>
-    <textarea name="note[body]" for="note-body"><%= @note.body %></textarea>
+    <textarea name="note[body]" id="note-body"><%= @note.body %></textarea>
   </div>
 
   <div class="input">
     <label for="note-notebook">Notebook</label>
-    <select name="note[notebook_id]" for="note-notebook">
+    <select name="note[notebook_id]" id="note-notebook">
       <% current_user.notebooks.each do |notebook| %>
         <option value="<%= notebook.id %>"
           <%= "selected" if (notebook.id == @note.notebook.id) %>>

@@ -9,14 +9,17 @@
 <body>
 
 <%= render partial: "static_pages/nav" %>
-<%= render partial: "static_pages/sidebar" %>
+<%#= render partial: "static_pages/search_bar" %>
 
 <div class="errors">
   <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
 </div>
 
-<div class=content>
-  <%= yield %>
+
+<div class="content">
+  <div class="left-absolute">
+    <%= render partial: "static_pages/sidebar" %>
+    <%= yield %>
 </div>
 
 </body>

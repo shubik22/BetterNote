@@ -24,6 +24,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
+    @note = Note.find(params[:note_id]) if params[:note_id]
     render :show
   end
 

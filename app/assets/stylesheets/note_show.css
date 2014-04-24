@@ -1,0 +1,134 @@
+.note-show {
+  background: #F0F2F4;
+  margin-left: 704px;
+  display: block;
+}
+
+.note-show > header {
+  background: #F0F0F0;
+  border-bottom: 2px solid grey;
+}
+
+.note-show-header-left {
+  float: left;
+  padding-left: 8px;
+}
+
+.note-show-header-right {
+  float: right;
+  position: relative;
+  padding-right: 6px;
+}
+
+.note-show-header-left > .notebook-name {
+  float: left;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.note-show-header-left > .tags {
+  padding: 5px;
+  float: left;
+}
+
+.note-show-header-left > .tags > li {
+  background: #B9B9B9;
+  display: inline-block;
+  float: left;
+  border-radius: 10px;
+  padding: 2px 5px;
+}
+
+.note-show-header-left > .tags > li:hover {
+  background: #A7A7A7;
+}
+
+.note-show-header-right > .info-text {
+  padding: 7px;
+}
+
+.note-info {
+  display: none;
+  background: white;
+  border: 2px solid #D7D7D7;
+}
+
+.note-show-header-right:hover > .note-info {
+  display: block;
+  position: absolute;
+  left: -250px;
+}
+
+.note-show-header-left > .dates > li {
+  float: left;
+  padding: 2px 2px;
+}
+
+.note-content {
+  background: white;
+  border: 1px solid grey;
+  border-radius: 3px;
+  margin: 8px;
+  padding: 8px;
+  height: 280px;
+  overflow: scroll;
+}
+
+.note-title {
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #A7A7A7;
+}
+
+.comments {
+  margin-top: 8px;
+}
+
+.comments-header {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-top: 1px solid #B0B0B0;
+  border-bottom: 1px solid #B0B0B0;
+}
+
+.comments-list {
+
+}
+
+.comments-list > li {
+  background: white;
+  border: 1px solid grey;
+  border-radius: 3px;
+  margin: 8px;
+  padding: 8px;
+}
+
+.comments-list > li > .comment-info {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.comments-list > li > .comment-body {
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.new-comment-link {
+  padding: 4px;
+  margin-left: 8px;
+  border-radius: 8px;
+  border: 1px solid #899298;
+  font-size: 14px;
+  background-color: #939ca3;
+  display: inline-block;
+}
+
+.new-comment-link:hover {
+  background-color: #757575;
+  display: inline-block;
+}
+
+.new-comment-link > a {
+  color: white;
+}

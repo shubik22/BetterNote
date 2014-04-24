@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @note = Note.find(params[:note_id]) if params[:note_id]
     render :show
   end
 

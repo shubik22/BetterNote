@@ -1,0 +1,36 @@
+<header class="note-show-top group">
+  <div class="note-show-header-left">
+    <div class="notebook-name">
+      <%= note.notebook.name %>
+    </div>
+    <ul class="tags">
+      <% note.tags.each do |tag| %>
+        <li>
+          <%= tag.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="note-show-header-right">
+    <div class="info-text">Info</div>
+    <%= render partial: "notes/info", locals: { note: note }%>
+  </div>
+</header>
+<header class="note-show-bottom group">
+  <div class="note-show-header-left">
+    <ul class="dates">
+      <li>
+        Created: <%= note.created_at.to_formatted_s(:long)  %>
+      </li>
+      <li>
+        Modified: <%= note.created_at.to_formatted_s(:long)  %>
+      </li>
+    </ul>
+  </div>
+  <div class="note-show-header-right">
+    <% if current_user == note.author %>
+      <%= button_to "Delete Note",
+        user_note_url(current_user, note), method: :delete %>
+    <% end %>
+  </div>
+</header>

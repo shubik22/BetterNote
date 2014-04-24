@@ -1,10 +1,29 @@
-<ul class="comments">
-  <% comments.each do |comment| %>
-    <li><i>Posted by <%= comment.author.username %> at <%= comment.created_at %></i>
-      <br>
-      <%= comment.body %>
-    </li>
-  <% end %>
-</ul>
-<br>
-<a href="<%= new_user_note_comment_url(current_user, note) %>">Add New Comment</a>
+<section class="comments">
+  <div class="comments-header">
+    Comments
+  </div>
+  <ul class="comments-list">
+    <% if comments.count == 0 %>
+      <li>
+        <div class="comment-body">
+          No comments
+        </div>
+      </li>
+    <% end %>
+    <% comments.each do |comment| %>
+      <li>
+        <div class="comment-body">
+          <%= comment.body %>
+        </div>
+        <div class="comment-info">
+          Posted by <%= comment.author.username %> at <%= comment.created_at %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <div class="new-comment-link">
+    <a href="<%= new_user_note_comment_url(current_user, note) %>">
+      Add New Comment
+    </a>
+  </div>
+</section>

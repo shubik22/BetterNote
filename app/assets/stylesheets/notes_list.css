@@ -1,22 +1,24 @@
 .notes-list {
-  float: left;
   width: 400px;
   border-right: 2px solid grey;
+  position: fixed;
+  top: 40px;
+  left: 302px;
+  bottom: 0;
+  overflow: scroll;
 }
 
 .notes-list-header {
+  font-size: 18px;
   font-weight: bold;
-  border-top: 2px solid grey;
-  border-bottom: 2px solid grey;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  border-bottom: 1px solid grey;
   padding-left: 4px;
-  background: #CACACA;
+  background: #DBDFE2;
 }
 
 .note-preview {
   background: white;
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid grey;
   padding: 6px;
   color: #5C5C5C;
   font-size: 14px;
