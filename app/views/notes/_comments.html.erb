@@ -2,14 +2,12 @@
   <div class="comments-header">
     Comments
   </div>
-  <ul class="comments-list">
-    <% if comments.count == 0 %>
-      <li>
-        <div class="comment-body">
-          No comments
-        </div>
-      </li>
+    <% if comments.count == 0 && !params[:new_comment] %>
+      <div class="no-comments">
+        No comments
+      </div>
     <% end %>
+  <ul class="comments-list">
     <% comments.each do |comment| %>
       <li>
         <div class="comment-body">
@@ -21,9 +19,14 @@
       </li>
     <% end %>
   </ul>
-  <div class="new-comment-link">
-    <a href="<%= new_user_note_comment_url(current_user, note) %>">
-      Add New Comment
-    </a>
-  </div>
+
+  <% if params[:new_comment] %>
+    <%= render partial: "comments/form", locals: { note: note } %>
+  <% else %>
+    <div class="new-comment-link button">
+      <a href="<%= user_notebook_url(current_user, note.notebook, note_id: note.id, new_comment: true) %>">
+        Add New Comment
+      </a>
+    </div>
+  <% end %>
 </section>

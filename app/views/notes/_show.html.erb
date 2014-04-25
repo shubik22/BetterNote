@@ -1,9 +1,9 @@
 <section class="note-show">
   <%= render partial: "notes/show_header", locals: { note: note } %>
     <% if params[:edit] %>
-    <div class="note-content">
-      <%= render partial: "notes/edit", locals: { note: note } %>
-    </div>
+      <div class="note-content">
+        <%= render partial: "notes/edit", locals: { note: note } %>
+      </div>
     <% else %>
       <div class="note-content">
         <div class="note-title">

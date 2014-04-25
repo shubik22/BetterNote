@@ -1,4 +1,4 @@
-<form action="<%= user_note_url(current_user, note) %>" method="post" class="note">
+<form action="<%= user_note_url(current_user, note) %>" method="post" class="note-form">
   <%= auth_token %>
 
   <input type="hidden" name="_method" value="put">
@@ -38,7 +38,7 @@
     <% end %>
   </div>
 
-  <div class="submit">
+  <div class="submit button">
     <input type="submit" value="Submit">
   </div>
 </form>

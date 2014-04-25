@@ -54,6 +54,9 @@ header.main {
   color: black;
   border: 2px solid grey;
   left: -2px;
+  max-height: 250px;
+  width: 200px;
+  overflow: auto;
 }
 
 .notifications-list > li {

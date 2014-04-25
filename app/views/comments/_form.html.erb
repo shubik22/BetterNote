@@ -1,0 +1,16 @@
+<div class="comment-form">
+  <form action="<%= user_note_comments_url(current_user, note) %>" method="post">
+    <%= auth_token %>
+
+    <input type="hidden" name="comment[note_id]" value="<%= note.id %>">
+
+    <div class="input">
+      <label for="comment-body">New Comment</label>
+      <textarea name="comment[body]" id="comment-body"></textarea>
+    </div>
+
+    <div class="submit button">
+      <input type="submit" value="Post Comment">
+    </div>
+  </form>
+</div>
