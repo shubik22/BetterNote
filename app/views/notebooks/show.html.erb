@@ -3,7 +3,7 @@
   <ul class="notes">
     <% @notebook.notes.each do |note| %>
       <li>
-        <a href="<%= user_notebook_url(current_user, @notebook, note_id: note.id) %>">
+        <a href="<%= notebook_url(@notebook, note_id: note.id) %>">
           <%= render partial: "notes/preview", locals: { note: note } %>
         </a>
       </li>
@@ -15,11 +15,11 @@
     </li>
     <li>
       <%= button_to "Edit Notebook",
-        edit_user_notebook_url(current_user, @notebook), method: :get %>
+        edit_notebook_url(@notebook), method: :get %>
     </li>
     <li>
       <%= button_to "Delete Notebook",
-        user_notebook_url(current_user, @notebook), method: :delete %>
+        notebook_url(@notebook), method: :delete %>
     </li>
   </ul>
 </section>

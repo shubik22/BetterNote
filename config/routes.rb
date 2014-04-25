@@ -1,19 +1,20 @@
 BetterNote::Application.routes.draw do
   root to: "notes#index"
   resources :users, only: [:create, :new, :show, :index] do
-    resources :notes, only: [:index, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:new, :create, :destroy]
-      resources :likes, only: [:create, :destroy]
-    end
-    resources :notebooks do
-      resources :notes, only: [:create]
-    end
-    resources :tags
     resources :friend_requests, only: [:create] do
       post "accept", to: "friend_requests#accept"
       post "deny", to: "friend_requests#deny"
     end
     resources :friendships, only: [:destroy]
+  end
+  resources :likes, only: [:destroy]
+  resources :notes, only: [:index, :show, :edit, :update, :destroy] do
+    resources :comments, only: [:new, :create, :destroy]
+    resources :likes, only: [:create]
+  end
+  resources :tags
+  resources :notebooks do
+    resources :notes, only: [:create]
   end
   resource :session, only: [:create, :new, :destroy]
 end

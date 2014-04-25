@@ -1,16 +1,16 @@
 <ul class="notebooks">
   <li>
-    <a href="<%= user_notes_url(current_user) %>">All Notes</a>
+    <a href="<%= notes_url %>">All Notes</a>
   </li>
   <% current_user.notebooks.each do |notebook| %>
     <% next unless notebook.persisted? %>
     <li>
-      <a href="<%= user_notebook_url(current_user, notebook) %>">
+      <a href="<%= notebook_url(notebook) %>">
         <%= notebook.name %>
       </a>
     </li>
   <% end %>
   <li>
-    <%= link_to "Add New Notebook", new_user_notebook_url(current_user) %>
+    <%= link_to "Add New Notebook", new_notebook_url %>
   </li>
 </ul>

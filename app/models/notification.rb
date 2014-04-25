@@ -18,9 +18,9 @@ class Notification < ActiveRecord::Base
 
   def url
     if self.notifiable_type == "Comment"
-      return user_note_url(self.user, notifiable.note)
+      return note_url(notifiable.note)
     elsif self.notifiable_type == "Like"
-      return user_note_url(self.user, notifiable.note)
+      return note_url(notifiable.note)
     elsif self.notifiable_type == "Friendship"
       return user_url(notifiable.in_friend)
     end

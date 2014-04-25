@@ -30,7 +30,7 @@
   <div class="note-show-header-right">
     <% if current_user == note.author %>
       <%= button_to "Delete Note",
-        user_note_url(current_user, note), method: :delete %>
+        note_url(note), method: :delete %>
     <% end %>
   </div>
 </header>

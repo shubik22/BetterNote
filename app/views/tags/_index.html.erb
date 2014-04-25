@@ -2,12 +2,12 @@
   <% current_user.tags.each do |tag| %>
     <% next unless tag.persisted? %>
     <li>
-      <a href="<%= user_tag_url(current_user, tag) %>">
+      <a href="<%= tag_url(tag) %>">
         <%= tag.name %>
       </a>
     </li>
   <% end %>
   <li>
-    <%= link_to "Add New Tag", new_user_tag_url(current_user) %>
+    <%= link_to "Add New Tag", new_tag_url %>
   </li>
 </ul>

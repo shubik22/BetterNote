@@ -17,14 +17,14 @@
   <div class="note-options">
     <% if note.likers.include?(current_user) %>
       <%= button_to "Remove Like",
-        user_note_like_url(note.author, note, note.likes.find_by(
+        like_url(note.likes.find_by(
           {owner_id: current_user.id})), method: :delete %>
     <% else %>
       <%= button_to "Like Note",
-        user_note_likes_url(note.author, note), method: :post %>
+        note_likes_url(note), method: :post %>
     <% end %>
     <% if current_user == note.author %>
-    <a href="<%= user_notebook_url(current_user, note.notebook, note_id: note.id, edit: "true") %>">Edit Note</a>
+    <a href="<%= request.url + "&edit=true" %>">Edit Note</a>
     <% end %>
   </div>
   <%= render partial: "notes/comments", locals: { comments: note.comments, note: note } %>

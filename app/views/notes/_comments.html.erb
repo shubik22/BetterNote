@@ -24,7 +24,7 @@
     <%= render partial: "comments/form", locals: { note: note } %>
   <% else %>
     <div class="new-comment-link button">
-      <a href="<%= user_notebook_url(current_user, note.notebook, note_id: note.id, new_comment: true) %>">
+      <a href="<%= request.path + "?note_id=#{note.id}&new_comment=true" %>">
         Add New Comment
       </a>
     </div>

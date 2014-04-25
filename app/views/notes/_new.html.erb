@@ -1,4 +1,4 @@
-<form action="<%= user_notebook_notes_url(current_user, notebook) %>" method="post">
+<form action="<%= notebook_notes_url(notebook) %>" method="post">
   <%= auth_token %>
 
   <input type="hidden" name="note[notebook_id]" value="<%= notebook.id %>">

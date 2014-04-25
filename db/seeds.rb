@@ -37,6 +37,11 @@ Notebook.create({
   owner_id: 2
 })
 
+Notebook.create({
+  name: "Happy Cats :)",
+  owner_id: 2
+})
+
 Note.create({
   title: "I Want to Hold Your Hand",
   author_id: 2,
@@ -105,6 +110,34 @@ Note.create({
     You're going to lose that girl
     You're going to lose that girl
   LYRICS
+})
+
+Note.create({
+  title: "Sennacy :)",
+  author_id: 2,
+  notebook_id: 4,
+  body: "The best cat :)"
+})
+
+Note.create({
+  title: "Snowy :)",
+  author_id: 2,
+  notebook_id: 4,
+  body: "A great cat too :)"
+})
+
+Note.create({
+  title: "Blacky :)",
+  author_id: 2,
+  notebook_id: 4,
+  body: "Another great cat :)"
+})
+
+Note.create({
+  title: "Lovely",
+  author_id: 2,
+  notebook_id: 4,
+  body: "The name says it all :)"
 })
 
 Tag.create({
@@ -195,5 +228,3 @@ Notification.create({
   notifiable_type: "friendship",
   notifiable_id: 1
 })
-
-

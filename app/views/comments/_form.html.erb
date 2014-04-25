@@ -1,5 +1,5 @@
 <div class="comment-form">
-  <form action="<%= user_note_comments_url(current_user, note) %>" method="post">
+  <form action="<%= note_comments_url(note) %>" method="post">
     <%= auth_token %>
 
     <input type="hidden" name="comment[note_id]" value="<%= note.id %>">

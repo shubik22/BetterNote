@@ -6,6 +6,7 @@ header.main {
   left: 0;
   top: 0;
   right: 0;
+  z-index: 100;
 }
 
 .nav-left {
@@ -42,6 +43,10 @@ header.main {
   padding: 10px;
   display: block;
   border-right: 2px solid grey;
+}
+
+.error a {
+  color: white;
 }
 
 .nav-right input {

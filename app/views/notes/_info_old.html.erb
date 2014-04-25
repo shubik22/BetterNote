@@ -5,14 +5,14 @@
   <li><span class="@note-info-field">Updated At:</span> <%= @note.updated_at %></li>
   <li>
     <span class="@note-info-field">Notebook:</span>
-    <a href="<%= user_notebook_url(current_user, @note.notebook) %>">
+    <a href="<%= notebook_url(@note.notebook) %>">
       <%= @note.notebook.name %>
     </a>
   </li>
   <li>
     <span class="@note-info-field">Tags:</span>
     <% tags = @note.tags.map do |tag| %>
-      <% "<a href='#{user_tag_url(current_user, tag)}'>#{tag.name}</a>" %>
+      <% "<a href='#{tag_url(tag)}'>#{tag.name}</a>" %>
     <% end.join(", ").html_safe %>
     <%= tags %>
   </li>

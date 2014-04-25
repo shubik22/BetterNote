@@ -6,7 +6,7 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.new(note_params)
     if @note.save
-      redirect_to user_notebook_url(current_user, @note.notebook)
+      redirect_to notebook_url(@note.notebook)
     else
       flash.now[:errors] = @note.errors.full_messages
       render :new
@@ -14,7 +14,6 @@ class NotesController < ApplicationController
   end
 
   def index
-    @notes = current_user.notes
     @note = Note.find(params[:note_id]) if params[:note_id]
     render :index
   end
@@ -31,7 +30,7 @@ class NotesController < ApplicationController
     @note.tag_ids = note_tag_params[:tag_ids]
 
     if @note.save
-      redirect_to user_notebook_url(current_user, @note.notebook, note_id: @note.id)
+      redirect_to notebook_url(@note.notebook, note_id: @note.id)
     else
       flash.now[:errors] = @note.errors.full_messages
       render :edit
@@ -46,7 +45,7 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to user_notebook_url(current_user, @note.notebook)
+    redirect_to notebook_url(@note.notebook)
   end
 
   private
@@ -56,8 +55,8 @@ class NotesController < ApplicationController
   end
 
   def authorized?
-    user = User.find(params[:user_id])
-    unless (current_user == user || user.find_friendship(current_user))
+    author = Note.find(params[:id]).author
+    unless (current_user == author || user.find_friendship(current_user))
       redirect_to root_url
     end
   end

@@ -3,7 +3,7 @@
   <ul class="notes">
     <% @tag.notes.each do |note| %>
       <li>
-        <a href="<%= user_tag_url(current_user, @tag, note_id: note.id) %>">
+        <a href="<%= tag_url(@tag, note_id: note.id) %>">
           <%= render partial: "notes/preview", locals: { note: note } %>
         </a>
       </li>
@@ -12,11 +12,11 @@
   <ul class="tag-options">
     <li>
       <%= button_to "Edit Tag",
-        edit_user_tag_url(current_user, @tag), method: :get %>
+        edit_tag_url(@tag), method: :get %>
     </li>
     <li>
       <%= button_to "Delete Tag",
-        user_tag_url(current_user, @tag), method: :delete %>
+        tag_url(@tag), method: :delete %>
     </li>
   </ul>
 </section>

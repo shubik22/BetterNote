@@ -1,6 +1,6 @@
 <% action = (@notebook.new_record?) ?
-      user_notebooks_url(current_user) :
-      user_notebook_url(current_user, @notebook) %>
+      notebooks_url :
+      notebook_url(@notebook) %>
 <% button_value = (@notebook.new_record?) ?
       "Create New Notebook" : "Update Notebook" %>
 

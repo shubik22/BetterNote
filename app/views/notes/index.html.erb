@@ -1,17 +1,9 @@
-<section class="notes-list">
-  <div class="notes-list-header">All Notes</div>
-  <ul class="notes">
-    <% current_user.notes.each do |note| %>
-      <li>
-        <a href="<%= user_notes_url(current_user, note_id: note.id) %>">
-          <%= render partial: "notes/preview", locals: { note: note } %>
-        </a>
-      </li>
-    <% end %>
-  </ul>
-</section>
-
-</div> <!-- closes "left-absolute div" -->
-
-<%= render partial: "notes/show",
-  locals: { note: @note || current_user.notes.first } %>
+<% if params[:list_view] == "notebook" %>
+  <%= render "notebooks/show" %>
+<% elsif params[:list_view] == "tag" %>
+  <%= render "tags/show" %>
+<% elsif params[:list_view] == "friend" %>
+  <%= render "users/show" %>
+<% else %>
+  <%= render "notes/index" %>
+<% end %>

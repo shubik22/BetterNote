@@ -10,8 +10,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     if @comment.save
-      redirect_to user_notebook_url(current_user,
-        @comment.note.notebook, note_id: @comment.note.id)
+      redirect_to notebook_url(@comment.note.notebook, note_id: @comment.note.id)
     else
       flash.now[:errors] = @comment.errors.full_messages
       render :new

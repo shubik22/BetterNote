@@ -58,6 +58,7 @@
   display: block;
   position: absolute;
   left: -250px;
+  z-index: 50;
 }
 
 .note-show-header-left > .dates > li {
@@ -83,7 +84,7 @@
 
 textarea {
   -webkit-appearance: none;
-  box-sizing: content-box;
+  box-sizing: border-box;
   display: block;
   margin: 0;
   padding: 0;
@@ -103,12 +104,13 @@ textarea#note-body {
 
 .comments {
   margin-top: 8px;
+  padding: 8px;
 }
 
 .comments-header {
   font-size: 16px;
   font-weight: bold;
-  padding: 4px 8px;
+  padding-bottom: 4px;
   border-top: 1px solid #B0B0B0;
   border-bottom: 1px solid #B0B0B0;
 }
@@ -122,8 +124,8 @@ textarea#note-body {
   background: white;
   border: 1px solid grey;
   border-radius: 3px;
-  margin: 8px;
   padding: 8px;
+  margin-bottom: 8px;
 }
 
 .comments-list > li > .comment-info {
@@ -138,7 +140,6 @@ textarea#note-body {
 
 .button {
   padding: 4px;
-  margin-left: 8px;
   border-radius: 8px;
   border: 1px solid #899298;
   font-size: 14px;

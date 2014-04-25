@@ -1,6 +1,5 @@
 <% action = (@tag.new_record?) ?
-      user_tags_url(current_user) :
-      user_tag_url(current_user, @tag) %>
+      tags_url : tag_url(@tag) %>
 <% button_value = (@tag.new_record?) ?
       "Create New Tag" : "Update Tag" %>
 
