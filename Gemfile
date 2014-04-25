@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
+ruby '2.1.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
@@ -51,6 +53,8 @@ group :test do
 end
 
 gem 'bcrypt'
+
+gem 'rails_12factor', group: :production
 
 # Use unicorn as the app server
 # gem 'unicorn'
