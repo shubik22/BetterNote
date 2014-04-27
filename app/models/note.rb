@@ -1,6 +1,10 @@
 class Note < ActiveRecord::Base
   validates :author, :notebook, presence: true
 
+  include PgSearch
+
+  pg_search_scope :search_by_title_and_body, against: [:title, :body]
+
   belongs_to(
     :author,
     class_name: User,

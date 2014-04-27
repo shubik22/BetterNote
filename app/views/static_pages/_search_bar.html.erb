@@ -1,12 +1,18 @@
 <header class="search group">
   <div class="search-left">
     <a href="<%= root_url %>" class="nav-logo">
-      <i class='fa fa-file-text'></i>&nbsp;
+      <i class='fa fa-file-text'></i>
       BETTERNOTE
     </a>
   </div>
   <div class="search-bar">
-    Search bar here
+    <form action="<%= request.fullpath %>" class="search group" method="GET">
+      <input type="text" name="query" value="<%= params[:query] %>">
+      <% if params[:note_id] %>
+        <input type="hidden" name="note_id" value="<%= params[:note_id] %>">
+      <% end %>
+      <input type="submit" value="Search">
+    </form>
   </div>
   <% if @notebook && @notebook.persisted? %>
     <div class="new-note">

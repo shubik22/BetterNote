@@ -32,7 +32,7 @@
     <%= render partial: "comments/form", locals: { note: note } %>
   <% else %>
     <div class="new-comment">
-      <a href="<%= request.path + "?note_id=#{note.id}&new_comment=true" %>">
+      <a href="<%= request.fullpath + "&new_comment=true" %>">
         <i class="fa fa-plus"></i>&nbsp;
         New Comment
       </a>

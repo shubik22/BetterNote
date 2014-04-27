@@ -4,9 +4,10 @@
     <%= @user.username %>
   </div>
   <ul class="notes">
-    <% @user.notes.each do |note| %>
+    <% notes = @notes.sort_by! { |note| note.created_at }.reverse! %>
+    <% notes.each do |note| %>
       <li>
-        <a href="<%= user_url(@user, note_id: note.id) %>">
+        <a href="<%= update_url_with_note(request.fullpath.dup, note) %>">
           <%= render partial: "notes/preview", locals: { note: note } %>
         </a>
       </li>
@@ -16,7 +17,7 @@
 
 </div> <!-- closes "left-absolute div" -->
 
-<% if @note || @user.notes.first %>
+<% if @note || notes.first %>
   <%= render partial: "notes/show",
-    locals: { note: @note || @user.notes.first } %>
+    locals: { note: @note || notes.first } %>
 <% end %>

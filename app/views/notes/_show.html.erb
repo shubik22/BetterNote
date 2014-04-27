@@ -24,7 +24,7 @@
         note_likes_url(note), method: :post %>
     <% end %>
     <% if current_user == note.author %>
-    <a href="<%= request.url + "&edit=true" %>">Edit Note</a>
+      <a href="<%= request.url + "&edit=true" %>">Edit Note</a>
     <% end %>
   </div>
   <%= render partial: "notes/comments", locals: { comments: note.comments, note: note } %>

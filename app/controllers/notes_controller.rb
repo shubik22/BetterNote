@@ -14,8 +14,18 @@ class NotesController < ApplicationController
   end
 
   def index
-    @note = Note.find(params[:note_id]) if params[:note_id]
-    render :index
+    if params[:note_id] && @note = Note.where(id: params[:note_id]).first
+      @note = Note.find(params[:note_id])
+    end
+
+    if params[:query] && params[:query] != ""
+      @notes = current_user.notes.search_by_title_and_body(params[:query])
+      render :index
+      return
+    else
+      @notes = current_user.notes
+      render :index
+    end
   end
 
   def update
@@ -25,7 +35,7 @@ class NotesController < ApplicationController
     @note.tag_ids = note_tag_params[:tag_ids]
 
     if @note.save
-      redirect_to notebook_url(@note.notebook, note_id: @note.id)
+      redirect_to request.env["HTTP_REFERER"].gsub("&edit=true", "")
     else
       flash[:errors] = @note.errors.full_messages
       redirect_to :back
@@ -40,7 +50,7 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to notebook_url(@note.notebook)
+    redirect_to :back
   end
 
   private

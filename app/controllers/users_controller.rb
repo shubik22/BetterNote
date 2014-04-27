@@ -25,9 +25,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @note = Note.find(params[:note_id]) if params[:note_id]
-    render :show
+    @user = User.includes(:notes).find(params[:id])
+
+    if params[:note_id] && @note = Note.where(id: params[:note_id]).first
+      @note = Note.find(params[:note_id])
+    end
+
+    if params[:query] && params[:query] != ""
+      @notes = @user.notes.search_by_title_and_body(params[:query])
+      render :show
+      return
+    else
+      @notes = @user.notes
+      render :show
+    end
   end
 
   private

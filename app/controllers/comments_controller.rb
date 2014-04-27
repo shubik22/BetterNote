@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     if @comment.save
-      redirect_to :back
+      redirect_to request.env["HTTP_REFERER"].gsub("&new_comment=true", "")
     else
       flash.now[:errors] = @comment.errors.full_messages
       render :new

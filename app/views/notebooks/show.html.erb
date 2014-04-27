@@ -1,12 +1,13 @@
 <section class="notes-list">
   <div class="notes-list-header">
-    <i class="fa fa-book"></i>&nbsp;
+    <i class="fa fa-book"></i>
     <%= @notebook.name %>
   </div>
   <ul class="notes">
-    <% @notebook.notes.each do |note| %>
+    <% notes = @notes.sort_by! { |note| note.created_at }.reverse! %>
+    <% notes.each do |note| %>
       <li>
-        <a href="<%= notebook_url(@notebook, note_id: note.id) %>">
+        <a href="<%= update_url_with_note(request.fullpath.dup, note) %>">
           <%= render partial: "notes/preview", locals: { note: note } %>
         </a>
       </li>
@@ -14,9 +15,9 @@
   </ul>
 </section>
 
-</div><%# closes "left-absolute div" %>
+</div> <%# closes "left-absolute div" %>
 
-<% if @note || @notebook.notes.first %>
+<% if @note || notes.first %>
   <%= render partial: "notes/show",
-    locals: { note: @note || @notebook.notes.first } %>
+    locals: { note: @note || notes.first } %>
 <% end %>

@@ -17,6 +17,10 @@
   padding-left: 4px;
 }
 
+.notes-list-header > i {
+  color: #ABABAB;
+}
+
 .note-preview {
   background: white;
   border-bottom: 1px solid #e6e6e6;

@@ -53,6 +53,7 @@ group :test do
 end
 
 gem 'bcrypt'
+gem 'pg_search'
 
 gem 'rails_12factor', group: :production
 gem 'font-awesome-rails'
