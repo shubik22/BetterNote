@@ -69,13 +69,15 @@ body {
 }
 
 header {
-  background: #3FA020;
+  background: url("/assets/header-background-green.png");
+  border-bottom: 1px solid grey;
+  font-size: 14px;
 }
 
 header > .nav-left {
   float: left;
   display: block;
-  padding: 5px 5px 5px 10px;
+  padding: 3px 5px 0 10px;
 }
 
 header > .nav-left > a {
@@ -83,15 +85,9 @@ header > .nav-left > a {
 }
 
 header > .nav-left > a > .logo {
-  font-size: 16px;
+  font-family: "Caecilia LT Std";
   padding: 7px;
   line-height: 1.0;
-  float: left;
-}
-
-header > .nav-left > a > img {
-  height: 30px;
-  width: auto;
   float: left;
 }
 
@@ -109,6 +105,7 @@ h3 {
   color: #858585;
   font-size: 20px;
   padding-bottom: 40px;
+  font-family: "Caecilia LT Std";
 }
 
 form {
