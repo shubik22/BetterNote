@@ -1,16 +1,61 @@
 <section class="sidebar">
   <article class="sidebar-item">
-    <div class="sidebar-header">Notebooks</div>
+    <div class="sidebar-header group">
+      <div class="sidebar-header-left">
+        <i class="fa fa-caret-down"></i>&nbsp;
+        Notebooks
+      </div>
+      <div class="sidebar-header-right">
+        <i class="fa fa-toggle-down"></i>
+        <ul class="options-dropdown">
+          <li>
+            <a href="<%= new_notebook_url %>" class="group">
+              New Notebook...
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <%= render partial: "notebooks/index" %>
   </article>
 
   <article class="sidebar-item">
-    <div class="sidebar-header">Tags</div>
+    <div class="sidebar-header group">
+      <div class="sidebar-header-left">
+        <i class="fa fa-caret-down"></i>&nbsp;
+        Tags
+      </div>
+      <div class="sidebar-header-right">
+        <i class="fa fa-toggle-down"></i>
+        <ul class="options-dropdown">
+          <li>
+            <a href="<%= new_tag_url %>" class="group">
+              New Tag...
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <%= render partial: "tags/index" %>
   </article>
 
   <article class="sidebar-item">
-    <div class="sidebar-header">Friends</div>
+    <div class="sidebar-header group">
+      <div class="sidebar-header-left">
+        <i class="fa fa-caret-down"></i>&nbsp;
+        Tags
+      </div>
+      <div class="sidebar-header-right">
+        <i class="fa fa-toggle-down"></i>
+        <ul class="options-dropdown">
+          <li>
+            <a href="<%= users_url %>" class="group">
+              View All Users
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <%= render partial: "users/friends" %>
   </article>
 </section>

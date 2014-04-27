@@ -1,5 +1,8 @@
 <section class="notes-list">
-  <div class="notes-list-header"><%= @notebook.name %></div>
+  <div class="notes-list-header">
+    <i class="fa fa-book"></i>&nbsp;
+    <%= @notebook.name %>
+  </div>
   <ul class="notes">
     <% @notebook.notes.each do |note| %>
       <li>
@@ -9,22 +12,9 @@
       </li>
     <% end %>
   </ul>
-  <ul class="notebook-options">
-    <li>
-      <%= render partial: "notes/new", locals: { notebook: @notebook } %>
-    </li>
-    <li>
-      <%= button_to "Edit Notebook",
-        edit_notebook_url(@notebook), method: :get %>
-    </li>
-    <li>
-      <%= button_to "Delete Notebook",
-        notebook_url(@notebook), method: :delete %>
-    </li>
-  </ul>
 </section>
 
-</div> <!-- closes "left-absolute div" -->
+</div><%# closes "left-absolute div" %>
 
 <% if @note || @notebook.notes.first %>
   <%= render partial: "notes/show",

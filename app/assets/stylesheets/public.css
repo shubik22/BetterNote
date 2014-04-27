@@ -9,8 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require font-awesome
  */
 
+@font-face {
+    font-family: "Caecilia LT Std";
+    src: url(/assets/CaeciliaLTStd-Roman.ttf) format("truetype");
+}
 
 html, body, header, section, div, h1, h2, h3, a, form, ul, li {
   padding: 0;
@@ -96,6 +101,7 @@ h1 {
   line-height: 1.0;
   padding-top: 40px;
   padding-bottom: 15px;
+  font-family: "Caecilia LT Std";
 }
 
 h3 {

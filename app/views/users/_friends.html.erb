@@ -1,9 +1,23 @@
-<ul class="users">
+<ul class="sidebar-list">
   <% current_user.friends.each do |friend| %>
-    <li>
-      <a href="<%= user_url(friend) %>"><%= friend.username %></a>
+    <li class="group">
+      <div class="sidebar-entry-left">
+        <a href="<%= user_url(friend) %>">
+            <i class='fa fa-user fa-lg'></i>&nbsp;
+            <%= friend.username %>
+        </a>
+      </div>
+      <div class="sidebar-entry-right">
+        <i class='fa fa-toggle-down'></i>
+        <ul class="options-dropdown">
+          <li>
+            <%= button_to "Remove Friend",
+              user_friendship_url(current_user, current_user.find_friendship(friend)),
+              method: :delete %>
+          </li>
+        </ul>
+      </div>
     </li>
   <% end %>
-  <li><a href="http://i.imgur.com/a1suoTg.jpg">Adrian</a></li>
-  <li><%= link_to "View All Users", users_url %></li>
 </ul>
+

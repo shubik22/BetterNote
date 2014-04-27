@@ -6,7 +6,7 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.new(note_params)
     if @note.save
-      redirect_to notebook_url(@note.notebook)
+      redirect_to notebook_url(@note.notebook, note_id: @note.id)
     else
       flash.now[:errors] = @note.errors.full_messages
       render :new
@@ -18,11 +18,6 @@ class NotesController < ApplicationController
     render :index
   end
 
-  def edit
-    @note = Note.find(params[:id])
-    render :edit
-  end
-
   def update
     @note = Note.find(params[:id])
 
@@ -32,8 +27,8 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to notebook_url(@note.notebook, note_id: @note.id)
     else
-      flash.now[:errors] = @note.errors.full_messages
-      render :edit
+      flash[:errors] = @note.errors.full_messages
+      redirect_to :back
     end
   end
 

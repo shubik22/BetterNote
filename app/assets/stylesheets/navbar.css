@@ -1,27 +1,18 @@
 header.main {
-  background: #3BAA26;
-  border-bottom: 2px solid grey;
+  background: url("/assets/header-background-green.png");
+  border-bottom: 1px solid grey;
   color: white;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   z-index: 100;
-}
-
-.nav-left {
-  float: left;
-}
-
-.nav-left > a.nav-logo {
-  padding: 10px;
-  display: block;
-  color: white;
+  font-size: 14px;
 }
 
 .nav-right {
   float: right;
-  border-left: 2px solid grey;
+  border-left: 1px solid grey;
 }
 
 .nav-right > li {
@@ -34,15 +25,15 @@ header.main {
 }
 
 .nav-right > li > div.nav-right-item {
-  padding: 10px;
+  padding: 6px;
   display: block;
-  border-right: 2px solid grey;
+  border-right: 1px solid grey;
 }
 
 .nav-right > li > span.notification-count {
-  padding: 10px;
+  padding: 6px;
   display: block;
-  border-right: 2px solid grey;
+  border-right: 1px solid grey;
 }
 
 .error a {
@@ -50,7 +41,7 @@ header.main {
 }
 
 .nav-right input {
-  padding: 10px;
+  padding: 5px;
 }
 
 .notifications-list {
@@ -91,4 +82,61 @@ li:hover .notifications-list {
   border-radius: 75%;
   padding: 2px 8px;
   color: white;
+}
+
+header.search {
+  position: fixed;
+  top: 29px;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid #b3b3b3;
+  background: #E9EDEF;
+  color: black;
+}
+
+.search-left {
+  float: left;
+}
+
+.nav-logo {
+  padding: 10px;
+  display: block;
+  color: #3BAA26;
+  font-family: "Caecilia LT Std";
+}
+
+.search-bar {
+  position: fixed;
+  top: 29px;
+  left: 221px;
+  padding-top: 10px;
+}
+
+.new-note {
+  position: fixed;
+  top: 29px;
+  left: 582px;
+  padding-top: 6px;
+  padding-left: 8px;
+}
+
+.new-note button, .new-comment a {
+  height: 24px;
+  background-image: -webkit-linear-gradient(top, #939ca3, #65727c);
+  border: 1px solid rgb(137, 146, 152);
+  padding-right: 8px;
+  border-radius: 3px;
+  font-family: "Caecilia LT Std";
+  color: white;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.new-comment a {
+  padding: 4px 6px 2px 6px;
+}
+
+.new-note button:hover, .new-comment a:hover {
+	background-image: -webkit-linear-gradient(top, #8da1b0, #5c7284);
 }

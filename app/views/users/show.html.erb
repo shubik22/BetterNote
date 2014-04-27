@@ -1,5 +1,8 @@
 <section class="notes-list">
-  <div class="notes-list-header"><%= @user.username %></div>
+  <div class="notes-list-header">
+    <i class='fa fa-user fa-lg'></i>&nbsp;
+    <%= @user.username %>
+  </div>
   <ul class="notes">
     <% @user.notes.each do |note| %>
       <li>

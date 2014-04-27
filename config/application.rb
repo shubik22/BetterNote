@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module BetterNote
   class Application < Rails::Application
     config.initialize_on_precompile = false
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.generators do |g|
       g.test_framework :rspec,
         :fixtures => true,

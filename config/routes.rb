@@ -9,9 +9,10 @@ BetterNote::Application.routes.draw do
   end
   resources :likes, only: [:destroy]
   resources :notes, only: [:index, :show, :edit, :update, :destroy] do
-    resources :comments, only: [:new, :create, :destroy]
+    resources :comments, only: [:create]
     resources :likes, only: [:create]
   end
+  resources :comments, only: [:destroy]
   resources :tags
   resources :notebooks do
     resources :notes, only: [:create]

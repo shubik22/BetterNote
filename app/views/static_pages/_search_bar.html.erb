@@ -1,0 +1,16 @@
+<header class="search group">
+  <div class="search-left">
+    <a href="<%= root_url %>" class="nav-logo">
+      <i class='fa fa-file-text'></i>&nbsp;
+      BETTERNOTE
+    </a>
+  </div>
+  <div class="search-bar">
+    Search bar here
+  </div>
+  <% if @notebook && @notebook.persisted? %>
+    <div class="new-note">
+      <%= render partial: "notes/new", locals: { notebook: @notebook } %>
+    </div>
+  <% end %>
+</header>

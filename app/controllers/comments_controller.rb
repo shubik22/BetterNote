@@ -2,11 +2,6 @@ class CommentsController < ApplicationController
   before_action :require_signed_in!
   before_action :user_owns_comment?, only: [:destroy]
 
-  def new
-    @note = Note.find(params[:note_id])
-    render :new
-  end
-
   def create
     @comment = current_user.comments.new(comment_params)
     if @comment.save
@@ -18,6 +13,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to :back
   end
 
   private
@@ -26,7 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def user_owns_comment?
-    @comment = comment.find(params[:id])
-    redirect_to root_url unless @comment.owner == current_user
+    @comment = Comment.find(params[:id])
+    redirect_to root_url unless @comment.author == current_user
   end
 end

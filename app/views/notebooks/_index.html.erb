@@ -1,16 +1,35 @@
-<ul class="notebooks">
-  <li>
-    <a href="<%= notes_url %>">All Notes</a>
+<ul class="sidebar-list">
+  <li class="group">
+    <div class="sidebar-entry-left">
+      <a href="<%= notes_url %>" class="group">
+          <i class='fa fa-book fa-lg'></i>&nbsp;
+          All Notes (<%= current_user.notes.count %>)
+      </a>
+    </div>
   </li>
   <% current_user.notebooks.each do |notebook| %>
     <% next unless notebook.persisted? %>
-    <li>
-      <a href="<%= notebook_url(notebook) %>">
-        <%= notebook.name %>
-      </a>
+    <li class="group">
+      <div class="sidebar-entry-left">
+        <a href="<%= notebook_url(notebook) %>">
+            <i class='fa fa-book fa-lg'></i>&nbsp;
+            <%= notebook.name %> (<%= notebook.notes.count %>)
+        </a>
+      </div>
+      <div class="sidebar-entry-right">
+        <i class='fa fa-toggle-down'></i>
+        <ul class="options-dropdown">
+          <li>
+            <a href="<%= edit_notebook_url(notebook) %>">
+              Edit Notebook
+            </a>
+          </li>
+          <li>
+            <%= button_to "Delete Notebook",
+              notebook_url(notebook), method: :delete %>
+          </li>
+        </ul>
+      </div>
     </li>
   <% end %>
-  <li>
-    <%= link_to "Add New Notebook", new_notebook_url %>
-  </li>
 </ul>

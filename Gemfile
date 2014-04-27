@@ -55,6 +55,7 @@ end
 gem 'bcrypt'
 
 gem 'rails_12factor', group: :production
+gem 'font-awesome-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'

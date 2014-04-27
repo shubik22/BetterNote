@@ -9,13 +9,19 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require font-awesome
  *= require navbar
  *= require sidebar
  *= require notes_list
  *= require note_show
  */
 
-html, body, header, section, div, h1, h2, h3, a, form, ul, li {
+@font-face {
+    font-family: "Caecilia LT Std";
+    src: url(/assets/CaeciliaLTStd-Roman.ttf) format("truetype");
+}
+
+html, body, header, section, div, span, h1, h2, h3, a, form, ul, li, i {
   padding: 0;
   margin: 0;
   border: 0;
@@ -53,7 +59,7 @@ input[type="submit"] {
 
 body {
   font-family: sans-serif;
-  overflow: auto;
+  background: #F0F2F4;
 }
 
 a {
@@ -79,7 +85,7 @@ h2 {
 }
 
 .left-margin-no-list {
-  margin-top: 40px;
+  margin-top: 80px;
   margin-left: 302px;
   padding: 8px;
 }

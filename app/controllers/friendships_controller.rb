@@ -10,6 +10,6 @@ class FriendshipsController < ApplicationController
 
     @friendship.destroy
     @opposite_friendship.destroy
-    redirect_to users_url
+    redirect_to :back
   end
 end

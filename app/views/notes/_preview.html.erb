@@ -2,10 +2,10 @@
   <div class="note-preview-title">
     <%= note.title %>
   </div>
-  <span class="note-preview-time">
-    <%= time_ago_in_words(note.created_at) %> ago
-  </span>
   <div class="note-preview-body">
+    <span class="note-preview-time">
+      <%= time_ago_in_words(note.created_at) %> ago
+    </span>
     <%= note.body %>
   </div>
 </article>

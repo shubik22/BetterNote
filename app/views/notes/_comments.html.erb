@@ -13,8 +13,16 @@
         <div class="comment-body">
           <%= comment.body %>
         </div>
-        <div class="comment-info">
-          Posted by <%= comment.author.username %> at <%= comment.created_at %>
+        <div class="comment-info group">
+          <div class="comment-info-left">
+            Posted by <%= comment.author.username %> at <%= comment.created_at %>
+          </div>
+          <div class="comment-info-right">
+            <% if comment.author == current_user %>
+            <%= button_to "Delete Comment", comment_url(comment),
+              method: :delete %>
+            <% end %>
+          </div>
         </div>
       </li>
     <% end %>
@@ -23,9 +31,10 @@
   <% if params[:new_comment] %>
     <%= render partial: "comments/form", locals: { note: note } %>
   <% else %>
-    <div class="new-comment-link button">
+    <div class="new-comment">
       <a href="<%= request.path + "?note_id=#{note.id}&new_comment=true" %>">
-        Add New Comment
+        <i class="fa fa-plus"></i>&nbsp;
+        New Comment
       </a>
     </div>
   <% end %>

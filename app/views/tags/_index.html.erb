@@ -1,13 +1,28 @@
-<ul class="tags">
+<ul class="sidebar-list">
   <% current_user.tags.each do |tag| %>
     <% next unless tag.persisted? %>
-    <li>
-      <a href="<%= tag_url(tag) %>">
-        <%= tag.name %>
-      </a>
+    <li class="group">
+      <div class="sidebar-entry-left">
+        <a href="<%= tag_url(tag) %>">
+            <i class='fa fa-tag fa-lg'></i>&nbsp;
+            <%= tag.name %>
+        </a>
+      </div>
+      <div class="sidebar-entry-right">
+        <i class='fa fa-toggle-down'></i>
+        <ul class="options-dropdown">
+          <li>
+            <a href="<%= edit_tag_url(tag) %>">
+              Edit Tag
+            </a>
+          </li>
+          <li>
+            <%= button_to "Delete Tag",
+              tag_url(tag), method: :delete %>
+          </li>
+        </ul>
+      </div>
     </li>
   <% end %>
-  <li>
-    <%= link_to "Add New Tag", new_tag_url %>
-  </li>
 </ul>
+

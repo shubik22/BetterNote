@@ -1,0 +1,30 @@
+TODOs
+
+-- move drop-down menus to appropriate places
+-- add friend request drop-down
+-- add second nav-bar
+    -- move "add note button"
+-- review CSS, standardize common elements
+-- redo CSS to match Evernote
+    -- install correct font
+    -- steal icons
+-- add clear/remove notification options
+-- sort options for list of notes
+-- delete comment button
+-- add formatting options to text box
+-- second view option
+-- all users view
+-- compare code against Jonathan's demo
+-- DRY up views
+-- add search bar
+-- add figaro
+-- add AWS
+-- default "welcome to BetterNote" note in default notebook upon creation
+-- default notebook option
+-- on sign in/up pages, put errors in correct place
+
+Fix later/questions
+-- sidebar: what to do if item name is too long for the line
+-- delete button in dropdown: how to make it clickable across the whole line, not just on the text
+-- on comment create, controller redirects :back, which includes new comment form (needs to be removed--shouldn't be a problem w/ javascript)
+-- scroll bar for note page goes all the way up to top (next to nav bars): shouldn't go up all the way

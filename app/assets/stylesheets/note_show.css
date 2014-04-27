@@ -1,18 +1,17 @@
 .note-show {
-  background: #F0F2F4;
-  margin-left: 704px;
-  margin-top: 40px;
+  margin-left: 584px;
+  margin-top: 69px;
   display: block;
+  overflow: auto;
 }
 
 .note-show > header {
   background: #F0F0F0;
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid grey;
 }
 
 .note-show-header-left {
   float: left;
-  padding-left: 8px;
 }
 
 .note-show-header-right {
@@ -22,9 +21,12 @@
 }
 
 .note-show-header-left > .notebook-name {
+  font-size: 12px;
+  line-height: 36px;
+  color: rgb(122, 125, 129);
   float: left;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-left: 16px;
+  padding-right: 24px;
 }
 
 .note-show-header-left > .tags {
@@ -133,6 +135,24 @@ textarea#note-body {
   font-size: 12px;
 }
 
+.comment-info-left {
+  float: left;
+}
+
+.comment-info-right {
+  float: right;
+}
+
+.comment-info-right > form {
+  float: right;
+  padding: 0 4px;
+  border-radius: 8px;
+  border: 1px solid #899298;
+  color: white;
+  background-color: #939ca3;
+  display: inline-block;
+}
+
 .comments-list > li > .comment-body {
   font-size: 14px;
   padding-bottom: 4px;
@@ -151,10 +171,6 @@ textarea#note-body {
 .button:hover {
   background-color: #757575;
   display: inline-block;
-}
-
-.new-comment-link > a {
-  color: white;
 }
 
 .comment-form > form > .input > label {
