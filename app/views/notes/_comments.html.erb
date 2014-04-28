@@ -1,9 +1,12 @@
 <section class="comments">
-  <div class="comments-header">
-    Comments
-  </div>
+  <header class="comments-header group">
+    <div class="note-show-header-left">
+      <i class="fa fa-comments"></i>&nbsp;
+      Comments
+    </div>
+  </header>
     <% if comments.count == 0 && !params[:new_comment] %>
-      <div class="no-comments">
+      <div class="comment-list-text">
         No comments
       </div>
     <% end %>
@@ -15,12 +18,19 @@
         </div>
         <div class="comment-info group">
           <div class="comment-info-left">
-            Posted by <%= comment.author.username %> at <%= comment.created_at %>
+            Posted by <%= comment.author.username %>
+            <%= time_ago_in_words(comment.created_at) %> ago
           </div>
           <div class="comment-info-right">
             <% if comment.author == current_user %>
-            <%= button_to "Delete Comment", comment_url(comment),
-              method: :delete %>
+              <form action="<%= comment_url(comment) %>" method="post">
+                <%= auth_token %>
+                <input type="hidden" name="_method" value="delete">
+                <button class="note-show-button comment">
+                  DELETE&nbsp;
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </form>
             <% end %>
           </div>
         </div>

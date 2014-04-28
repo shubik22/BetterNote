@@ -1,13 +1,13 @@
 .note-show {
-  margin-left: 584px;
+  margin-left: 582px;
   margin-top: 69px;
+  margin-bottom: 30px;
   display: block;
-  overflow: auto;
 }
 
-.note-show > header {
+.note-show header {
   background: #F0F0F0;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #b3b3b3;
 }
 
 .note-show-header-left {
@@ -21,39 +21,73 @@
 }
 
 .note-show-header-left > .notebook-name {
+  color: rgb(122, 125, 129);
+  position: relative;
+  float: left;
+  padding-left: 14px;
+}
+
+.notebook-name > .notebook-name-text {
   font-size: 12px;
   line-height: 36px;
-  color: rgb(122, 125, 129);
-  float: left;
-  padding-left: 16px;
   padding-right: 24px;
+  float: left;
+}
+
+.notebook-name:hover > .options-dropdown {
+  display: block;
+  left: 40px;
+  top: 30px;
 }
 
 .note-show-header-left > .tags {
-  padding: 5px;
+  padding: 7px;
   float: left;
 }
 
 .note-show-header-left > .tags > li {
-  background: #B9B9B9;
+  background: #dfe7ec;
+  border: 1px solid #b6bdc3;
   display: inline-block;
+  font-size: 11px;
+  min-height: 13px;
+  color: #52555a;
   float: left;
-  border-radius: 10px;
-  padding: 2px 5px;
+  border-radius: 12px;
+  padding: 2px 10px;
+  margin-right: 6px;
 }
 
-.note-show-header-left > .tags > li:hover {
-  background: #A7A7A7;
+.note-show-header-right > .info-text, .note-show-button {
+  padding-right: 7px;
+  color: #7a7d81;
+  font-size: 12px;
+  line-height: 36px;
 }
 
-.note-show-header-right > .info-text {
-  padding: 7px;
+.note-show-header-right > form {
+  float: left;
+}
+
+.note-show-button {
+  border: 0;
+  padding: 0 7px;
+  margin: 0;
+  background: transparent;
+  line-height: 34px;
+  cursor: pointer;
+  float: left;
+}
+
+.note-show-header-right > .info-text:hover, .note-show-button:hover {
+  color: #525f67
 }
 
 .note-info {
   display: none;
   background: white;
-  border: 2px solid #D7D7D7;
+  border: 1px solid #b3b3b3;
+  padding: 4px;
 }
 
 .note-show-header-right:hover > .note-info {
@@ -65,23 +99,34 @@
 
 .note-show-header-left > .dates > li {
   float: left;
-  padding: 2px 2px;
+  font-size: 12px;
+  color: #7d7e80;
+  padding-left: 14px;
+  line-height: 34px;
 }
 
 .note-content {
   background: white;
-  border: 1px solid grey;
+  border: 1px solid #A7A7A7;
   border-radius: 3px;
-  margin: 8px;
-  padding: 8px;
-  height: 280px;
+  margin: 12px;
+  padding: 10px;
+  min-height: 336px;
   overflow: auto;
 }
 
 .note-title {
-  margin-bottom: 10px;
   padding-bottom: 4px;
   border-bottom: 1px solid #A7A7A7;
+  font-family: "Caecilia LT Std";
+  font-size: 15px;
+  color: #7b7c7e;
+}
+
+.note-body {
+  font-size: 14px;
+  line-height: 19px;
+  padding: 12px;
 }
 
 textarea {
@@ -105,34 +150,59 @@ textarea#note-body {
 }
 
 .comments {
-  margin-top: 8px;
-  padding: 8px;
+  margin-top: 12px;
 }
 
 .comments-header {
-  font-size: 16px;
-  font-weight: bold;
-  padding-bottom: 4px;
-  border-top: 1px solid #B0B0B0;
-  border-bottom: 1px solid #B0B0B0;
-}
-
-.no-comments {
-  padding: 8px;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
   font-size: 14px;
+  line-height: 24px;
+  color: rgb(122, 125, 129);
 }
 
-.comments-list > li, textarea#comment-body {
+.comments-header > .note-show-header-left {
+  padding-left: 12px;
+}
+
+.comment-list-text {
+  margin-top: 8px;
+  padding-left: 12px;
+  font-size: 12px;
+  font-style: italic;
+  color: rgb(122, 125, 129);
+}
+
+.comments-list > li, .comment-form textarea {
   background: white;
-  border: 1px solid grey;
+  margin: 10px 12px 0 12px;
+  border: 1px solid #b3b3b3;
   border-radius: 3px;
   padding: 8px;
-  margin-bottom: 8px;
+  font-size: 14px;
+  color: #3A3A3A;
+  resize: none;
+}
+
+.comment-form textarea {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.comment-form {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.comment-form textarea:focus {
+  border: 1px solid #0992ca;
+  box-shadow: 0 0 4px #0992ca;
 }
 
 .comments-list > li > .comment-info {
   font-style: italic;
   font-size: 12px;
+  color: #7b7c7e;
 }
 
 .comment-info-left {
@@ -143,42 +213,22 @@ textarea#note-body {
   float: right;
 }
 
-.comment-info-right > form {
-  float: right;
-  padding: 0 4px;
-  border-radius: 8px;
-  border: 1px solid #899298;
-  color: white;
-  background-color: #939ca3;
-  display: inline-block;
-}
-
 .comments-list > li > .comment-body {
   font-size: 14px;
-  padding-bottom: 4px;
+  padding-bottom: 8px;
 }
 
-.button {
-  padding: 4px;
-  border-radius: 8px;
-  border: 1px solid #899298;
-  font-size: 14px;
-  color: white;
-  background-color: #939ca3;
-  display: inline-block;
-}
-
-.button:hover {
-  background-color: #757575;
-  display: inline-block;
-}
-
-.comment-form > form > .input > label {
-  font-size: 14px;
-  font-weight: bold;
+.note-show-button.comment {
+  background: transparent;
   padding-left: 8px;
+  line-height: 14px;
 }
 
-textarea#comment-body {
-  height: 40px;
+.new-comment {
+  margin-top: 14px;
+  padding-left: 12px;
+}
+
+.post-comment {
+  margin-top: 10px;
 }

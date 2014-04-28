@@ -4,8 +4,8 @@
   border-right: 1px solid #b3b3b3;
   position: fixed;
   top: 69px;
-  left: 222px;
-  bottom: 0;
+  left: 221px;
+  bottom: 39px;
   overflow: auto;
 }
 
@@ -63,4 +63,27 @@
   font-weight: bold;
   font-size: 11px;
   line-height: 16px;
+}
+
+.notes-list-footer {
+  position: fixed;
+  background: white;
+  width: 360px;
+  left: 221px;
+  bottom: 0;
+  border-top: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
+}
+
+.notes-list-footer-left {
+  padding: 12px;
+  float: left;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.notes-list-footer-right {
+  float: right;
+  font-size: 12px;
+  padding: 12px;
 }

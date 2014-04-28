@@ -1,16 +1,17 @@
+<div class="comment-list-text">
+  <i class="fa fa-comment"></i>&nbsp;
+  New Comment
+</div>
 <div class="comment-form">
   <form action="<%= note_comments_url(note) %>" method="post">
     <%= auth_token %>
 
     <input type="hidden" name="comment[note_id]" value="<%= note.id %>">
 
-    <div class="input">
-      <label for="comment-body">New Comment</label>
-      <textarea name="comment[body]" id="comment-body"></textarea>
-    </div>
+    <textarea name="comment[body]"></textarea>
 
-    <div class="submit button">
-      <input type="submit" value="Post Comment">
-    </div>
+    <button type="submit" class="post-comment">
+      Post Comment
+    </button>
   </form>
 </div>

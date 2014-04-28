@@ -35,3 +35,5 @@ Fix later/questions
 -- ask about use of "delete_at" in users controller#index
 -- after search, url shows wrong note_id (but app displays right note)--unimportant?
 -- fix edit note path (add back redirect to controllers where !params[:note_id]?)
+-- check bottom border on header on sign in page
+-- check alignment of dropdown icons in sidebar

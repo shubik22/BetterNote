@@ -1,31 +1,19 @@
 <section class="note-show">
   <%= render partial: "notes/show_header", locals: { note: note } %>
-    <% if params[:edit] %>
-      <div class="note-content">
-        <%= render partial: "notes/edit", locals: { note: note } %>
+  <% if params[:edit] %>
+    <div class="note-content">
+      <%= render partial: "notes/edit", locals: { note: note } %>
+    </div>
+  <% else %>
+    <div class="note-content">
+      <div class="note-title">
+          <%= note.title %>
       </div>
-    <% else %>
-      <div class="note-content">
-        <div class="note-title">
-            <%= note.title %>
-        </div>
-        <div class="note-body">
-          <%= note.body %>
-        </div>
+      <div class="note-body">
+        <%= note.body %>
       </div>
-    <% end %>
-  <div class="note-options">
-    <% if note.likers.include?(current_user) %>
-      <%= button_to "Remove Like",
-        like_url(note.likes.find_by(
-          {owner_id: current_user.id})), method: :delete %>
-    <% else %>
-      <%= button_to "Like Note",
-        note_likes_url(note), method: :post %>
-    <% end %>
-    <% if current_user == note.author %>
-      <a href="<%= request.url + "&edit=true" %>">Edit Note</a>
-    <% end %>
-  </div>
-  <%= render partial: "notes/comments", locals: { comments: note.comments, note: note } %>
+    </div>
+  <% end %>
+  <%= render partial: "notes/comments",
+    locals: { comments: note.comments, note: note } %>
 </section>

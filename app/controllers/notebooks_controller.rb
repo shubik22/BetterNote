@@ -23,10 +23,15 @@ class NotebooksController < ApplicationController
   end
 
   def show
+    @notebooks = Notebook.all
     @notebook = Notebook.includes(:notes).find(params[:id])
 
     if params[:note_id] && @note = Note.where(id: params[:note_id]).first
       @note = Note.find(params[:note_id])
+    else
+      redirect_to notebook_url(@notebook, note_id:
+        @notebook.notes.sort_by { |n| n.created_at }.last.id)
+      return
     end
 
     if params[:query] && params[:query] != ""

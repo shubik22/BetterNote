@@ -1,8 +1,17 @@
 <header class="note-show-top group">
   <div class="note-show-header-left">
-    <div class="notebook-name">
-      <%= note.notebook.name %>
-      &nbsp;<i class="fa fa-angle-down"></i>
+    <div class="notebook-name group">
+      <div class="notebook-name-text">
+        <%= note.notebook.name %>
+        &nbsp;<i class="fa fa-angle-down"></i>
+      </div>
+      <ul class="options-dropdown">
+        <% @notebooks.each do |notebook| %>
+        <li>
+          <a href="#"><%= notebook.name %></a>
+        </li>
+        <% end %>
+      </ul>
     </div>
     <ul class="tags">
       <% note.tags.each do |tag| %>
@@ -10,10 +19,16 @@
           <%= tag.name %>
         </li>
       <% end %>
+      <li>
+        <%= note.tags.length > 0 ? "+  " : "+ Tag  " %>
+      </li>
     </ul>
   </div>
   <div class="note-show-header-right">
-    <div class="info-text">Info</div>
+    <div class="info-text">
+      INFO&nbsp;
+      <i class="fa fa-info-circle"></i>
+    </div>
     <%= render partial: "notes/info", locals: { note: note }%>
   </div>
 </header>
@@ -21,17 +36,46 @@
   <div class="note-show-header-left">
     <ul class="dates">
       <li>
-        Created: <%= note.created_at.to_formatted_s(:long)  %>
+        Created: <%= note.created_at.strftime("%b %d, %Y")  %>
       </li>
       <li>
-        Modified: <%= note.created_at.to_formatted_s(:long)  %>
+        Modified: <%= note.updated_at.strftime("%b %d, %Y")  %>
       </li>
     </ul>
   </div>
   <div class="note-show-header-right">
+    <% if note.likers.include?(current_user) %>
+      <form action="<%= like_url(note.likes.find_by(
+          {owner_id: current_user.id})) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="delete">
+        <button class="note-show-button">
+          REMOVE LIKE
+          <i class="fa fa-thumbs-o-down"></i>
+        </button>
+      </form>
+    <% else %>
+    <form action="<%= note_likes_url(note) %>" method="post">
+      <%= auth_token %>
+      <button class="note-show-button">
+        LIKE
+        <i class="fa fa-thumbs-o-up"></i>
+      </button>
+    </form>
+    <% end %>
     <% if current_user == note.author %>
-      <%= button_to "Delete Note",
-        note_url(note), method: :delete %>
+      <a href="<%= request.url + "&edit=true" %>" class="note-show-button">
+        EDIT
+        <i class="fa fa-file-text-o"></i>
+      </a>
+      <form action="<%= note_url(note) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="delete">
+        <button class="note-show-button">
+          DELETE
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </form>
     <% end %>
   </div>
 </header>

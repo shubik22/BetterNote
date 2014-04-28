@@ -2,8 +2,7 @@
   <% count = current_user.notifications.count %>
   <span class="notification-count">
     <i class='fa fa-envelope'></i>&nbsp;
-    Notifications
-    <span class="notifications-circle"><%= count %></span>
+    Notifications (<%= count %>)
   </span>
   <ul class="notifications-list">
     <% current_user.notifications.each do |notification| %>

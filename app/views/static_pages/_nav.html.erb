@@ -2,13 +2,12 @@
   <ul class="nav-right">
     <%= render partial: "static_pages/notifications" %>
     <li>
-      <div class="nav-right-item error">
-        <a href="cats">Error</a>
-      </div>
-    </li>
-    <li>
       <div class="nav-right-item">
-        Signed in as <a href="<%= root_url %>"><%= current_user.username %></a>
+        <a href="<%= root_url %>">
+          <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;
+          <%= current_user.username %>&nbsp;&nbsp;
+          <i class="fa fa-caret-down"></i>
+        </a>
       </div>
     </li>
     <li>
