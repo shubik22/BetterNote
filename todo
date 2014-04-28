@@ -1,6 +1,5 @@
 TODOs
 
--- move drop-down menus to appropriate places
 -- add friend request drop-down
 -- add second nav-bar
     -- move "add note button"
@@ -10,13 +9,11 @@ TODOs
     -- steal icons
 -- add clear/remove notification options
 -- sort options for list of notes
--- delete comment button
 -- add formatting options to text box
 -- second view option
 -- all users view
 -- compare code against Jonathan's demo
 -- DRY up views
--- add search bar
 -- add figaro
 -- add AWS
 -- default "welcome to BetterNote" note in default notebook upon creation
@@ -29,11 +26,10 @@ Fix later/questions
 -- on comment create, controller redirects :back, which includes new comment form (needs to be removed--shouldn't be a problem w/ javascript)
 -- scroll bar for note page goes all the way up to top (next to nav bars): shouldn't go up all the way
 -- see why images aren't uploading to heroku (irrelevant once AWS is set up)
--- make top-right logo larger (20px?)
 -- refactor search query in notebooks/tags/users controllers
 -- ask about gsub in notes controller, line 35
 -- ask about use of "delete_at" in users controller#index
--- after search, url shows wrong note_id (but app displays right note)--unimportant?
 -- fix edit note path (add back redirect to controllers where !params[:note_id]?)
 -- check bottom border on header on sign in page
 -- check alignment of dropdown icons in sidebar
+-- add "cancel" button to popup

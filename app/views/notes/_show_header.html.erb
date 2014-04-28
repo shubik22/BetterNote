@@ -6,7 +6,7 @@
         &nbsp;<i class="fa fa-angle-down"></i>
       </div>
       <ul class="options-dropdown">
-        <% @notebooks.each do |notebook| %>
+        <% current_user.notebooks.each do |notebook| %>
         <li>
           <a href="#"><%= notebook.name %></a>
         </li>

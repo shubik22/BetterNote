@@ -2,9 +2,9 @@
       notebooks_url :
       notebook_url(@notebook) %>
 <% button_value = (@notebook.new_record?) ?
-      "Create New Notebook" : "Update Notebook" %>
+      "Create New Notebook" : "Save" %>
 
-<form action="<%= action %>" method="post" class="notebook">
+<form action="<%= action %>" method="post" class="notebook group">
   <%= auth_token %>
 
   <% unless @notebook.new_record? %>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="input">
-    <label for="notebook-name">Name</label>
+    <label for="notebook-name">Notebook Name</label>
     <input type="text" name="notebook[name]"
         id="notebook-name" value="<%= @notebook.name %>">
   </div>

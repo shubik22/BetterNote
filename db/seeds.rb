@@ -1,230 +1,81 @@
 User.create({
-  username: "John",
-  email: "john@beatles.com",
+  username: "Jon Bon Jovi",
+  email: "jbj@betternote.com",
   password: "password"
 })
 
-User.create({
-  username: "Paul",
-  email: "paul@beatles.com",
-  password: "password"
-})
+20.times do
+  User.create({
+    username: Faker::Internet.user_name,
+    email: Faker::Internet.safe_email,
+    password: "password"
+  })
+end
 
-User.create({
-  username: "George",
-  email: "george@beatles.com",
-  password: "password"
-})
+200.times do
+  user = User.all.sample
+  user.notebooks.create({
+    name: Faker::Lorem.words(4).join(" ").capitalize
+  })
+end
 
-User.create({
-  username: "Ringo",
-  email: "ringo@beatles.com",
-  password: "password"
-})
+500.times do
+  user = User.all.sample
+  next if user.notebooks.length == 0
+  user.notes.create({
+    title: Faker::Lorem.words(8).join(" ").capitalize,
+    notebook_id: user.notebooks.sample.id,
+    body: Faker::Lorem.paragraph(20)
+  })
+end
 
-Notebook.create({
-  name: "Help!",
-  owner_id: 1
-})
+200.times do
+  user = User.all.sample
+  user.tags.create({
+    name: Faker::Lorem.words(2).join(" ").capitalize
+  })
+end
 
-Notebook.create({
-  name: "Meet the Beatles!",
-  owner_id: 2
-})
+300.times do
+  user = User.all.sample
+  next if (user.tags.length == 0) || (user.notes.length == 0)
+  tag = user.tags.sample
+  note = user.notes.sample
+  next if note.tags.include?(tag)
+  NoteTag.create({
+    note_id: note.id,
+    tag_id: tag.id
+  })
+end
 
-Notebook.create({
-  name: "A Hard Day's Night",
-  owner_id: 2
-})
+200.times do
+  user = User.all.sample
+  note = Note.all.sample
+  next if note.likers.include?(user)
+  Like.create({
+    owner_id: user.id,
+    note_id: note.id
+  })
+end
 
-Notebook.create({
-  name: "Happy Cats :)",
-  owner_id: 2
-})
+500.times do
+  user = User.all.sample
+  note = Note.all.sample
+  note.comments.create({
+    author_id: user.id,
+    body: Faker::Lorem.sentences(4).join(" ")
+  })
+end
 
-Note.create({
-  title: "I Want to Hold Your Hand",
-  author_id: 2,
-  notebook_id: 2,
-  body: <<-LYRICS
-    Oh please, say to me
-    You'll let me be your man.
-    And please, say to me
-    You'll let me hold your hand
-    I'll let me hold your hand
-    I wanna hold your hand
-  LYRICS
-})
-
-Note.create({
-  title: "A Hard Day's Night",
-  author_id: 2,
-  notebook_id: 3,
-  body: <<-LYRICS
-    When I'm home everything seems to be right
-    When I'm home feeling you holding me tight, tight, yeah
-    It's been a hard day's night, and I'd been working like a dog
-    It's been a hard day's night, I should be sleeping like a log
-    But when I get home to you I find the things that you do
-    Will make me feel alright owww
-  LYRICS
-})
-
-Note.create({
-  title: "Can't Buy Me Love",
-  author_id: 2,
-  notebook_id: 3,
-  body: <<-LYRICS
-    I'll buy you a diamond ring my friend
-    If it makes you feel all right
-    I'll get you anything my friend
-    If it makes you feel all right
-    'Cause I don't care too much for money
-    For money can't buy me love
-  LYRICS
-})
-
-Note.create({
-  title: "It's Only Love",
-  author_id: 1,
-  notebook_id: 1,
-  body: <<-LYRICS
-    I get high when I see you go by
-    My oh my
-    When you sigh, my, my inside just flies
-    Butterflies
-    Why am I so shy when I'm beside you?
-    It's only love and that is all
-  LYRICS
-})
-
-Note.create({
-  title: "You're Going To Lose That Girl",
-  author_id: 1,
-  notebook_id: 1,
-  body: <<-LYRICS
-    If you don't take her out tonight
-    She's going to change her mind
-    And I will take her out tonight
-    And I will treat her kind
-    You're going to lose that girl
-    You're going to lose that girl
-  LYRICS
-})
-
-Note.create({
-  title: "Sennacy :)",
-  author_id: 2,
-  notebook_id: 4,
-  body: "The best cat :)"
-})
-
-Note.create({
-  title: "Snowy :)",
-  author_id: 2,
-  notebook_id: 4,
-  body: "A great cat too :)"
-})
-
-Note.create({
-  title: "Blacky :)",
-  author_id: 2,
-  notebook_id: 4,
-  body: "Another great cat :)"
-})
-
-Note.create({
-  title: "Lovely",
-  author_id: 2,
-  notebook_id: 4,
-  body: "The name says it all :)"
-})
-
-Tag.create({
-  name: "Love Songs",
-  owner_id: 1
-})
-
-Tag.create({
-  name: "Favorite Songs",
-  owner_id: 1
-})
-
-Tag.create({
-  name: "Written with John",
-  owner_id: 2
-})
-
-NoteTag.create({
-  tag_id: 1,
-  note_id: 4
-})
-
-NoteTag.create({
-  tag_id: 1,
-  note_id: 5
-})
-
-NoteTag.create({
-  tag_id: 2,
-  note_id: 4
-})
-
-NoteTag.create({
-  tag_id: 3,
-  note_id: 1
-})
-
-NoteTag.create({
-  tag_id: 3,
-  note_id: 2
-})
-
-Like.create({
-  note_id: 1,
-  owner_id: 1
-})
-
-Like.create({
-  note_id: 5,
-  owner_id: 1
-})
-
-Comment.create({
-  body: "Great song!  Clearly written with a talented cowriter.",
-  author_id: 1,
-  note_id: 1
-})
-
-Friendship.create({
-  in_friend_id: 1,
-  out_friend_id: 2
-})
-
-Friendship.create({
-  in_friend_id: 2,
-  out_friend_id: 1
-})
-
-FriendRequest.create({
-  in_friend_id: 1,
-  out_friend_id: 3
-})
-
-Notification.create({
-  user_id: 2,
-  notifiable_type: "comment",
-  notifiable_id: 1
-})
-
-Notification.create({
-  user_id: 2,
-  notifiable_type: "like",
-  notifiable_id: 2
-})
-
-Notification.create({
-  user_id: 2,
-  notifiable_type: "friendship",
-  notifiable_id: 1
-})
+100.times do
+  friends = User.all.sample(2)
+  in_friend = friends[0]
+  out_friend = friends[1]
+  next if in_friend.friends.include?(out_friend)
+  in_friend.friendships.create({
+    in_friend_id: out_friend.id
+  })
+  out_friend.friendships.create({
+    in_friend_id: in_friend.id
+  })
+end

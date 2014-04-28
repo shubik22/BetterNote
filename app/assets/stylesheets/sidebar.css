@@ -23,7 +23,7 @@
 
 .sidebar-header-left {
   float: left;
-  width: 190px;
+  width: 180px;
 }
 
 .sidebar-header-left:hover {
@@ -52,7 +52,7 @@ article.sidebar-item li:hover,
 .sidebar-entry-left {
   padding-left: 8px;
   float: left;
-  width: 190px;
+  width: 160px;
   overflow: hidden;
   height: 21px;
 }

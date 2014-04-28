@@ -1,20 +1,44 @@
-<ul class="note-info">
-  <li><span class="note-info-field">Title:</span> <%= note.title %></li>
-  <li><span class="note-info-field">Author:</span> <%= note.author.username %></li>
-  <li><span class="note-info-field">Created At:</span> <%= note.created_at %></li>
-  <li><span class="note-info-field">Updated At:</span> <%= note.updated_at %></li>
-  <li>
-    <span class="note-info-field">Notebook:</span>
-    <a href="<%= notebook_url(note.notebook) %>">
-      <%= note.notebook.name %>
-    </a>
-  </li>
-  <li>
-    <span class="note-info-field">Tags:</span>
-    <% tags = note.tags.map do |tag| %>
-      <% "<a href='#{tag_url(tag)}'>#{tag.name}</a>" %>
-    <% end.join(", ").html_safe %>
-    <%= tags %>
-  </li>
-  <li><%= note.likes.count.to_s + " " + "like".pluralize(note.likes.count) %></li>
-</ul>
+<table class="note-info">
+  <tr>
+    <td class="note-info-field">Title:</td>
+    <td class="note-info-data"><%= note.title %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Author:</td>
+    <td class="note-info-data"><%= note.author.username %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Created At:</td>
+    <td class="note-info-data"><%= note.created_at.strftime("%b %d, %Y") %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Updated At:</td>
+    <td class="note-info-data"><%= note.updated_at.strftime("%b %d, %Y") %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Notebook:</td>
+    <td class="note-info-data"><%= note.notebook.name %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Tags:</td>
+    <td class="note-info-data">
+      <% if note.tags.length > 0 %>
+        <ul class="tags">
+          <% note.tags.each do |tag| %>
+            <li>
+              <%= tag.name %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        No tags
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Likes:</td>
+    <td class="note-info-data">
+      <%= note.likes.count.to_s + " " + "like".pluralize(note.likes.count) %>
+    </td>
+  </tr>
+</table>

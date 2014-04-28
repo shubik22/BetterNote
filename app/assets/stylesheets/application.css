@@ -17,8 +17,8 @@
  */
 
 @font-face {
-    font-family: "Caecilia LT Std";
-    src: url(/assets/CaeciliaLTStd-Roman.ttf) format("truetype");
+  font-family: "Caecilia LT Std";
+  src: url(/assets/CaeciliaLTStd-Roman.ttf) format("truetype");
 }
 
 html, body, header, section, div, span, h1, h2, h3, a, form, ul, li, i {
@@ -91,5 +91,4 @@ h2 {
 .left-margin-no-list {
   margin-top: 80px;
   margin-left: 302px;
-  padding: 8px;
 }

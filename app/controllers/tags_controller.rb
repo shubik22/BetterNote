@@ -27,7 +27,6 @@ class TagsController < ApplicationController
     @notebooks = Notebook.all
 
     if params[:note_id] && @note = Note.where(id: params[:note_id]).first
-      @note = Note.find(params[:note_id])
     else
       redirect_to tag_url(@tag, note_id:
         @tag.notes.sort_by { |n| n.created_at }.last.id)
@@ -62,13 +61,13 @@ class TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
     @tag.destroy
-    redirect_to root_url
+    redirect_to :back
   end
 
   private
   def user_owns_tag?
     @tag = Tag.find(params[:id])
-    redirect_to root_url unless @tag.owner == current_user
+    redirect_to :back unless @tag.owner == current_user
   end
 
   def tag_params

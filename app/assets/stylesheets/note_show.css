@@ -45,7 +45,7 @@
   float: left;
 }
 
-.note-show-header-left > .tags > li {
+.tags > li {
   background: #dfe7ec;
   border: 1px solid #b6bdc3;
   display: inline-block;
@@ -87,13 +87,20 @@
   display: none;
   background: white;
   border: 1px solid #b3b3b3;
+  border-radius: 5px;
   padding: 4px;
+  font-size: 12px;
+  width: 230px;
+}
+
+.note-info-field {
+  padding-right: 20px;
 }
 
 .note-show-header-right:hover > .note-info {
   display: block;
   position: absolute;
-  left: -250px;
+  left: -190px;
   z-index: 50;
 }
 
@@ -231,4 +238,67 @@ textarea#note-body {
 
 .post-comment {
   margin-top: 10px;
+}
+
+.popup {
+  background: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  padding: 18px;
+  width: 400px;
+}
+
+.popup > h3 {
+  font-size: 20;
+  font-family: "Caecilia LT Std";
+  color: rgb(59, 59, 59);
+  border-bottom: 1px solid #b3b3b3;
+  margin-bottom: 10px;
+}
+
+.popup label {
+  display: block;
+  font-size: 14px;
+}
+
+.popup .input {
+  margin: 15px 0;
+}
+
+.popup .input > label {
+  display: block;
+  color: #606060;
+  margin-bottom: 4px;
+}
+
+.popup .input > input {
+  border: 2px solid rgb(202, 202, 202);
+  padding: 6px;
+  width: 382px;
+}
+
+.popup .input > input:focus {
+  border-color: #50AAF2;
+  border-radius: 3px;
+  border-opacity: 0.7;
+}
+
+.popup .submit > input {
+  float: right;
+  background: #69ad31;
+  padding: 4px 16px;
+  box-shadow: 0 1.5px 0 0 #070;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+}
+
+.popup .submit > input:hover {
+  background: #56A225;
+}
+
+.popup .submit > input:active {
+  top: 3px;
+  box-shadow: none;
+  background: #488920;
 }

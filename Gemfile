@@ -57,6 +57,7 @@ gem 'pg_search'
 
 gem 'rails_12factor', group: :production
 gem 'font-awesome-rails'
+gem 'backbone-on-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'

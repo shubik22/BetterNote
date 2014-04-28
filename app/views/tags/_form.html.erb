@@ -3,18 +3,21 @@
 <% button_value = (@tag.new_record?) ?
       "Create New Tag" : "Update Tag" %>
 
-<form action="<%= action %>" method="post">
+<form action="<%= action %>" method="post" class="tag group">
   <%= auth_token %>
 
   <% unless @tag.new_record? %>
     <input type="hidden" name="_method" value="put">
   <% end %>
 
-  <label>
-    Name
-    <input type="text" name="tag[name]" value="<%= @tag.name %>">
-  </label>
-  <br>
 
-  <input type="submit" value="<%= button_value %>">
+  <div class="input">
+    <label for="notebook-name">Tag Name</label>
+    <input type="text" name="notebook[name]"
+        id="notebook-name" value="<%= @tag.name %>">
+  </div>
+
+  <div class="submit">
+    <input type="submit" value="<%= button_value %>">
+  </div>
 </form>
