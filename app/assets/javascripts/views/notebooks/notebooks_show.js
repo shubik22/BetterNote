@@ -1,14 +1,12 @@
-BetterNote.Views.NotesIndex = Backbone.View.extend({
-
-  template: JST['notes/index'],
+BetterNote.Views.NotebooksShow = Backbone.View.extend({
+  template: JST['notebooks/show'],
 
   render: function() {
     var renderedContent = this.template({
-      notes: this.collection
+      notebook: this.model
     });
 
     this.$el.html(renderedContent);
     return this;
   }
-
 });

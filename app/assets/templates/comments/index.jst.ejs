@@ -1,0 +1,34 @@
+<section class="comments">
+  <header class="comments-header group">
+    <div class="note-show-header-left">
+      <i class="fa fa-comments"></i>&nbsp;
+      Comments
+    </div>
+  </header>
+    <% if (comments.length === 0) { %>
+      <div class="comment-list-text">
+        No comments
+      </div>
+    <% } %>
+  <ul class="comments-list">
+    <% _(comments).each(function(comment) { %>
+      <li>
+        <div class="comment-body">
+          <%= comment.get("body") %>
+        </div>
+        <div class="comment-info group">
+          <div class="comment-info-left">
+            Posted by comment.author.username
+            time_ago_in_words(comment.created_at) ago
+          </div>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+  <div class="new-comment">
+    <a href="<%= "#/note/" + comment.note.get("id") + "/comments/new" %>">
+      <i class="fa fa-plus"></i>&nbsp;
+      New Comment
+    </a>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+<header class="note-show-top group">
+  <div class="note-show-header-left">
+    <div class="notebook-name group">
+      <div class="notebook-name-text">
+        <%= note.notebook.get("name") %>
+        &nbsp;<i class="fa fa-angle-down"></i>
+      </div>
+      <ul class="options-dropdown">
+        <% notebooks.each(function(notebook) { %>
+        <li>
+          <a href="#"><%= notebook.get("name") %></a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+  <div class="note-show-header-right">
+    <div class="info-text">
+      INFO&nbsp;
+      <i class="fa fa-info-circle"></i>
+    </div>
+  </div>
+</header>
+<header class="note-show-bottom group">
+  <div class="note-show-header-left">
+    <ul class="dates">
+      <li>
+        Created: <%= moment(note.get("created_at")).format('MMM D, YYYY') %>
+      </li>
+      <li>
+        Modified: <%= moment(note.get("updated_at")).format('MMM D, YYYY') %>
+      </li>
+    </ul>
+  </div>
+  <div class="note-show-header-right">
+    <a href="<%= "#/notes/" + note.get("id") + "/like" %>" class="note-show-button">
+      LIKE
+      <i class="fa fa-thumbs-o-up"></i>
+    </a>
+    <a href="<%= "#/notes/" + note.get("id") + "/edit" %>" class="note-show-button">
+      EDIT
+      <i class="fa fa-file-text-o"></i>
+    </a>
+    <a href="<%= "#/notes/" + note.get("id") + "/delete" %>" class="note-show-button">
+      DELETE
+      <i class="fa fa-trash-o"></i>
+    </a>
+  </div>
+</header>
+<div class="note-content">
+  <div class="note-title">
+      <%= note.get('title') %>
+  </div>
+  <div class="note-body">
+    <%= note.get("body") %>
+  </div>
+</div>
+
+<section class="comments">
+  <header class="comments-header group">
+    <div class="note-show-header-left">
+      <i class="fa fa-comments"></i>&nbsp;
+      Comments
+    </div>
+  </header>
+    <% if (note.comments.length === 0) { %>
+      <div class="comment-list-text">
+        No comments
+      </div>
+    <% } %>
+  <ul class="comments-list">
+    <% note.comments.each(function(comment) { %>
+      <li>
+        <div class="comment-body">
+          <%= comment.get("body") %>
+        </div>
+        <div class="comment-info group">
+          <div class="comment-info-left">
+            Posted by comment.author.username
+            <%= moment(comment.get("created_at")).fromNow() %>
+          </div>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+  <div class="new-comment">
+    <a href="<%= "#/notes/" + note.get("id") + "/comments/new" %>">
+      <i class="fa fa-plus"></i>&nbsp;
+      New Comment
+    </a>
+  </div>
+</section>

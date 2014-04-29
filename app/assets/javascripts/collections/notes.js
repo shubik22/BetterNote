@@ -1,5 +1,8 @@
 BetterNote.Collections.Notes = Backbone.Collection.extend({
+  model: BetterNote.Models.Note,
+  url: "/api/notes",
 
-  model: BetterNote.Models.Note
-
+  comparator: function(note) {
+    return note.get('created_at')
+  }
 });

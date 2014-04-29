@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require moment-with-langs
 //= require better_note
 //= require_tree ../templates
 //= require_tree ./models

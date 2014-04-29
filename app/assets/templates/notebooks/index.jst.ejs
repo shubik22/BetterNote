@@ -1,0 +1,101 @@
+<article class="sidebar-item">
+  <div class="sidebar-header group">
+    <div class="sidebar-header-left">
+      <i class="fa fa-caret-down"></i>&nbsp;
+      Notebooks
+    </div>
+    <div class="sidebar-header-right">
+      <i class="fa fa-toggle-down"></i>
+      <ul class="options-dropdown">
+        <li>
+          <a href="#" class="group">
+            New Notebook...
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="sidebar-list">
+    <li class="group">
+      <div class="sidebar-entry-left">
+        <a href="/#/notes" class="group">
+            <i class='fa fa-book fa-lg'></i>&nbsp;
+            All Notes (<%= notes.length %>)
+        </a>
+      </div>
+    </li>
+    <% notebooks.each(function(notebook) { %>
+      <li class="group">
+        <div class="sidebar-entry-left">
+          <a href="<%= "/#/notebooks/" + notebook.get("id") %>">
+              <i class='fa fa-book fa-lg'></i>&nbsp;
+              <%= notebook.get("name") %> (<%= notebook.notes.length %>)
+          </a>
+        </div>
+        <div class="sidebar-entry-right">
+          <i class='fa fa-toggle-down'></i>
+          <ul class="options-dropdown">
+            <li>
+              <a href="#" class="edit-notebook" id="<%= notebook.get("id") %>">
+                Rename...
+              </a>
+            </li>
+            <li>
+              <a href="#" class="delete-notebook" id="<%= notebook.get("id") %>">
+                Delete Notebook
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</article>
+
+<article class="sidebar-item">
+  <div class="sidebar-header group">
+    <div class="sidebar-header-left">
+      <i class="fa fa-caret-down"></i>&nbsp;
+      Tags
+    </div>
+    <div class="sidebar-header-right">
+      <i class="fa fa-toggle-down"></i>
+      <ul class="options-dropdown">
+        <li>
+          <a href="#/tags/new" class="group">
+            New Tag...
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="sidebar-list">
+    <% tags.each(function(tag) { %>
+      <li class="group">
+        <div class="sidebar-entry-left">
+          <a href="<%= "/#/tags/" + tag.get("id")%>">
+              <i class='fa fa-tag fa-lg'></i>&nbsp;
+              <%= tag.get("name") %>
+          </a>
+        </div>
+        <div class="sidebar-entry-right">
+          <i class='fa fa-toggle-down'></i>
+          <ul class="options-dropdown">
+            <li>
+              <a href="<%= "/#/tags/" + tag.get("id") + "/edit" %>">
+                Edit Tag
+              </a>
+            </li>
+            <li>
+            <a href="<%= "/#/tags/" + tag.get("id") + "/delete" %>">
+              Delete Tag
+            </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</article>

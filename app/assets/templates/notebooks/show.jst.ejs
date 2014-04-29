@@ -1,9 +1,9 @@
 <div class="notes-list-header">
   <i class="fa fa-book"></i>
-  All Notes
+  <%= notebook.get("name") %>
 </div>
 <ul class="notes">
-  <% notes.each(function(note) { %>
+  <% notebook.notes.each(function(note) { %>
     <li>
       <a href="<%= "/#/notes/" + note.get("id") %>">
         <article class="note-preview">

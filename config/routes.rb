@@ -1,5 +1,5 @@
 BetterNote::Application.routes.draw do
-  root to: "notes#index"
+  root to: "static_pages#root"
   resources :users, only: [:create, :new, :show, :index] do
     resources :friend_requests, only: [:create] do
       post "accept", to: "friend_requests#accept"
@@ -18,4 +18,8 @@ BetterNote::Application.routes.draw do
     resources :notes, only: [:create]
   end
   resource :session, only: [:create, :new, :destroy]
+  namespace :api, defaults: { format: :json } do
+    resources :notes, only: [:show, :index]
+    resources :notebooks, only: [:show, :index]
+  end
 end

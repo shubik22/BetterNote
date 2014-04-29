@@ -1,10 +1,10 @@
-BetterNote.Views.NotesIndex = Backbone.View.extend({
+BetterNote.Views.CommentsIndex = Backbone.View.extend({
 
-  template: JST['notes/index'],
+  template: JST['comments/index'],
 
   render: function() {
     var renderedContent = this.template({
-      notes: this.collection
+      comments: this.collection
     });
 
     this.$el.html(renderedContent);
