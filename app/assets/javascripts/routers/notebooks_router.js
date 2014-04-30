@@ -8,34 +8,9 @@ BetterNote.Routers.Notebooks = Backbone.Router.extend({
   },
 
   routes: {
-    'notes': "notesIndex",
-    'notebooks/:id': 'showNotebook',
-    'tags/:id': 'showTag'
+
   },
 
-  notesIndex: function() {
-    var view = new BetterNote.Views.NotesIndex({
-      collection: this.notes
-    });
-
-    this._swapView(view);
-  },
-
-  showNotebook: function(id) {
-    var view = new BetterNote.Views.NotebooksShow({
-      model: this.notebooks.get(id)
-    })
-
-    this._swapView(view);
-  },
-
-  showTag: function(id) {
-    var view = new BetterNote.Views.TagsShow({
-      model: this.tags.get(id)
-    })
-
-    this._swapView(view);
-  },
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();

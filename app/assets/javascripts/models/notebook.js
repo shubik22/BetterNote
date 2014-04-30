@@ -1,4 +1,8 @@
 BetterNote.Models.Notebook = Backbone.Model.extend({
+  initialize: function() {
+    this.notes = this.notes || new BetterNote.Collections.Notes();
+  },
+
   parse: function(jsonResp) {
     if (jsonResp.notes) {
       var that = this;

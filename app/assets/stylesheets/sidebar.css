@@ -19,6 +19,7 @@
   padding: 5px;
   color: rgb(85, 94, 100);
   background: -webkit-linear-gradient(bottom, #dfe5e7 0, #e3e7e9 100%);
+  position: relative;
 }
 
 .sidebar-header-left {
@@ -26,16 +27,17 @@
   width: 180px;
 }
 
-.sidebar-header-left:hover {
+.sidebar-header-left,
+.sidebar-header-right > i,
+.sidebar-entry-right > i {
   cursor: pointer;
 }
 
 .sidebar-header-right {
   float: right;
-  position: relative;
   font-size: 13px;
   font-weight: normal;
-  padding-right: 4px;
+  margin-right: 4px;
 }
 
 .sidebar-list {
@@ -44,46 +46,68 @@
   border-bottom: 1px solid #ced8df;
 }
 
+.sidebar-list > li.selected {
+  background: #c2c9ce;
+}
+
 article.sidebar-item li:hover,
 .options-dropdown > li:hover {
   background: #d1d4d7;
 }
 
+.sidebar-entry {
+  position: relative;
+}
+
 .sidebar-entry-left {
-  padding-left: 8px;
   float: left;
-  width: 160px;
-  overflow: hidden;
-  height: 21px;
 }
 
 .sidebar-entry-left > a {
   font-size: 11px;
-  line-height: 17px;
-  display: block;
-  width: 100%;
+  line-height: 25px;
+  float: left;
   color: #555e64;
-  padding-bottom: 12px;
+  padding-left: 8px;
+  width: 175px;
+  height: 25px;
+}
+
+a > .notebook-name {
+  float: left;
+  max-width: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+a > .notes-count {
+  float: left;
+  font-size: 11px;
+  line-height: 25px;
+  color: #555e64;
 }
 
 .sidebar-entry-right {
   float: right;
   padding-right: 8px;
-  position: relative;
-  line-height: 16px;
+  line-height: 25px;
+  vertical-align: middle;
 }
 
 .sidebar-entry-right > i {
   color: #7E7E7E;
   padding-bottom: 3px;
   font-size: 13px;
+  display: none;
+}
+
+.sidebar-list > li:hover i {
+  display: inline-block;
 }
 
 ul.options-dropdown {
-  display: none;
   position: absolute;
-  top: 16px;
-  left: -105px;
   z-index: 100;
   background: #f4f6f7;
   padding: 7px 0;
@@ -92,18 +116,19 @@ ul.options-dropdown {
   width: 120px;
 }
 
-.sidebar-entry-right:hover > .options-dropdown,
-.sidebar-header-right:hover > .options-dropdown,
-.notes-list-footer-left:hover > .options-dropdown {
-  display: block;
-}
-
-.options-dropdown > li > a, .options-dropdown input {
+.options-dropdown > li > a,
+.options-dropdown > li > div,
+.options-dropdown input,
+.options-dropdown > .sort-option {
   font-size: 11px;
   line-height: 17px;
   color: #585858;
   padding: 2px 10px;
   display: block;
+}
+
+.options-dropdown > li:hover {
+  cursor: pointer;
 }
 
 .notes-list-footer-left {
@@ -127,6 +152,6 @@ ul.options-dropdown {
   color: rgb(122, 125, 129);
 }
 
-.options-dropdown > li.options-dropdown-header:hover{
+li.options-dropdown-header:hover{
   background: transparent;
 }

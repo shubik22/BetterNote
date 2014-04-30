@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require jquery.serializeJSON
 //= require moment-with-langs
 //= require better_note
 //= require_tree ../templates

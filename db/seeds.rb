@@ -4,6 +4,22 @@ User.create({
   password: "password"
 })
 
+jbj = User.all.first
+
+10.times do
+  jbj.notebooks.create({
+    name: Faker::Lorem.words(4).join(" ").capitalize
+  })
+end
+
+100.times do
+  jbj.notes.create({
+    title: Faker::Lorem.words(8).join(" ").capitalize,
+    notebook_id: jbj.notebooks.sample.id,
+    body: Faker::Lorem.paragraph(20)
+  })
+end
+
 20.times do
   User.create({
     username: Faker::Internet.user_name,
@@ -12,14 +28,7 @@ User.create({
   })
 end
 
-200.times do
-  user = User.all.sample
-  user.notebooks.create({
-    name: Faker::Lorem.words(4).join(" ").capitalize
-  })
-end
-
-500.times do
+100.times do
   user = User.all.sample
   next if user.notebooks.length == 0
   user.notes.create({
@@ -29,19 +38,16 @@ end
   })
 end
 
-200.times do
-  user = User.all.sample
-  user.tags.create({
+10.times do
+  jbj = User.find(1)
+  jbj.tags.create({
     name: Faker::Lorem.words(2).join(" ").capitalize
   })
 end
 
-300.times do
-  user = User.all.sample
-  next if (user.tags.length == 0) || (user.notes.length == 0)
-  tag = user.tags.sample
-  note = user.notes.sample
-  next if note.tags.include?(tag)
+200.times do
+  tag = jbj.tags.sample
+  note = jbj.notes.sample
   NoteTag.create({
     note_id: note.id,
     tag_id: tag.id
@@ -50,7 +56,7 @@ end
 
 200.times do
   user = User.all.sample
-  note = Note.all.sample
+  note = jbj.notes.sample
   next if note.likers.include?(user)
   Like.create({
     owner_id: user.id,
@@ -60,22 +66,20 @@ end
 
 500.times do
   user = User.all.sample
-  note = Note.all.sample
+  note = jbj.notes.sample
   note.comments.create({
     author_id: user.id,
     body: Faker::Lorem.sentences(4).join(" ")
   })
 end
 
-100.times do
-  friends = User.all.sample(2)
-  in_friend = friends[0]
-  out_friend = friends[1]
-  next if in_friend.friends.include?(out_friend)
-  in_friend.friendships.create({
+10.times do
+  out_friend = User.all.sample
+  next if jbj.friends.include?(out_friend)
+  jbj.friendships.create({
     in_friend_id: out_friend.id
   })
   out_friend.friendships.create({
-    in_friend_id: in_friend.id
+    in_friend_id: jbj.id
   })
 end

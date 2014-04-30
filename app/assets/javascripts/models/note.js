@@ -1,35 +1,46 @@
 BetterNote.Models.Note = Backbone.Model.extend({
-  initialize: function() {
-    if (this.get("comments")) {
-      var comments = this.get("comments");
-      this.comments = new BetterNote.Collections.Comments(comments);
-      this.unset("comments");
+  parse: function(jsonNote) {
+    if (jsonNote.comments) {
+      this.comments = new BetterNote.Collections.Comments(jsonNote.comments);
+      delete jsonNote.comments;
     }
-    if (this.get("tags")) {
-      var tags = this.get("tags");
-      this.tags = new BetterNote.Collections.Tags(tags);
-      this.unset("tags");
+    if (jsonNote.tags) {
+      this.tags = new BetterNote.Collections.Tags();
+      this.parseTags(jsonNote.tags);
+      delete jsonNote.tags;
     }
-    if (this.get("notebook")) {
-      var notebook = this.get("notebook");
-      this.notebook = new BetterNote.Models.Notebook(notebook);
-      this.unset("notebook");
+    if (jsonNote.notebook) {
+      this.parseNotebook(jsonNote.notebook);
+      delete jsonNote.notebook;
+    }
+    return jsonNote;
+  },
+
+  parseNotebook: function(jsonNotebook) {
+    if (BetterNote.notebooks.get(jsonNotebook)) {
+      var notebook = BetterNote.notebooks.get(jsonNotebook);
+      this.notebook = notebook;
+      notebook.notes.add(this);
+    } else {
+      this.notebook = new BetterNote.Models.Notebook(jsonNotebook);
+      this.notebook.notes = new BetterNote.Collections.Notes(this);
+      BetterNote.notebooks.add(this.notebook);
     }
   },
 
-  parse: function(jsonResp) {
-    if (jsonResp.comments) {
-      this.comments = new BetterNote.Collections.Comments(jsonResp.comments);
-      delete jsonResp.comments;
-    }
-    if (jsonResp.tags) {
-      this.tags = new BetterNote.Collections.Tags(jsonResp.tags);
-      delete jsonResp.tags;
-    }
-    if (jsonResp.notebook) {
-      this.notebook = new BetterNote.Models.Notebook(jsonResp.notebook);
-      delete jsonResp.notebook;
-    }
-    return jsonResp;
+  parseTags: function(jsonTags) {
+    var that = this;
+    _(jsonTags).each(function(jsonTag) {
+      if (BetterNote.tags.get(jsonTag)) {
+        var tag = BetterNote.tags.get(jsonTag);
+        that.tags.add(tag);
+        tag.notes.add(that);
+      } else {
+        var tag = new BetterNote.Models.Tag(jsonTag);
+        that.tags.add(tag);
+        tag.notes = new BetterNote.Collections.Notes(that);
+        BetterNote.tags.add(tag);
+      }
+    })
   }
 });

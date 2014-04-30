@@ -1,6 +1,16 @@
 <div class="notes-list-header">
-  <i class="fa fa-book"></i>
-  All Notes
+  <% if (type === "all") { %>
+    <i class="fa fa-book"></i>
+    All Notes
+  <% } else if (type === "notebook") { %>
+    <i class="fa fa-book"></i>
+    <%= model.get("name") %>
+  <% } else if (type === "tag") { %>
+    <i class="fa fa-tag"></i>
+    <%= model.get("name") %>
+  <% } else if (type === "friend") { %>
+    Friend info here
+  <% } %>
 </div>
 <ul class="notes">
   <% notes.each(function(note) { %>
@@ -22,42 +32,38 @@
   <% }) %>
 </ul>
 <div class="notes-list-footer group">
-  <div class="notes-list-footer-left">
+  <div class="notes-list-footer-left dropdown-parent">
+    <div class="notes-list-footer-left-text">
       View Options
       <i class="fa fa-caret-up"></i>
-    <ul class="options-dropdown">
+    </div>
+    <ul class="options-dropdown hidden">
       <li class="options-dropdown-header">
         Sort By
       </li>
-      <li>
-        <a href="#">
-          Date Created (newest first)
-        </a>
+      <li class="sort-option" data-sort-field="created_at"
+                              data-sort-order="desc">
+        Date Created (newest first)
       </li>
-      <li>
-        <a href="#">
-          Date Created (oldest first)
-        </a>
+      <li class="sort-option" data-sort-field="created_at"
+                              data-sort-order="asc">
+        Date Created (oldest first)
       </li>
-      <li>
-        <a href="#">
-          Date Updated (newest first)
-        </a>
+      <li class="sort-option" data-sort-field="updated_at"
+                              data-sort-order="desc">
+        Date Updated (newest first)
       </li>
-      <li>
-        <a href="#">
-          Date Updated (oldest first)
-        </a>
+      <li class="sort-option" data-sort-field="updated_at"
+                              data-sort-order="asc">
+        Date Updated (oldest first)
       </li>
-      <li>
-        <a href="#">
-          Title (ascending)
-        </a>
+      <li class="sort-option" data-sort-field="title"
+                              data-sort-order="asc">
+        Title (ascending)
       </li>
-      <li>
-        <a href="#">
-          Title (descending)
-        </a>
+      <li class="sort-option" data-sort-field="title"
+                              data-sort-order="desc">
+        Title (descending)
       </li>
     </ul>
   </div>

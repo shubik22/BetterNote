@@ -14,6 +14,7 @@
  *= require sidebar
  *= require notes_list
  *= require note_show
+ *= require modal
  */
 
 @font-face {
@@ -49,6 +50,10 @@ input[type="submit"] {
 input[type="submit"] {
   display: inline;
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 button:focus {

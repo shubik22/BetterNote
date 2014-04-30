@@ -7,42 +7,18 @@ window.BetterNote = {
     var $sidebar = $('.sidebar');
     var $noteShowEl = $('.note-show');
     var $notesListEl = $('.notes-list');
-    var notebooks = new BetterNote.Collections.Notebooks();
-    var notes = new BetterNote.Collections.Notes();
-    var tags = new BetterNote.Collections.Tags();
 
-    notebooks.fetch({
-      success: function() {
-        notebooks.each(function(notebook) {
-          notebook.notes.each(function(note){
-            notes.add(note);
-            if (note.tags.length > 0) {
-              note.tags.each(function(tag) {
-                if (tag.get(tag.get("id"))) { // if tag is in tags
-                  tag.notes.add(note);
-                } else {
-                  tags.add(tag);
-                  tag.notes = new BetterNote.Collections.Notes(note);
-                }
-              })
-            }
-          });
-        });
-        new BetterNote.Routers.Notebooks(notebooks, tags, notes, $notesListEl);
-        new BetterNote.Routers.Notes(notebooks, notes, $noteShowEl);
+    var data = JSON.parse($('#bootstrapped-data-json').html());
+    this.notebooks = new BetterNote.Collections.Notebooks();
+    this.tags = new BetterNote.Collections.Tags();
+    this.notes = new BetterNote.Collections.Notes(data.notes, { parse: true });
+    this.currentUser = new BetterNote.Models.User(data.user);
 
-        var view = new BetterNote.Views.NotebooksIndex({
-          notes: notes,
-          notebooks: notebooks,
-          tags: tags
-        });
-        $sidebar.html(view.render().$el);
-        Backbone.history.start();
-      },
-      error: function() {
-        console.log("Failed to fetch.");
-      }
-    });
+    new BetterNote.Routers.Notes($notesListEl, $noteShowEl);
+
+    var sidebarView = new BetterNote.Views.Sidebar();
+    $sidebar.html(sidebarView.render().$el);
+    Backbone.history.start();
   }
 };
 

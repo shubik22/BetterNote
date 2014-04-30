@@ -5,7 +5,7 @@
         <%= note.notebook.get("name") %>
         &nbsp;<i class="fa fa-angle-down"></i>
       </div>
-      <ul class="options-dropdown">
+      <ul class="options-dropdown hidden">
         <% notebooks.each(function(notebook) { %>
         <li>
           <a href="#"><%= notebook.get("name") %></a>
@@ -13,6 +13,16 @@
         <% }) %>
       </ul>
     </div>
+    <ul class="tags">
+      <% note.tags.each(function(tag) { %>
+        <li>
+          <%= tag.get("name") %>
+        </li>
+      <% }) %>
+      <li>
+        <%= (note.tags.length > 0) ? "+  " : "+ Tag  " %>
+      </li>
+    </ul>
   </div>
   <div class="note-show-header-right">
     <div class="info-text">

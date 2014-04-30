@@ -1,0 +1,18 @@
+<span class="modal-x close-modal">&times;</span>
+
+<h3>
+  <% (tag.isNew()) ? "Create Tag" : "Rename Tag" %>
+</h3>
+
+<form class="tag group">
+
+  <div class="input">
+    <label for="tag-name">Tag Name</label>
+    <input type="text" name="tag[name]"
+        id="tag-name" value="<%= tag.get("name") %>">
+  </div>
+
+  <div class="submit">
+    <input type="submit" value="Save">
+  </div>
+</form>

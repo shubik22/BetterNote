@@ -3,6 +3,6 @@ BetterNote.Collections.Notes = Backbone.Collection.extend({
   url: "/api/notes",
 
   comparator: function(note) {
-    return note.get('created_at')
+    return note.get('created_at');
   }
 });

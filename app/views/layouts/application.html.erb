@@ -9,6 +9,20 @@
 </head>
 <body>
 
+<script type="application/json" id="bootstrapped-data-json">
+  { "notes": <%= current_user.notes
+        .includes(:comments, :notebook, :tags)
+        .to_json(include: [:comments, :notebook, :tags])
+        .html_safe
+    %>,
+   "user": <%= current_user.to_json.html_safe %>,
+   "friends": <%= current_user.friends
+         .to_json
+         .html_safe
+     %>
+  }
+</script>
+
 <%= render partial: "static_pages/nav" %>
 <%= render partial: "static_pages/search_bar" %>
 
@@ -16,11 +30,15 @@
   <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
 </div>
 
-
-<div class="content">
+<section class="content">
   <%= render partial: "static_pages/sidebar" %>
   <%= yield %>
-</div>
+</section>
+
+<section id="modal" class="hidden">
+  <article class="modal-content"></article>
+  <div class="modal-screen close-modal"></div>
+</section>
 
 </body>
 </html>
