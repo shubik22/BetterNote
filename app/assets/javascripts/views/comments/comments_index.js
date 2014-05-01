@@ -5,12 +5,16 @@ BetterNote.Views.CommentsIndex = Backbone.View.extend({
     this.listenTo(this.collection, "add change remove", this.render);
   },
 
+  tagName: "section",
+  className: "comments",
   template: JST['comments/index'],
   formTemplate: JST['comments/comment_form'],
 
   events: {
     "click .comment-button.new": "addCommentForm",
-    "click .comment-button.submit": "submitComment"
+    "click .comment-button.submit": "submitComment",
+    "click .comment-button.cancel": "addButton",
+    "click .comments-header>.note-show-header-left": "toggleCommentsList"
   },
 
   render: function() {
@@ -24,11 +28,7 @@ BetterNote.Views.CommentsIndex = Backbone.View.extend({
 
   addButton: function(event) {
     if (event) event.preventDefault();
-
-    var renderedContent = this.buttonTemplate();
-
-    $(".comment-form").remove();
-    this.$el.append(renderedContent);
+    this.render();
   },
 
   addCommentForm: function(event) {
@@ -50,5 +50,20 @@ BetterNote.Views.CommentsIndex = Backbone.View.extend({
 
     var that = this;
     this.collection.create(comment, {});
+  },
+
+  toggleCommentsList: function(event) {
+    event.preventDefault();
+    var $commentsContent = $(event.currentTarget).closest("section.comments")
+                          .find(".comments-content");
+    var $icon = $(event.currentTarget).find("i:first-of-type");
+
+    if ($commentsContent.hasClass("hidden")) {
+      $commentsContent.removeClass("hidden");
+      $icon.removeClass('fa-caret-right').addClass('fa-caret-down')
+    } else {
+      $commentsContent.addClass("hidden")
+      $icon.removeClass('fa-caret-down').addClass('fa-caret-right')
+    }
   }
 });

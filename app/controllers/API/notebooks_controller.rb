@@ -12,14 +12,13 @@ class Api::NotebooksController < ApplicationController
   end
 
   def index
-    @notebooks = current_user.notebooks.includes(:owner, notes: [:comments, :tags])
-    render json: @notebooks.to_json(include:
-      {owner: {}, notes: { include: [:comments, :tags]}})
+    @notebooks = current_user.notebooks
+    render "notebooks/index"
   end
 
   def show
     @notebook = Notebook.includes(:notes).find(params[:id])
-    render json: @notebook.to_json(include: :notes)
+    render "notebooks/show"
   end
 
   def update

@@ -14,6 +14,7 @@ window.BetterNote = {
     this.notes = new BetterNote.Collections.Notes(data.notes, { parse: true });
     this.currentUser = new BetterNote.Models.User(data.user);
     this.featuredNote = this.notes.at(0);
+    this.featuredNotes = this.notes;
 
     this.router = new BetterNote.Routers.Notes($notesListEl, $noteShowEl);
 

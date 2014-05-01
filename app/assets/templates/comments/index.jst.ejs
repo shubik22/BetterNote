@@ -1,32 +1,35 @@
 <header class="comments-header group">
   <div class="note-show-header-left">
-    <i class="fa fa-comments"></i>&nbsp;
+    <i class="fa fa-caret-down"></i>&nbsp;
+    <i class="fa fa-comments"></i>
     Comments
   </div>
 </header>
+<div class="comments-content">
   <% if (comments.length === 0) { %>
-    <div class="comment-list-text">
+    <div class="comment-list-text no-comments">
       No comments
     </div>
   <% } %>
-<ul class="comments-list">
-  <% comments.each(function(comment) { %>
-    <li>
-      <div class="comment-body">
-        <%= comment.get("body") %>
-      </div>
-      <div class="comment-info group">
-        <div class="comment-info-left">
-          Posted by comment.author.username
-          <%= moment(comment.get("created_at")).fromNow() %>
+  <ul class="comments-list">
+    <% comments.each(function(comment) { %>
+      <li>
+        <div class="comment-body">
+          <%= comment.get("body") %>
         </div>
-      </div>
-    </li>
-  <% }) %>
-</ul>
-<div class="new-comment">
-  <div class="comment-button new">
-    <i class="fa fa-plus"></i>&nbsp;
-    New Comment
+        <div class="comment-info group">
+          <div class="comment-info-left">
+            Posted by comment.author.username
+            <%= moment(comment.get("created_at")).fromNow() %>
+          </div>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+  <div class="new-comment">
+    <div class="comment-button new">
+      <i class="fa fa-plus"></i>&nbsp;
+      New Comment
+    </div>
   </div>
 </div>

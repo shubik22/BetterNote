@@ -2,6 +2,11 @@ class Api::TagsController < ApplicationController
   before_action :require_signed_in!
   before_action :user_owns_tag?, only: [:edit, :update, :destroy]
 
+  def index
+    @tags = current_user.tags
+    render "tags/index"
+  end
+
   def create
     @tag = current_user.tags.new(tag_params)
     if @tag.save

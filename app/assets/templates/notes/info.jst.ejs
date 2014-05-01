@@ -1,0 +1,48 @@
+<table class="note-info options-dropdown hidden">
+  <tr>
+    <td class="note-info-field">Title:</td>
+    <td class="note-info-data"><%= note.get("title") %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Author:</td>
+    <td class="note-info-data"><%= "note.author.username" %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Created At:</td>
+    <td class="note-info-data">
+      <%= moment(note.get("created_at")).format('MMM D, YYYY') %>
+    </td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Updated At:</td>
+    <td class="note-info-data">
+      <%= moment(note.get("updated_at")).format('MMM D, YYYY') %>
+    </td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Notebook:</td>
+    <td class="note-info-data"><%= note.notebook.get("name") %></td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Tags:</td>
+    <td class="note-info-data">
+      <% if (note.tags.count > 0) { %>
+        <ul class="tags">
+          <% note.tags.each(function(tag) { %>
+            <li>
+              <%= tag.get('name') %>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        No tags
+      <% } %>
+    </td>
+  </tr>
+  <tr>
+    <td class="note-info-field">Likes:</td>
+    <td class="note-info-data">
+      <%= "note.likes.count" %>
+    </td>
+  </tr>
+</table>

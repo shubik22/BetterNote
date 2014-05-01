@@ -35,11 +35,12 @@
       </li>
     </ul>
   </div>
-  <div class="note-show-header-right">
+  <div class="note-show-header-right dropdown-parent">
     <div class="info-text">
       INFO&nbsp;
       <i class="fa fa-info-circle"></i>
     </div>
+    <%= JST["notes/info"]({note: note}) %>
   </div>
 </header>
 <header class="note-show-bottom group">
@@ -58,24 +59,18 @@
       LIKE
       <i class="fa fa-thumbs-o-up"></i>
     </div>
-    <a href="<%= "#/notes/" + note.get("id") + "/edit" %>" class="note-show-button">
-      EDIT
-      <i class="fa fa-file-text-o"></i>
-    </a>
-    <a href="<%= "#/notes/" + note.get("id") + "/delete" %>" class="note-show-button">
+    <div class="note-show-button delete-note">
       DELETE
       <i class="fa fa-trash-o"></i>
-    </a>
+    </div>
   </div>
 </header>
 <div class="note-content">
-  <div class="note-title">
-      <%= note.get('title') %>
-  </div>
-  <div class="note-body">
-    <%= note.get("body") %>
-  </div>
+  <form class="note-title">
+    <input type="text" name="note[title]"
+      id="note-title" value="<%= note.get('title') %>">
+  </form>
+  <form class="note-body">
+    <textarea name="note[body]" id="note-body"><%= note.get("body") %></textarea>
+  </form>
 </div>
-
-<section class="comments">
-</section>

@@ -25,8 +25,10 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
       model: this.model,
       type: this.type
     });
+    BetterNote.featuredNotes = this.collection;
 
     $("body").on("click", this.hideDropdowns);
+    $(".new-note").on("click", this.createNote);
 
     this.$el.html(renderedContent);
     return this;
@@ -49,8 +51,20 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     event.stopPropagation();
   },
 
+  // createNote: function(event) {
+  //   event.preventDefault();
+  //
+  //   if (this.type === "notebook") {
+  //     var note = BetterNote.Models.Note({
+  //       title: "Untitled"
+  //     });
+  //     this.collection.add(note);
+  //   }
+  // },
+
   selectNote: function(event) {
-    $(".selected").removeClass("selected");
+    $(event.currentTarget).closest(".notes")
+      .find(".selected").removeClass("selected");
 
     var $note = $(event.currentTarget).closest(".note-preview");
     $note.addClass("selected");

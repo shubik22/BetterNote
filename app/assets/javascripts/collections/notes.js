@@ -4,6 +4,12 @@ BetterNote.Collections.Notes = Backbone.Collection.extend({
 
   url: "/api/notes",
 
+  nextNote: function(note) {
+    var noteIndex = this.indexOf(note);
+    var nextIndex = (noteIndex < this.length - 1) ? noteIndex + 1 : noteIndex - 1
+    return this.at(nextIndex);
+  },
+
   comparator: function(note1, note2) {
     if (note1.isNew()) {
       return -1

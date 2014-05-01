@@ -9,7 +9,9 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
   events: {
     "click .dropdown-parent": "showDropdown",
     "click .options-dropdown, .dropdown-parent": "stopPropagation",
-    "click form.update-notebook": "updateNotebook"
+    "click form.update-notebook": "updateNotebook",
+    "click .delete-note": "showModal",
+    "blur form.note-title, form.note-body": "updateNote"
   },
 
   render: function() {
@@ -20,6 +22,7 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
     BetterNote.featuredNote = this.model;
 
     $("body").on("click", this.hideDropdowns);
+    $("html").on("click", ".close-modal", this.closeModal);
 
     this.$el.html(renderedContent);
 
@@ -68,5 +71,35 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
     this.model.save({}, {
       success: success
     })
+  },
+
+  updateNote: function(event) {
+    var attrs = $(event.currentTarget).serializeJSON();
+    this.model.set(attrs);
+    this.model.save();
+  },
+
+  showModal: function(event) {
+    event.preventDefault();
+
+    var $modal = $("#modal");
+    var $modalContent = $(".modal-content")
+    var view = new BetterNote.Views.NoteDelete({
+      model: this.model,
+      $modal: $modal
+    });
+
+    $modal.removeClass("hidden");
+    $modalContent.html(view.render().$el);
+  },
+
+  closeModal: function(event) {
+    event.preventDefault();
+
+    var $modal = $("#modal");
+    var $modalContent = $(".modal-content")
+
+    $modal.addClass("hidden");
+    $modalContent.html("");
   }
 });

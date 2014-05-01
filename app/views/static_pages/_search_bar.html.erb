@@ -14,9 +14,10 @@
       <input type="submit" value="Search">
     </form>
   </div>
-  <% if @notebook && @notebook.persisted? %>
-    <div class="new-note">
-      <%= render partial: "notes/new", locals: { notebook: @notebook } %>
-    </div>
-  <% end %>
+    <form class="new-note">
+      <button type="submit">
+        <i class="fa fa-plus"></i>&nbsp;
+        New Note
+      </button>
+    </form>
 </header>

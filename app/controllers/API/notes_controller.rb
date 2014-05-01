@@ -5,7 +5,7 @@ class Api::NotesController < ApplicationController
 
   def index
     @notes = current_user.notes.includes(:comments, :notebook, :tags)
-    render json: @notes.to_json(include: [:comments, :notebook, :tags])
+    render partial: "notes/index", locals: { notes: @notes }
   end
 
   def create
@@ -43,6 +43,7 @@ class Api::NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
+    render json: {}
   end
 
   private
