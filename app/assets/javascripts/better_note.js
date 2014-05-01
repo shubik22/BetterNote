@@ -9,12 +9,13 @@ window.BetterNote = {
     var $notesListEl = $('.notes-list');
 
     var data = JSON.parse($('#bootstrapped-data-json').html());
-    this.notebooks = new BetterNote.Collections.Notebooks();
-    this.tags = new BetterNote.Collections.Tags();
+    this.notebooks = new BetterNote.Collections.Notebooks(data.notebooks);
+    this.tags = new BetterNote.Collections.Tags(data.tags);
     this.notes = new BetterNote.Collections.Notes(data.notes, { parse: true });
     this.currentUser = new BetterNote.Models.User(data.user);
+    this.featuredNote = this.notes.at(0);
 
-    new BetterNote.Routers.Notes($notesListEl, $noteShowEl);
+    this.router = new BetterNote.Routers.Notes($notesListEl, $noteShowEl);
 
     var sidebarView = new BetterNote.Views.Sidebar();
     $sidebar.html(sidebarView.render().$el);

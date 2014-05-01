@@ -151,7 +151,8 @@ form.search > input[type="submit"]:hover {
   padding-left: 8px;
 }
 
-.new-note button, .new-comment > a, .post-comment {
+.new-note button,
+.comment-button {
   height: 24px;
   background-image: -webkit-linear-gradient(top, #939ca3, #65727c);
   border: 1px solid rgb(137, 146, 152);
@@ -164,12 +165,18 @@ form.search > input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.new-comment a, .post-comment {
+.comment-button {
+  margin-top: 10px;
   padding: 6px 6px 4px 6px;
+  display: inline;
 }
 
 .new-note button:hover,
-.new-comment > a:hover,
-.post-comment:hover {
+.comment-button:hover {
 	background-image: -webkit-linear-gradient(top, #8da1b0, #5c7284);
+}
+
+.new-note button:focus,
+.comment-button:focus {
+	background-image: -webkit-linear-gradient(top, #70808c, #495b69);
 }

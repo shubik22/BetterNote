@@ -1,0 +1,18 @@
+<div class="comment-form">
+  <div class="comment-list-text">
+    <i class="fa fa-comment"></i>&nbsp;
+    New Comment
+  </div>
+  <form class="comment">
+    <input type="hidden" name="comment[note_id]" value="<%= note.get("id") %>">
+
+    <textarea name="comment[body]"></textarea>
+
+    <button type="submit" class="comment-button submit">
+      Post Comment
+    </button>
+    <button class="comment-button cancel">
+      Cancel
+    </button>
+  </form>
+</div>

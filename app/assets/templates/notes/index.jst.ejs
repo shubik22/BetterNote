@@ -16,7 +16,8 @@
   <% notes.each(function(note) { %>
     <li>
       <a href="<%= "/#/notes/" + note.get("id") %>">
-        <article class="note-preview">
+        <article class="note-preview
+            <%= (note === BetterNote.featuredNote) ? " selected" : "" %>">
           <div class="note-preview-title">
             <%= note.get("title") %>
           </div>
@@ -42,27 +43,27 @@
         Sort By
       </li>
       <li class="sort-option" data-sort-field="created_at"
-                              data-sort-order="desc">
+                              data-sort-toggle="-1">
         Date Created (newest first)
       </li>
       <li class="sort-option" data-sort-field="created_at"
-                              data-sort-order="asc">
+                              data-sort-toggle="1">
         Date Created (oldest first)
       </li>
       <li class="sort-option" data-sort-field="updated_at"
-                              data-sort-order="desc">
+                              data-sort-toggle="-1">
         Date Updated (newest first)
       </li>
       <li class="sort-option" data-sort-field="updated_at"
-                              data-sort-order="asc">
+                              data-sort-toggle="1">
         Date Updated (oldest first)
       </li>
       <li class="sort-option" data-sort-field="title"
-                              data-sort-order="asc">
+                              data-sort-toggle="1">
         Title (ascending)
       </li>
       <li class="sort-option" data-sort-field="title"
-                              data-sort-order="desc">
+                              data-sort-toggle="1">
         Title (descending)
       </li>
     </ul>

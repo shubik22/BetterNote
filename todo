@@ -45,3 +45,11 @@ Backbone
 -- add nested comment author (json plugin?)
 -- DRY: common list view for all notes/notebooks/tags/friends
 -- most efficient way to add notes to tags (possible to avoid if/else statement in better_note.js?)
+-- low-priority: see if isNew is necessary in comments comparator
+
+-- add comment functionality
+-- user stuff (for comments)
+-- jbuilder
+-- like/remove like button
+-- delete note button
+-- delete tag option

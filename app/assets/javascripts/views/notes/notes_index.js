@@ -1,9 +1,12 @@
 BetterNote.Views.NotesIndex = Backbone.View.extend({
   initialize: function(options) {
     this.type = options["type"];
+    this.selectedNote = options["selectedNote"];
     this.listenTo(this.collection, "add change sort", this.render);
     if (this.model) {
-      this.listenTo(this.model, "add change remove", this.render);
+      this.listenTo(this.model, "change", this.render);
+      this.listenTo(this.model, "destroy", this.refreshNotesIndex);
+      this.listenTo(this.model.notes, "add change remove", this.render);
     }
   },
 
@@ -46,25 +49,54 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     event.stopPropagation();
   },
 
-  sortNotes: function(event) {
-    event.preventDefault();
-
-    var $li = $(event.currentTarget);
-    var sortField = $li.attr("data-sort-field");
-    var sortOrder = $li.attr("data-sort-order");
-
-    this.collection.comparator = function(note) {
-      return note.get(sortField);
-    };
-    this.collection.sort();
-
-    this.hideDropdowns();
-  },
-
   selectNote: function(event) {
     $(".selected").removeClass("selected");
 
     var $note = $(event.currentTarget).closest(".note-preview");
     $note.addClass("selected");
+  },
+
+  refreshNotesIndex: function(event) {
+    this.remove();
+    BetterNote.router.navigate("");
+  },
+
+  sortNotes: function(event) {
+    event.preventDefault();
+
+    var $li = $(event.currentTarget);
+    var sortField = $li.attr("data-sort-field");
+    var sortToggle = $li.attr("data-sort-toggle");
+
+    this.collection.comparator = this._setComparator(sortField, sortToggle);
+    this.collection.sort();
+
+    this.hideDropdowns();
+  },
+
+  _setComparator: function(sortField, sortToggle) {
+    return function(note1, note2) {
+      var field1 = note1.get(sortField);
+      var field2 = note2.get(sortField);
+
+      if (note1.isNew()) {
+        return -1
+      } else if (note2.isNew()) {
+        return 1
+      };
+
+      if (sortField === "title") {
+        field1 = field1.toLowerCase();
+        field2 = field2.toLowerCase();
+      }
+
+      if (field1 > field2) {
+        return 1 * sortToggle;
+      } else if (field1 < field2) {
+        return -1 * sortToggle;
+      } else {
+        return 0;
+      }
+    }
   }
 });

@@ -15,6 +15,9 @@
   color: #404040;
   border-bottom: 1px solid #b5b5b5;
   padding-left: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .notes-list-header > i {
@@ -30,12 +33,12 @@
   overflow: hidden;
 }
 
-.note-preview:hover {
-  background: #d1d4d7;
+.note-preview.selected {
+  background: #E4E4E4;
 }
 
-.note-preview.selected {
-  background: #ecf0f3;
+.note-preview:hover {
+  background: #d1d4d7;
 }
 
 .note-preview-body {

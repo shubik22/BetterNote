@@ -1,5 +1,4 @@
 BetterNote.Routers.Notes = Backbone.Router.extend({
-
   initialize: function($notesListEl, $noteShowEl) {
     this.$notesListEl = $notesListEl;
     this.$noteShowEl = $noteShowEl;
@@ -22,15 +21,13 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
   },
 
   notesIndex: function() {
-    var note = BetterNote.notes.at(0);
-
     var listView = new BetterNote.Views.NotesIndex({
       type: "all",
-      collection: BetterNote.notes,
+      collection: BetterNote.notes
     });
 
     var showView = new BetterNote.Views.NoteShow({
-      model: note
+      model: BetterNote.notes.at(0)
     });
 
     this._swapListView(listView);
@@ -46,19 +43,21 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
       collection: notebook.notes
     });
 
-    this._swapListView(listView);
-
-    if (notebook.notes.at(0)) {
+    if (notebook.notes.length > 0) {
+      var note = notebook.notes.at(0)
       var showView = new BetterNote.Views.NoteShow({
-        model: notebook.notes.at(0)
+        model: note
       });
       this._swapShowView(showView);
+    } else {
+      this.$noteShowEl.html("");
     }
+
+    this._swapListView(listView);
   },
 
   showTag: function(id) {
     var tag = BetterNote.tags.get(id);
-    var note = tag.notes.at(0);
 
     var listView = new BetterNote.Views.NotesIndex({
       type: "tag",
@@ -66,12 +65,17 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
       collection: tag.notes
     })
 
-    var showView = new BetterNote.Views.NoteShow({
-      model: note
-    });
+    if (tag.notes.length > 0) {
+      var note = tag.notes.at(0)
+      var showView = new BetterNote.Views.NoteShow({
+        model: note
+      });
+      this._swapShowView(showView);
+    } else {
+      this.$noteShowEl.html("");
+    }
 
     this._swapListView(listView);
-    this._swapShowView(showView);
   },
 
   _swapShowView: function(view) {

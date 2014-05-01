@@ -32,15 +32,37 @@
   line-height: 36px;
   padding-right: 24px;
   float: left;
+  cursor: pointer;
 }
 
 .notebook-name > .options-dropdown {
-  left: 40px;
+  left: 20px;
   top: 30px;
+  width: 220px;
+  max-height: 300px;
+  overflow: auto;
 }
 
-.notebook-name:hover > .options-dropdown {
-  display: block;
+.notebook-name .submit > button {
+  width: 180px;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+
+.notebook-name li.selected {
+  background: #CECECE;
+}
+
+.notebook-name li:hover {
+  background: #d1d4d7;
 }
 
 .note-show-header-left > .tags {
@@ -177,15 +199,18 @@ textarea#note-body {
 
 .comment-list-text {
   margin-top: 8px;
-  padding-left: 12px;
   font-size: 12px;
   font-style: italic;
   color: rgb(122, 125, 129);
 }
 
+.comments-list {
+  padding: 0 12px;
+}
+
 .comments-list > li, .comment-form textarea {
   background: white;
-  margin: 10px 12px 0 12px;
+  margin-top: 10px;
   border: 1px solid #b3b3b3;
   border-radius: 3px;
   padding: 8px;
@@ -194,14 +219,8 @@ textarea#note-body {
   resize: none;
 }
 
-.comment-form textarea {
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .comment-form {
-  margin-left: 12px;
-  margin-right: 12px;
+  padding: 0 12px;
 }
 
 .comment-form textarea:focus {

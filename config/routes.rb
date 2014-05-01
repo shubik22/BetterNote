@@ -19,8 +19,9 @@ BetterNote::Application.routes.draw do
   end
   resource :session, only: [:create, :new, :destroy]
   namespace :api, defaults: { format: :json } do
-    resources :notes, only: [:show, :index]
+    resources :notes, only: [:show, :index, :update]
     resources :notebooks, only: [:create, :show, :index, :update, :destroy]
     resources :tags, only: [:create, :update, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 end

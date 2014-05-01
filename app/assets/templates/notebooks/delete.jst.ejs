@@ -1,15 +1,13 @@
 <span class="modal-x close-modal">&times;</span>
 
 <h3>
-  <%= (notebook.isNew()) ? "Create Notebook" : "Rename Notebook" %>
+  Delete Notebook
 </h3>
 
 <form class="notebook group">
 
   <div class="input">
-    <label for="notebook-name">Notebook Name</label>
-    <input type="text" name="notebook[name]"
-        id="notebook-name" value="<%= notebook.get("name") %>">
+    <label for="notebook-name">Are you sure you want to delete this notebook?</label>
   </div>
 
   <div class="form-right group">
@@ -18,7 +16,7 @@
     </div>
 
     <div class="submit">
-      <input type="submit" value="Save">
+      <input type="submit" value="Confirm">
     </div>
   </div>
 </form>

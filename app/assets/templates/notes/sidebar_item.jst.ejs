@@ -1,0 +1,30 @@
+<div class="sidebar-entry-left group">
+  <a href="<%= "/#/notebooks/" + notebook.get("id") %>">
+    <div class="notebook-name">
+      <i class='fa fa-book fa-lg'></i>&nbsp;
+      <%= notebook.get("name") %>&nbsp;
+    </div>
+    <span class="notebook-notes-count">
+      (<%= notebook.notes.length %>)
+    </span>
+  </a>
+  <ul class="options-dropdown hidden">
+    <li>
+      <div class="show-modal"
+          data-action="edit-notebook"
+          data-item-id="<%= notebook.get("id") %>">
+        Rename...
+      </div>
+    </li>
+    <li>
+      <div class="show-modal"
+          data-action="delete-notebook"
+          data-item-id="<%= notebook.get("id") %>">
+        Delete Notebook
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="sidebar-entry-right">
+  <i class='fa fa-toggle-down dropdown'></i>
+</div>

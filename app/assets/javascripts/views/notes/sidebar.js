@@ -3,6 +3,7 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
   initialize: function(options) {
     this.listenTo(BetterNote.notebooks, "add change remove", this.render);
     this.listenTo(BetterNote.tags, "add change remove", this.render);
+    this.listenTo(BetterNote.notes, "add change remove", this.render);
   },
 
   template: JST['notes/sidebar'],
@@ -18,14 +19,21 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
   render: function() {
     var renderedContent = this.template({
       notes: BetterNote.notes,
-      notebooks: BetterNote.notebooks,
       tags: BetterNote.tags
     });
 
-    $("body").on("click", this.hideDropdowns);
-    $("body").on("click", ".close-modal", this.closeModal);
+    $("html").on("click", this.hideDropdowns);
+    $("html").on("click", ".close-modal", this.closeModal);
 
     this.$el.html(renderedContent);
+    var that = this;
+    BetterNote.notebooks.each(function(notebook) {
+      var notebookView = new BetterNote.Views.SidebarItem({
+        model: notebook
+      });
+      that.$el.find(".sidebar-list").first().append(notebookView.render().$el);
+    })
+
     return this;
   },
 
@@ -106,9 +114,9 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
         });
         break;
       case "delete-notebook":
-        var template = JST["modals/delete_notebook"];
-        var renderedContent = template({
-          notebook: BetterNote.notebooks.get(itemId)
+        var view = new BetterNote.Views.NotebookDelete({
+          model: BetterNote.notebooks.get(itemId),
+          $modal: $("#modal")
         });
         break;
       case "create-tag":
@@ -124,9 +132,9 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
         });
         break;
       case "delete-tag":
-        var template = JST["modals/delete_tag"];
-        var renderedContent = template({
-          tag: BetterNote.tags.get(itemId)
+        var view = new BetterNote.Views.TagDelete({
+          model: BetterNote.tags.get(itemId),
+          $modal: $("#modal")
         });
         break;
       }

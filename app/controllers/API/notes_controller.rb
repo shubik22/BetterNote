@@ -26,7 +26,7 @@ class Api::NotesController < ApplicationController
     @note = Note.find(params[:id])
 
     @note.assign_attributes(note_params)
-    @note.tag_ids = note_tag_params[:tag_ids]
+    @note.tag_ids = note_tag_params[:tag_ids] if params[:note_tags]
 
     if @note.save
       render json: @note
