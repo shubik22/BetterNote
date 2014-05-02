@@ -17,13 +17,13 @@ class Notification < ActiveRecord::Base
   end
 
   def url
-    if self.notifiable_type == "Comment"
-      return note_url(notifiable.note)
-    elsif self.notifiable_type == "Like"
-      return note_url(notifiable.note)
-    elsif self.notifiable_type == "Friendship"
-      return user_url(notifiable.in_friend)
-    end
+    # if self.notifiable_type == "Comment"
+    #   return note_url(notifiable.note)
+    # elsif self.notifiable_type == "Like"
+    #   return note_url(notifiable.note)
+    # elsif self.notifiable_type == "Friendship"
+    #   return user_url(notifiable.in_friend)
+    # end
   end
 
   def default_url_options

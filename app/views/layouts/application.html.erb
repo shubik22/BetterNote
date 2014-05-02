@@ -10,30 +10,25 @@
 <body>
 
 <script type="application/json" id="bootstrapped-data-json">
-{ "notes": <%= current_user.notes
-      .includes(:comments, :notebook, :tags)
-      .to_json(include: [:comments, :notebook, :tags])
-      .html_safe
-  %>,
-  "notebooks": <%= current_user.notebooks.to_json.html_safe %>,
-  "tags": <%= current_user.tags.to_json.html_safe %>,
- "user": <%= current_user.to_json.html_safe %>,
- "friends": <%= current_user.friends
-       .to_json
-       .html_safe
-   %>
- }
+  { "notes": <%= render(partial: "notes/index.json", locals: { notes: current_user.notes.includes(:notebook, :comments, :tags, :note_tags, :likes) }).html_safe %>,
+    "notebooks": <%= current_user.notebooks.to_json.html_safe %>,
+    "tags": <%= current_user.tags.to_json.html_safe %>,
+   "user": <%= render(partial: "users/show.json", locals: { user: current_user }).html_safe %>,
+   "friends": <%= current_user.friends
+         .to_json
+         .html_safe
+     %>
+  }
 </script>
 
 <%= render partial: "static_pages/nav" %>
-<%= render partial: "static_pages/search_bar" %>
+<%#= render partial: "static_pages/search_bar" %>
 
 <div class="errors">
   <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
 </div>
 
 <section class="content">
-  <%= render partial: "static_pages/sidebar" %>
   <%= yield %>
 </section>
 

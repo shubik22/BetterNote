@@ -25,6 +25,7 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
       type: "all",
       collection: BetterNote.notes
     });
+    BetterNote.featuredNotebook = BetterNote.notebooks.at(0);
 
     var showView = new BetterNote.Views.NoteShow({
       model: BetterNote.notes.at(0)
@@ -36,6 +37,7 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
 
   showNotebook: function(id) {
     var notebook = BetterNote.notebooks.get(id);
+    BetterNote.featuredNotebook = notebook;
 
     var listView = new BetterNote.Views.NotesIndex({
       type: "notebook",

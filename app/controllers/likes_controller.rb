@@ -1,17 +1,29 @@
 class LikesController < ApplicationController
+  before_action :require_signed_in!
+  before_action :user_owns_like?, only: [:destroy]
+
   def create
-    @like = current_user.likes.new({note_id: params[:note_id]})
+    @like = current_user.likes.new(like_params)
     if @like.save
       redirect_to :back
     else
-      flash[:errors] = @like.errors.full_messages
-      redirect_to note_url(@like.note)
+      render json: @comment.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def destroy
     @like = Like.find(params[:id])
     @like.destroy
-    redirect_to :back
+    render json: {}
+  end
+
+  private
+  def comment_params
+    params.require(:like).permit(:note_id)
+  end
+
+  def user_owns_like?
+    @like = Like.find(params[:id])
+    redirect_to root_url unless @like.owner == current_user
   end
 end

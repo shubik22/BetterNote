@@ -70,7 +70,8 @@ article.sidebar-item li:hover,
   height: 25px;
 }
 
-a > .notebook-name {
+a > .notebook-name,
+a > .tag-name {
   float: left;
   max-width: 150px;
   text-overflow: ellipsis;

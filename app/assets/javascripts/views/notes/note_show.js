@@ -2,6 +2,8 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, "add change remove", this.render);
     this.listenTo(this.model.notebook, "change", this.render);
+    this.listenTo(this.model.likes, "add remove", this.render);
+    this.listenTo(this.model.tags, "add change remove", this.render);
   },
 
   template: JST['notes/show'],
@@ -11,18 +13,19 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
     "click .options-dropdown, .dropdown-parent": "stopPropagation",
     "click form.update-notebook": "updateNotebook",
     "click .delete-note": "showModal",
-    "blur form.note-title, form.note-body": "updateNote"
+    "click .like-note": "likeNote",
+    "click .unlike-note": "unlikeNote",
+    "blur form.note-title, form.note-body": "updateNote",
+    "click .add-tag>ul>li": "addNoteTag",
+    "click .delete-tag": "deleteNoteTag"
   },
 
   render: function() {
+    BetterNote.featuredNote = this.model;
     var renderedContent = this.template({
       note: this.model,
       notebooks: BetterNote.notebooks
     });
-    BetterNote.featuredNote = this.model;
-
-    $("body").on("click", this.hideDropdowns);
-    $("html").on("click", ".close-modal", this.closeModal);
 
     this.$el.html(renderedContent);
 
@@ -75,8 +78,48 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
 
   updateNote: function(event) {
     var attrs = $(event.currentTarget).serializeJSON();
-    this.model.set(attrs);
-    this.model.save();
+    this.model.save(attrs);
+  },
+
+  likeNote: function(event) {
+    event.preventDefault();
+
+    var like = new BetterNote.Models.Like({
+      note_id: this.model.get("id")
+    });
+
+    this.model.likes.create(like);
+  },
+
+  unlikeNote: function(event) {
+    event.preventDefault();
+    this.model.currentUserLike().destroy();
+  },
+
+  addNoteTag: function(event) {
+    event.preventDefault();
+
+    var tagId = parseInt($(event.currentTarget).attr("data-tag-id"));
+    var tag = BetterNote.tags.get(tagId);
+    var noteTag = this.model.noteTags.create({
+      note_id: this.model.id,
+      tag_id: tagId
+    });
+
+    this.model.tags.add(tag);
+  },
+
+  deleteNoteTag: function(event) {
+    event.preventDefault();
+
+    var tagId = parseInt($(event.currentTarget).attr("data-tag-id"));
+    var tag = this.model.tags.get(tagId);
+    var noteTag = this.model.noteTags.findWhere({
+      tag_id: tagId
+    });
+
+    this.model.tags.remove(tag);
+    noteTag.destroy();
   },
 
   showModal: function(event) {
@@ -91,15 +134,5 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
 
     $modal.removeClass("hidden");
     $modalContent.html(view.render().$el);
-  },
-
-  closeModal: function(event) {
-    event.preventDefault();
-
-    var $modal = $("#modal");
-    var $modalContent = $(".modal-content")
-
-    $modal.addClass("hidden");
-    $modalContent.html("");
   }
 });

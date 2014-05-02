@@ -5,16 +5,16 @@
   </tr>
   <tr>
     <td class="note-info-field">Author:</td>
-    <td class="note-info-data"><%= "note.author.username" %></td>
+    <td class="note-info-data"><%= note.author.get("username") %></td>
   </tr>
   <tr>
-    <td class="note-info-field">Created At:</td>
+    <td class="note-info-field">Created:</td>
     <td class="note-info-data">
       <%= moment(note.get("created_at")).format('MMM D, YYYY') %>
     </td>
   </tr>
   <tr>
-    <td class="note-info-field">Updated At:</td>
+    <td class="note-info-field">Updated:</td>
     <td class="note-info-data">
       <%= moment(note.get("updated_at")).format('MMM D, YYYY') %>
     </td>
@@ -26,14 +26,10 @@
   <tr>
     <td class="note-info-field">Tags:</td>
     <td class="note-info-data">
-      <% if (note.tags.count > 0) { %>
-        <ul class="tags">
-          <% note.tags.each(function(tag) { %>
-            <li>
-              <%= tag.get('name') %>
-            </li>
-          <% }) %>
-        </ul>
+      <% if (note.tags.length > 0) { %>
+        <%= note.tags.map(function(tag) {
+          return tag.get("name")
+        }).join(", ") %>
       <% } else { %>
         No tags
       <% } %>
@@ -42,7 +38,7 @@
   <tr>
     <td class="note-info-field">Likes:</td>
     <td class="note-info-data">
-      <%= "note.likes.count" %>
+      <%= note.likes.length %>
     </td>
   </tr>
 </table>

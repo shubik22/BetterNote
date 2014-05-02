@@ -13,6 +13,7 @@ BetterNote.Views.CommentsIndex = Backbone.View.extend({
   events: {
     "click .comment-button.new": "addCommentForm",
     "click .comment-button.submit": "submitComment",
+    "click .delete-comment": "deleteComment",
     "click .comment-button.cancel": "addButton",
     "click .comments-header>.note-show-header-left": "toggleCommentsList"
   },
@@ -47,9 +48,17 @@ BetterNote.Views.CommentsIndex = Backbone.View.extend({
 
     var attrs = $(event.target.form).serializeJSON();
     var comment = new BetterNote.Models.Comment(attrs);
+    comment.author = BetterNote.currentUser;
 
-    var that = this;
     this.collection.create(comment, {});
+  },
+
+  deleteComment: function(event) {
+    event.preventDefault();
+
+    var commentId = $(event.currentTarget).find("button").attr("data-comment-id");
+    var comment = this.collection.get(commentId);
+    comment.destroy();
   },
 
   toggleCommentsList: function(event) {

@@ -48,7 +48,6 @@ Backbone
 -- low-priority: see if isNew is necessary in comments comparator
 -- resizing note body box (how do you set height?)
 -- why does blur stop click event?
-
--- user stuff (for comments)
--- jbuilder
--- like/remove like button
+-- destroy click handlers on view change
+-- fix unnecessary divs from rendering views in backbone
+-- first note goes to bottom of notebook, subsequent ones go to top, are highlighted

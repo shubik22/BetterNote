@@ -22,13 +22,15 @@ BetterNote.Views.NoteDelete = Backbone.View.extend({
     event.preventDefault();
 
     var nextNoteId = BetterNote.featuredNotes.nextNote(this.model).get("id");
-    BetterNote.router.navigate("#/notes/" + nextNoteId);
+    var nextNote = BetterNote.notes.get(nextNoteId);
 
     var that = this;
     this.model.destroy({
       success: function() {
         that.$modal.addClass("hidden");
         that.remove();
+        BetterNote.featuredNote = nextNote;
+        BetterNote.router.navigate("#/notes/" + nextNoteId);
       }
     })
   }

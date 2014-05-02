@@ -19,8 +19,19 @@
         </div>
         <div class="comment-info group">
           <div class="comment-info-left">
-            Posted by comment.author.username
+            Posted by <%= comment.author.get("username") %>
             <%= moment(comment.get("created_at")).fromNow() %>
+          </div>
+          <div class="comment-info-right">
+            <% if (BetterNote.currentUser.get("id") === comment.author.get("id")) { %>
+              <form class="delete-comment">
+                <button class="note-show-button comment"
+                data-comment-id="<%- comment.get("id")%>">
+                  DELETE&nbsp;
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </form>
+            <% } %>
           </div>
         </div>
       </li>

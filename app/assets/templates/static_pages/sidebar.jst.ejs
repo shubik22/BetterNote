@@ -1,0 +1,86 @@
+<article class="sidebar-item">
+  <div class="sidebar-header group">
+    <div class="sidebar-header-left">
+      <i class="fa fa-caret-down"></i>&nbsp;
+      Notebooks
+    </div>
+    <div class="sidebar-header-right dropdown-parent">
+      <i class="fa fa-toggle-down dropdown"></i>
+      <ul class="options-dropdown hidden">
+        <li>
+          <div class="show-modal"
+              data-action="create-notebook"
+              data-item-id="nil">
+            New Notebook...
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="sidebar-list">
+    <li class="group">
+      <div class="sidebar-entry-left">
+        <a href="/#/notes" class="group">
+            <i class='fa fa-book fa-lg'></i>&nbsp;
+            All Notes (<%= notes.length %>)
+        </a>
+      </div>
+    </li>
+  </ul>
+</article>
+
+<article class="sidebar-item">
+  <div class="sidebar-header group">
+    <div class="sidebar-header-left">
+      <i class="fa fa-caret-down"></i>&nbsp;
+      Tags
+    </div>
+    <div class="sidebar-header-right dropdown-parent">
+      <i class="fa fa-toggle-down dropdown"></i>
+      <ul class="options-dropdown hidden">
+        <li>
+          <div class="show-modal"
+              data-action="create-tag"
+              data-item-id="nil">
+            New Tag...
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="sidebar-list">
+    <% tags.each(function(tag) { %>
+      <li class="group dropdown-parent">
+        <div class="sidebar-entry-left">
+          <a href="<%= "/#/tags/" + tag.get("id")%>">
+            <div class="tag-name">
+              <i class='fa fa-tag fa-lg'></i>&nbsp;
+              <%= tag.get("name") %>
+            </div>
+          </a>
+          <ul class="options-dropdown hidden">
+            <li>
+              <div class="show-modal"
+                  data-action="edit-tag"
+                  data-item-id="<%= tag.get("id") %>">
+                Edit Tag
+              </div>
+            </li>
+            <li>
+              <div class="show-modal"
+                  data-action="delete-tag"
+                  data-item-id="<%= tag.get("id") %>">
+                Delete Tag
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-entry-right">
+          <i class='fa fa-toggle-down dropdown'></i>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</article>

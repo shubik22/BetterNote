@@ -1,0 +1,2 @@
+module NoteTagsHelper
+end

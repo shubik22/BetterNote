@@ -88,18 +88,3 @@ h2 {
   font-size: 30px;
   font-weight: bold;
 }
-
-.left-absolute {
-  position: absolute;
-}
-
-.left-margin-no-list {
-  margin-top: 80px;
-  margin-left: 302px;
-}
-
-.backbone-test {
-  font-size: 40px;
-  color: red;
-  position: fixed;
-}
