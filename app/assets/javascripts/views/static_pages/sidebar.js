@@ -1,11 +1,10 @@
 BetterNote.Views.Sidebar = Backbone.View.extend({
-
   initialize: function(options) {
     $("html").on("click", this.hideDropdowns);
     $("html").on("click", ".close-modal", this.closeModal);
     this.listenTo(BetterNote.notebooks, "add change remove", this.render);
     this.listenTo(BetterNote.tags, "add change remove", this.render);
-    this.listenTo(BetterNote.notes, "add change remove", this.render);
+    this.listenTo(BetterNote.notes, "add remove", this.render);
   },
 
   tagName: "section",
@@ -17,7 +16,7 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
     "click .sidebar-entry-left": "selectEntry",
     "click i.dropdown": "showDropdown",
     "click .options-dropdown, i.dropdown": "stopPropagation",
-    "click .show-modal": "showModal"
+    "click .show-modal": "showModal",
   },
 
   render: function() {
@@ -138,6 +137,10 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
           $modal: $("#modal")
         });
         break;
+      case "corgi":
+        var view = new BetterNote.Views.Corgi({
+          $modal: $("#modal")
+        })
       }
     return view;
   }

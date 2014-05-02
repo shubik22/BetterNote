@@ -1,5 +1,5 @@
 <header class="note-show-top group">
-  <div class="note-show-header-left">
+  <div class="note-show-header-left top">
     <div class="notebook-name dropdown-parent group">
       <div class="notebook-name-text">
         <i class="fa fa-book"></i>
@@ -24,40 +24,12 @@
         <% }) %>
       </ul>
     </div>
-    <ul class="tags">
-      <% note.tags.each(function(tag) { %>
-        <li>
-          <i class="fa fa-tag"></i>
-          <%= tag.get("name") %>
-          <span class="delete-tag"
-            data-tag-id="<%= tag.get("id") %>">
-            &times;
-          </span>
-        </li>
-      <% }) %>
-      <li class="add-tag dropdown-parent">
-        <%= (note.tags.length > 0) ? "+  " : "+ Tag  " %>
-        <ul class="options-dropdown hidden">
-          <% BetterNote.tags.each(function(tag) { %>
-            <% if (!note.tags.get(tag)) { %>
-              <li data-tag-id="<%= tag.get("id") %>">
-                <button>
-                  <i class="fa fa-tag"></i>&nbsp;
-                  <%= tag.get("name") %>
-                </button>
-              </li>
-            <% } %>
-          <% }) %>
-        </ul>
-      </li>
-    </ul>
   </div>
-  <div class="note-show-header-right dropdown-parent">
+  <div class="note-show-header-right top dropdown-parent">
     <div class="info-text">
       INFO&nbsp;
       <i class="fa fa-info-circle"></i>
     </div>
-    <%= JST["notes/info"]({ note: note }) %>
   </div>
 </header>
 <header class="note-show-bottom group">
@@ -71,18 +43,7 @@
       </li>
     </ul>
   </div>
-  <div class="note-show-header-right">
-    <% if (note.currentUserLike()) { %>
-      <div class="note-show-button unlike-note">
-        REMOVE LIKE
-        <i class="fa fa-thumbs-o-down"></i>
-      </div>
-    <% } else { %>
-      <div class="note-show-button like-note">
-        LIKE
-        <i class="fa fa-thumbs-o-up"></i>
-      </div>
-    <% } %>
+  <div class="note-show-header-right bottom">
     <div class="note-show-button delete-note">
       DELETE
       <i class="fa fa-trash-o"></i>

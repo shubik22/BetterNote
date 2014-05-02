@@ -1,6 +1,6 @@
 BetterNote::Application.routes.draw do
   root to: "static_pages#root"
-  # resources :users, only: [:create, :new, :show, :index] do
+  resources :users, only: [:create, :new, :show, :index]# do
   #   resources :friend_requests, only: [:create] do
   #     post "accept", to: "friend_requests#accept"
   #     post "deny", to: "friend_requests#deny"

@@ -1,9 +1,7 @@
 BetterNote.Views.NoteShow = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(this.model, "add change remove", this.render);
-    this.listenTo(this.model.notebook, "change", this.render);
-    this.listenTo(this.model.likes, "add remove", this.render);
-    this.listenTo(this.model.tags, "add change remove", this.render);
+    this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model.noteTags, "add remove", this.render);
   },
 
   template: JST['notes/show'],
@@ -13,11 +11,7 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
     "click .options-dropdown, .dropdown-parent": "stopPropagation",
     "click form.update-notebook": "updateNotebook",
     "click .delete-note": "showModal",
-    "click .like-note": "likeNote",
-    "click .unlike-note": "unlikeNote",
-    "blur form.note-title, form.note-body": "updateNote",
-    "click .add-tag>ul>li": "addNoteTag",
-    "click .delete-tag": "deleteNoteTag"
+    "blur form.note-title, form.note-body": "updateNote"
   },
 
   render: function() {
@@ -29,12 +23,31 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
+    var infoView = new BetterNote.Views.NoteInfo({
+      model: this.model,
+      noteTags: this.model.noteTags,
+      likes: this.model.likes
+    })
+
     var commentView = new BetterNote.Views.CommentsIndex({
       collection: this.model.comments,
       note: this.model
     });
 
+    var likeView = new BetterNote.Views.LikeShow({
+      collection: this.model.likes,
+      note: this.model
+    });
+
+    var noteTagView = new BetterNote.Views.NoteTagsIndex({
+      collection: this.model.noteTags,
+      note: this.model
+    });
+
     this.$el.append(commentView.render().$el);
+    this.$el.find(".note-show-header-left.top").append(noteTagView.render().$el);
+    this.$el.find(".note-show-header-right.top").append(infoView.render().$el);
+    this.$el.find(".note-show-header-right.bottom").prepend(likeView.render().$el);
 
     return this;
   },
@@ -60,66 +73,20 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
 
     var that = this;
     var attrs = $(event.currentTarget).serializeJSON();
-    var success = function() {
-      that.hideDropdowns();
-    };
 
     var oldNotebook = that.model.notebook;
-    var newNotebook = BetterNote.notebooks.get(attrs.note.notebook_id);
-    this.model.notebook = newNotebook;
     oldNotebook.notes.remove(this.model);
-    newNotebook.notes.add(this.model);
 
-    this.model.set(attrs);
-    this.model.save({}, {
-      success: success
+    this.model.save(attrs, {
+      wait: true
     })
   },
 
   updateNote: function(event) {
     var attrs = $(event.currentTarget).serializeJSON();
-    this.model.save(attrs);
-  },
-
-  likeNote: function(event) {
-    event.preventDefault();
-
-    var like = new BetterNote.Models.Like({
-      note_id: this.model.get("id")
+    this.model.save(attrs, {
+      wait: true
     });
-
-    this.model.likes.create(like);
-  },
-
-  unlikeNote: function(event) {
-    event.preventDefault();
-    this.model.currentUserLike().destroy();
-  },
-
-  addNoteTag: function(event) {
-    event.preventDefault();
-
-    var tagId = parseInt($(event.currentTarget).attr("data-tag-id"));
-    var tag = BetterNote.tags.get(tagId);
-    var noteTag = this.model.noteTags.create({
-      note_id: this.model.id,
-      tag_id: tagId
-    });
-
-    this.model.tags.add(tag);
-  },
-
-  deleteNoteTag: function(event) {
-    event.preventDefault();
-
-    var tagId = parseInt($(event.currentTarget).attr("data-tag-id"));
-    var tag = this.model.tags.get(tagId);
-    var noteTag = this.model.noteTags.findWhere({
-      tag_id: tagId
-    });
-
-    this.model.tags.remove(tag);
-    noteTag.destroy();
   },
 
   showModal: function(event) {

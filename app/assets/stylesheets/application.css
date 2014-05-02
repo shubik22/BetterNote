@@ -88,3 +88,8 @@ h2 {
   font-size: 30px;
   font-weight: bold;
 }
+
+img.corgi-pic {
+  width: 100%;
+  height: auto;
+}

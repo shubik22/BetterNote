@@ -51,3 +51,5 @@ Backbone
 -- destroy click handlers on view change
 -- fix unnecessary divs from rendering views in backbone
 -- first note goes to bottom of notebook, subsequent ones go to top, are highlighted
+-- break out each note preview as own view in notes index
+-- take out all anchor tags

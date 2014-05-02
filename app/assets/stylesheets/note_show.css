@@ -116,7 +116,7 @@
 }
 
 
-.note-show-header-right > .info-text, .note-show-button {
+.note-show-header-right .info-text, .note-show-button {
   padding-right: 7px;
   color: #7a7d81;
   font-size: 12px;
@@ -138,7 +138,7 @@
   float: left;
 }
 
-.note-show-header-right > .info-text:hover, .note-show-button:hover {
+.note-show-header-right .info-text:hover, .note-show-button:hover {
   color: #525f67
 }
 

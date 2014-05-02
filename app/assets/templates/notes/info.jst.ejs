@@ -1,4 +1,4 @@
-<table class="note-info options-dropdown hidden">
+<table class="">
   <tr>
     <td class="note-info-field">Title:</td>
     <td class="note-info-data"><%= note.get("title") %></td>
@@ -26,9 +26,9 @@
   <tr>
     <td class="note-info-field">Tags:</td>
     <td class="note-info-data">
-      <% if (note.tags.length > 0) { %>
-        <%= note.tags.map(function(tag) {
-          return tag.get("name")
+      <% if (note.noteTags.length > 0) { %>
+        <%= note.noteTags.map(function(noteTag) {
+          return noteTag.get("tag_name")
         }).join(", ") %>
       <% } else { %>
         No tags

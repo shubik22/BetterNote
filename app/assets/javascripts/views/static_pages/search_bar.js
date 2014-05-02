@@ -20,12 +20,14 @@ BetterNote.Views.SearchBar = Backbone.View.extend({
     var note = new BetterNote.Models.Note({
       title: "Untitled",
       notebook_id: BetterNote.featuredNotebook.get("id")
-    }, { parse: true });
-    BetterNote.notes.add(note);
+    });
 
-    BetterNote.featuredNotebook.notes.create(note, {
+    note.save({}, {
       success: function(note) {
-        BetterNote.router.navigate("#/notes/" + note.get("id"))
+        console.log("hi!")
+        BetterNote.notes.add(note);
+        BetterNote.featuredNote = note;
+        BetterNote.router.navigate("#/notes/" + note.get("id"));
       }
     });
   }

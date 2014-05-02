@@ -1,0 +1,25 @@
+<% noteTags.each(function(noteTag) { %>
+  <li>
+    <i class="fa fa-tag"></i>
+    <%= noteTag.get("tag_name") %>
+    <span class="delete-tag"
+      data-tag-id="<%= noteTag.get("tag_id") %>">
+      &times;
+    </span>
+  </li>
+<% }) %>
+<li class="add-tag dropdown-parent">
+  <%= (noteTags.length > 0) ? "+  " : "+ Tag  " %>
+  <ul class="options-dropdown hidden">
+    <% BetterNote.tags.each(function(tag) { %>
+      <% if (!noteTags.findWhere({tag_id: tag.get("id")})) { %>
+        <li data-tag-id="<%= tag.get("id") %>">
+          <button>
+            <i class="fa fa-tag"></i>&nbsp;
+            <%= tag.get("name") %>
+          </button>
+        </li>
+      <% } %>
+    <% }) %>
+  </ul>
+</li>

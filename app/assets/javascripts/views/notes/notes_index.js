@@ -1,10 +1,9 @@
 BetterNote.Views.NotesIndex = Backbone.View.extend({
   initialize: function(options) {
-    $("body").on("click", this.hideDropdowns);
     this.type = options["type"];
     this.selectedNote = options["selectedNote"];
     this.listenTo(this.collection, "add change sort remove", this.render);
-    this.listenTo(BetterNote.featuredNote, "add change", this.render);
+    this.listenTo(BetterNote.featuredNote, "change", this.render);
     if (this.model) {
       this.listenTo(this.model, "change", this.render);
       this.listenTo(this.model, "destroy", this.refreshNotesIndex);

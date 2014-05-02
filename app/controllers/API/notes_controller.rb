@@ -24,12 +24,10 @@ class Api::NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-
     @note.assign_attributes(note_params)
-    @note.tag_ids = note_tag_params[:tag_ids] if params[:note_tags]
 
     if @note.save
-      render json: @note
+      render partial: "notes/show", locals: { note: @note }
     else
       render json: @note.errors.full_messages, status: :unprocessable_entity
     end
@@ -37,7 +35,7 @@ class Api::NotesController < ApplicationController
 
   def show
     @note = Note.includes(:comments, :notebook, :tags).find(params[:id])
-    render json: @note.to_json(include: [:comments, :notebook, :tags])
+    render partial: "notes/show", locals: { note: @note }
   end
 
   def destroy
@@ -61,9 +59,5 @@ class Api::NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :body, :notebook_id)
-  end
-
-  def note_tag_params
-    params.require(:note_tags).permit(tag_ids: [])
   end
 end
