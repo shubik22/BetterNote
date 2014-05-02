@@ -42,7 +42,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
 end
 
 group :test do
@@ -58,6 +57,7 @@ gem 'pg_search'
 gem 'rails_12factor', group: :production
 gem 'font-awesome-rails'
 gem 'backbone-on-rails'
+gem 'faker'
 
 # Use unicorn as the app server
 # gem 'unicorn'
