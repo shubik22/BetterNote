@@ -5,7 +5,9 @@ BetterNote.Views.SearchBar = Backbone.View.extend({
   template: JST['static_pages/search_bar'],
 
   events: {
-    "click button.create-new-note": "createNote"
+    "click button.create-new-note": "createNote",
+    "click .submit": "applySearchFilter",
+    "click .clear-search": "clearSearch"
   },
 
   render: function() {
@@ -21,14 +23,31 @@ BetterNote.Views.SearchBar = Backbone.View.extend({
       title: "Untitled",
       notebook_id: BetterNote.featuredNotebook.get("id")
     });
+    BetterNote.featuredNote = note;
 
+    var that = this;
     note.save({}, {
       success: function(note) {
-        console.log("hi!")
+        that.render();
         BetterNote.notes.add(note);
-        BetterNote.featuredNote = note;
         BetterNote.router.navigate("#/notes/" + note.get("id"));
       }
     });
+  },
+
+  applySearchFilter: function(event) {
+    event.preventDefault();
+
+    var searchText = $(event.currentTarget).closest("form").serializeJSON().query;
+    BetterNote.filter.set({text: searchText});
+  },
+
+  clearSearch: function(event) {
+    event.preventDefault();
+    BetterNote.filter.set({
+      text: "",
+      tags: []
+    })
+    this.render();
   }
 });

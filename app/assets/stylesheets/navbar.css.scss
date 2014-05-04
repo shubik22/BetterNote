@@ -143,6 +143,13 @@ form.search > input[type="submit"]:hover {
   background: #CACACA;
 }
 
+form.search > .clear-search {
+  float: left;
+  padding: 4px 2px 4px 0;
+  cursor: pointer;
+  color: #A0A0A0;
+}
+
 .new-note {
   position: fixed;
   top: 29px;

@@ -21,6 +21,12 @@ BetterNote.Views.NotebookDelete = Backbone.View.extend({
   deleteNotebook: function(event) {
     event.preventDefault();
 
+    if (BetterNote.featuredNotes.id === this.model.get("id")) {
+      console.log("here")
+      BetterNote.featuredNotes = BetterNote.notes;
+      BetterNote.featuredNotes.id = "all";
+    }
+
     var that = this;
     this.model.destroy({
       success: function() {

@@ -96,7 +96,8 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
     var $modalContent = $(".modal-content")
     var view = new BetterNote.Views.NoteDelete({
       model: this.model,
-      $modal: $modal
+      $modal: $modal,
+      noteShowView: this
     });
 
     $modal.removeClass("hidden");

@@ -16,7 +16,12 @@ window.BetterNote = {
 
     this.featuredNote = this.notes.at(0);
     this.featuredNotes = this.notes;
+    this.featuredNotes.id = "all";
     this.featuredNotebook = this.notebooks.at(0);
+    this.filter = new BetterNote.Models.Filter({
+      text: "",
+      tags: []
+    });
 
     this.router = new BetterNote.Routers.Notes($notesListEl, $noteShowEl);
 

@@ -52,4 +52,9 @@ Backbone
 -- fix unnecessary divs from rendering views in backbone
 -- first note goes to bottom of notebook, subsequent ones go to top, are highlighted
 -- break out each note preview as own view in notes index
--- take out all anchor tags
+-- anchor tags vs. event listeners
+-- demo account/good seed data
+-- make sidebar header 175px wide
+-- overflow for top header on note show view
+-- public/private setting for notes
+-- color of "new note" button after click

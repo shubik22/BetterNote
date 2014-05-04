@@ -5,12 +5,13 @@
   </a>
 </div>
 <div class="search-bar">
-  <form action="<%= 'request.fullpath' %>" class="search group">
-    <input type="text" name="query" value="">
-    <% "if params[:note_id]" %>
-      <input type="hidden" name="note_id" value="">
-    <% "end" %>
-    <input type="submit" value="Search">
+  <form class="search group">
+    <input type="text" name="query"
+        value="<%= BetterNote.filter.get("text") %>">
+    <div class="clear-search">
+      <i class="fa fa-times-circle fa-lg"></i>
+    </div>
+    <input type="submit" class="submit" value="Search">
   </form>
 </div>
 <div class="new-note">

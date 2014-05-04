@@ -23,16 +23,13 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
   notesIndex: function() {
     var listView = new BetterNote.Views.NotesIndex({
       type: "all",
-      collection: BetterNote.notes
+      collection: BetterNote.notes,
+      $noteShowEl: this.$noteShowEl
     });
+
     BetterNote.featuredNotebook = BetterNote.notebooks.at(0);
 
-    var showView = new BetterNote.Views.NoteShow({
-      model: BetterNote.notes.at(0)
-    });
-
     this._swapListView(listView);
-    this._swapShowView(showView);
   },
 
   showNotebook: function(id) {
@@ -42,18 +39,9 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
     var listView = new BetterNote.Views.NotesIndex({
       type: "notebook",
       model: notebook,
-      collection: notebook.notes
+      collection: notebook.notes,
+      $noteShowEl: this.$noteShowEl
     });
-
-    if (notebook.notes.length > 0) {
-      var note = notebook.notes.at(0)
-      var showView = new BetterNote.Views.NoteShow({
-        model: note
-      });
-      this._swapShowView(showView);
-    } else {
-      this.$noteShowEl.html("");
-    }
 
     this._swapListView(listView);
   },

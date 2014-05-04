@@ -1,13 +1,14 @@
 BetterNote.Views.NotesIndex = Backbone.View.extend({
   initialize: function(options) {
     this.type = options["type"];
-    this.selectedNote = options["selectedNote"];
+    this.$noteShowEl = options["$noteShowEl"];
+
     this.listenTo(this.collection, "add change sort remove", this.render);
-    this.listenTo(BetterNote.featuredNote, "change", this.render);
+    this.listenTo(BetterNote.filter, "change", this.render);
+
     if (this.model) {
       this.listenTo(this.model, "change", this.render);
       this.listenTo(this.model, "destroy", this.refreshNotesIndex);
-      this.listenTo(this.model.notes, "add change remove", this.render);
     }
   },
 
@@ -21,12 +22,30 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
   template: JST['notes/index'],
 
   render: function() {
+    var filteredCollection = this._filteredCollection();
+
+    if (filteredCollection.length > 0) {
+      var note = filteredCollection[0];
+      BetterNote.featuredNote = note;
+      BetterNote.router.navigate("#/notes/" + note.get("id"), {
+        trigger: true
+      });
+    } else {
+      this.$noteShowEl.html("");
+    }
+
     var renderedContent = this.template({
-      notes: this.collection,
+      notes: filteredCollection,
       model: this.model,
       type: this.type
     });
+
     BetterNote.featuredNotes = this.collection;
+    if (this.type === "all") {
+      BetterNote.featuredNotes.id = "all";
+    } else {
+      BetterNote.featuredNotes.id = this.model.get("id");
+    }
 
     this.$el.html(renderedContent);
     return this;
@@ -73,5 +92,18 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     this.collection.sort();
 
     this.hideDropdowns();
+  },
+
+  _filteredCollection: function() {
+    return this.collection.filter(function(note) {
+      var title = note.get("title") ? note.get("title").toLowerCase() : "";
+      var body = note.get("body") ? note.get("body").toLowerCase() : "";
+      var searchText = BetterNote.filter.get("text");
+
+      var titleMatch = (title.indexOf(searchText) === -1) ? false : true
+      var bodyMatch = (body.indexOf(searchText) === -1) ? false : true
+
+      return titleMatch || bodyMatch;
+    })
   }
 });
