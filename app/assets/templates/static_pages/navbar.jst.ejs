@@ -1,0 +1,23 @@
+<ul class="nav-right">
+  <li>
+    <div class="nav-right-item">
+      <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;
+      <%= BetterNote.currentUser.get("username") %>&nbsp;&nbsp;
+      <i class="fa fa-caret-down"></i>
+      <ul class="options-dropdown hidden">
+        <li class="about">
+          <i class="fa fa-question-circle"></i>
+          About
+        </li>
+        <li>
+          <form action="/session" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button>
+              <i class="fa fa-sign-out"></i>
+              Sign Out
+            </button>
+          </form>
+      </ul>
+    </div>
+  </li>
+</ul>

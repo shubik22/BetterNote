@@ -1,0 +1,14 @@
+<a href="<%= "/#/notes/" + note.get("id") %>">
+  <article class="note-preview
+      <%= (note.get('id') === BetterNote.featuredNote.get('id')) ? " selected" : "" %>">
+    <div class="note-preview-title">
+      <%= note.get("title") %>
+    </div>
+    <div class="note-preview-body">
+      <span class="note-preview-time">
+        <%= moment(note.get("created_at")).fromNow() %>
+      </span>
+      <%= note.get("body") %>
+    </div>
+  </article>
+</a>

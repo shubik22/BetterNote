@@ -22,42 +22,42 @@ header.main {
 
 .nav-right > li:hover {
   background: #60B72A;
+  cursor: pointer;
 }
 
 .nav-right-item {
   padding: 6px;
   display: block;
   border-right: 1px solid grey;
+  position: relative;
 }
 
-.nav-right-item > a {
-  color: white;
-  font-family: "Caecilia LT Std";
+.nav-right-item .options-dropdown {
+  position: absolute;
+  top: 28px;
+  left: 18px;
+  width: 120px;
+  padding: 10px 0 5px 0;
+  color: rgb(122, 125, 129);
 }
 
-.nav-right > li > span.notification-count {
-  padding: 6px;
-  display: block;
-  border-right: 1px solid grey;
+.nav-right-item .options-dropdown > li {
+  padding: 0 10px 5px 10px;
+}
+
+.nav-right-item button {
+  font: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }
 
 .error a {
   color: white;
-}
-
-.nav-right input {
-  padding: 5px;
-}
-
-.notifications-list {
-  display: none;
-  position: absolute;
-  color: black;
-  border: 2px solid grey;
-  left: -2px;
-  max-height: 250px;
-  width: 200px;
-  overflow: auto;
 }
 
 .notifications-list > li {
@@ -112,23 +112,43 @@ header.search {
   padding-top: 7px;
 }
 
+.search-bar-left {
+  float: left;
+  width: 236px;
+  overflow: hidden;
+  height: 21px;
+}
+
+.search-bar-right {
+  float: right;
+  width: 64px;
+}
+
 form.search {
   background: white;
   font-size: 11px;
   border: 1px solid #0992ca;
   border-radius: 4px;
   box-shadow: 0 0 4px #0992ca;
+  width: 300px;
 }
 
-form.search > input[type = "text"] {
+form.search li {
+  min-height: 11px !important;
+  height: 11px;
+  margin: 2px 0 2px 2px;
+  padding: 2px 5px;
+}
+
+form.search input[type = "text"] {
   float: left;
-  width: 280px;
-  padding: 4px 6px;
+  padding: 4px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+  max-width: 230px;
 }
 
-form.search > input[type="submit"] {
+form.search input[type="submit"] {
   font-weight: bold;
   background: #E3E3E3;
   padding: 4px 6px;
@@ -139,11 +159,11 @@ form.search > input[type="submit"] {
   color: #4c4c4c;
 }
 
-form.search > input[type="submit"]:hover {
+form.search input[type="submit"]:hover {
   background: #CACACA;
 }
 
-form.search > .clear-search {
+form.search .clear-search {
   float: left;
   padding: 4px 2px 4px 0;
   cursor: pointer;

@@ -4,14 +4,28 @@
     BETTERNOTE
   </a>
 </div>
-<div class="search-bar">
+<div class="search-bar group">
   <form class="search group">
-    <input type="text" name="query"
-        value="<%= BetterNote.filter.get("text") %>">
-    <div class="clear-search">
-      <i class="fa fa-times-circle fa-lg"></i>
+    <div class="search-bar-left group">
+        <ul class="tags<%= (tag) ? "" : " hidden" %>">
+            <li>
+              <i class="fa fa-tag"></i>
+              <%= (tag) ? tag.get("name") : "" %>
+              <span class="delete-tag"
+                data-tag-id="<%= (tag) ? tag.get("id") : "" %>">
+                &times;
+              </span>
+            </li>
+        </ul>
+        <input type="text" name="query"
+            value="<%= BetterNote.filter.get("text") %>">
     </div>
-    <input type="submit" class="submit" value="Search">
+    <div class="search-bar-right group">
+      <div class="clear-search">
+        <i class="fa fa-times-circle fa-lg"></i>
+      </div>
+      <input type="submit" class="submit" value="Search">
+    </div>
   </form>
 </div>
 <div class="new-note">

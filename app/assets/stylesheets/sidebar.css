@@ -60,7 +60,8 @@ article.sidebar-item li:hover,
   position: relative;
 }
 
-.sidebar-entry-left > a {
+.sidebar-entry-left > a,
+.sidebar-entry-left.tag {
   font-size: 11px;
   line-height: 25px;
   float: left;
@@ -68,6 +69,10 @@ article.sidebar-item li:hover,
   padding-left: 8px;
   width: 175px;
   height: 25px;
+}
+
+.sidebar-entry-left.tag:hover {
+  cursor: pointer;
 }
 
 a > .notebook-name,

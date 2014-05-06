@@ -3,7 +3,7 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     this.type = options["type"];
     this.$noteShowEl = options["$noteShowEl"];
 
-    this.listenTo(this.collection, "add change sort remove", this.render);
+    this.listenTo(this.collection, "sort", this.render);
     this.listenTo(BetterNote.filter, "change", this.render);
 
     if (this.model) {
@@ -23,9 +23,9 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
 
   render: function() {
     var filteredCollection = this._filteredCollection();
+    var note = filteredCollection[0];
 
-    if (filteredCollection.length > 0) {
-      var note = filteredCollection[0];
+    if (filteredCollection.length > 0 && !note.isNew()) {  
       BetterNote.featuredNote = note;
       BetterNote.router.navigate("#/notes/" + note.get("id"), {
         trigger: true
@@ -35,10 +35,19 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     }
 
     var renderedContent = this.template({
-      notes: filteredCollection,
       model: this.model,
       type: this.type
     });
+    this.$el.html(renderedContent);
+    
+    var that = this;
+    _.each(filteredCollection, function(note) {
+      var notePreviewView = new BetterNote.Views.NotePreview({
+        model: note
+      })
+      
+      that.$el.find("ul.notes").append(notePreviewView.render().$el)
+    })
 
     BetterNote.featuredNotes = this.collection;
     if (this.type === "all") {
@@ -47,7 +56,6 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
       BetterNote.featuredNotes.id = this.model.get("id");
     }
 
-    this.$el.html(renderedContent);
     return this;
   },
 
@@ -95,15 +103,33 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
   },
 
   _filteredCollection: function() {
+    var that = this;
     return this.collection.filter(function(note) {
-      var title = note.get("title") ? note.get("title").toLowerCase() : "";
-      var body = note.get("body") ? note.get("body").toLowerCase() : "";
-      var searchText = BetterNote.filter.get("text");
-
-      var titleMatch = (title.indexOf(searchText) === -1) ? false : true
-      var bodyMatch = (body.indexOf(searchText) === -1) ? false : true
-
-      return titleMatch || bodyMatch;
+      return that._filterTextMatch(note) && that._filterTagMatch(note);
     })
+  },
+  
+  _filterTextMatch: function(note) {
+    var title = note.get("title") ? note.get("title").toLowerCase() : "";
+    var body = note.get("body") ? note.get("body").toLowerCase() : "";
+    var searchText = BetterNote.filter.get("text");
+
+    var titleMatch = (title.indexOf(searchText) === -1) ? false : true;
+    var bodyMatch = (body.indexOf(searchText) === -1) ? false : true;
+
+    return titleMatch || bodyMatch;
+  },
+  
+  _filterTagMatch: function(note) {
+    if (BetterNote.filter.get("tag")) {
+      var tagMatchId = BetterNote.filter.get("tag").get("id")  
+      var noteTagIds = note.noteTags.map(function(noteTag) {
+        return noteTag.get("tag_id")
+      })
+        
+      return (noteTagIds.indexOf(tagMatchId) != -1);
+    } else {
+      return true;
+    }
   }
 });

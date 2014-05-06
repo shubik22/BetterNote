@@ -2,8 +2,8 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
   initialize: function(options) {
     $("html").on("click", this.hideDropdowns);
     $("html").on("click", ".close-modal", this.closeModal);
-    this.listenTo(BetterNote.notebooks, "add change remove", this.render);
-    this.listenTo(BetterNote.tags, "add change remove", this.render);
+    this.listenTo(BetterNote.notebooks, "add remove", this.render);
+    this.listenTo(BetterNote.tags, "add remove", this.render);
     this.listenTo(BetterNote.notes, "add remove", this.render);
   },
 
@@ -13,10 +13,11 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
 
   events: {
     "click .sidebar-header-left": "toggleList",
-    "click .sidebar-entry-left": "selectEntry",
+    "click .sidebar-entry-left.notebook": "selectEntry",
+    "click .sidebar-entry-left.tag": "selectTag",
     "click i.dropdown": "showDropdown",
     "click .options-dropdown, i.dropdown": "stopPropagation",
-    "click .show-modal": "showModal",
+    "click .show-modal": "showModal"
   },
 
   render: function() {
@@ -56,6 +57,17 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
 
     var $entry = $(event.currentTarget).closest("li");
     $entry.addClass("selected");
+  },
+  
+  selectTag: function(event) {
+    event.preventDefault();
+
+    var tagId = $(event.currentTarget).attr("data-tag-id")
+    var tag = BetterNote.tags.get(tagId);
+    
+    BetterNote.filter.set({
+      tag: tag
+    });
   },
 
   showDropdown: function(event) {

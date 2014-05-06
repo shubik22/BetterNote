@@ -1,15 +1,11 @@
 BetterNote.Views.NotePreview = Backbone.View.extend({
-  // TO BE IMPLEMENTED
   initialize: function(options) {
     this.listenTo(this.model, "change", this.render);
-    this.listenTo(this.model, "destroy", this.remove);
+    this.listenTo(this.model, "destroy", this.removeNote);
   },
 
   template: JST['notes/preview'],
-
-  events: {
-    "click .note-preview": "selectNote"
-  },
+  tagName: "li",
 
   render: function() {
     var renderedContent = this.template({
@@ -19,12 +15,14 @@ BetterNote.Views.NotePreview = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   },
-
-  selectNote: function(event) {
-    $(event.currentTarget).closest(".notes")
-      .find(".selected").removeClass("selected");
-
-    var $note = $(event.currentTarget).closest(".note-preview");
-    $note.addClass("selected");
+  
+  removeNote: function() {
+    if (this.$el.next().length > 0) {
+      this.$el.next().find("article").addClass("selected");
+    } else if (this.$el.prev().length > 0) {
+      this.$el.prev().find("article").addClass("selected");
+    }
+    
+    this.remove();
   }
 });

@@ -1,4 +1,7 @@
 BetterNote.Views.SearchBar = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(BetterNote.filter, "change", this.render);
+  },
 
   tagName: "header",
   className: "search group",
@@ -7,11 +10,14 @@ BetterNote.Views.SearchBar = Backbone.View.extend({
   events: {
     "click button.create-new-note": "createNote",
     "click .submit": "applySearchFilter",
-    "click .clear-search": "clearSearch"
+    "click .clear-search": "clearSearch",
+    "click .delete-tag": "deleteTag"
   },
 
   render: function() {
-    var renderedContent = this.template();
+    var renderedContent = this.template({
+      tag: BetterNote.filter.get("tag")
+    });
     this.$el.html(renderedContent);
     return this;
   },
@@ -30,6 +36,7 @@ BetterNote.Views.SearchBar = Backbone.View.extend({
       success: function(note) {
         that.render();
         BetterNote.notes.add(note);
+        BetterNote.featuredNotebook.notes.add(note);
         BetterNote.router.navigate("#/notes/" + note.get("id"));
       }
     });
@@ -39,15 +46,24 @@ BetterNote.Views.SearchBar = Backbone.View.extend({
     event.preventDefault();
 
     var searchText = $(event.currentTarget).closest("form").serializeJSON().query;
-    BetterNote.filter.set({text: searchText});
+    BetterNote.filter.set({
+      text: searchText
+    });
   },
 
   clearSearch: function(event) {
     event.preventDefault();
     BetterNote.filter.set({
       text: "",
-      tags: []
+      tag: null
+    });
+  },
+  
+  deleteTag: function(event) {
+    event.preventDefault();
+    
+    BetterNote.filter.set({
+      tag: null
     })
-    this.render();
   }
 });

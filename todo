@@ -38,23 +38,14 @@ Fix later/questions
 
 Backbone
 -- notebook parse: how to set notebook of each note model as "this"--also same question for tags
--- what do you render after destroy a model
 -- overall organization of routers
 -- in better_note.js, is toJSON necessary when merging collections?
--- parse vs. initialize
--- add nested comment author (json plugin?)
 -- DRY: common list view for all notes/notebooks/tags/friends
--- most efficient way to add notes to tags (possible to avoid if/else statement in better_note.js?)
--- low-priority: see if isNew is necessary in comments comparator
--- resizing note body box (how do you set height?)
 -- why does blur stop click event?
 -- destroy click handlers on view change
 -- fix unnecessary divs from rendering views in backbone
--- first note goes to bottom of notebook, subsequent ones go to top, are highlighted
--- break out each note preview as own view in notes index
 -- anchor tags vs. event listeners
 -- demo account/good seed data
--- make sidebar header 175px wide
 -- overflow for top header on note show view
 -- public/private setting for notes
 -- color of "new note" button after click

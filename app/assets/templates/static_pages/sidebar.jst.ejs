@@ -20,7 +20,7 @@
 
   <ul class="sidebar-list">
     <li class="group<%= (BetterNote.featuredNotes.id === 'all') ? " selected" : "" %>">
-      <div class="sidebar-entry-left">
+      <div class="sidebar-entry-left notebook">
         <a href="/#/notes" class="group">
             <i class='fa fa-book fa-lg'></i>&nbsp;
             All Notes (<%= notes.length %>)
@@ -53,14 +53,12 @@
   <ul class="sidebar-list">
     <% tags.each(function(tag) { %>
       <li class="group dropdown-parent">
-        <div class="sidebar-entry-left">
-          <a href="<%= "/#/tags/" + tag.get("id")%>">
+        <div class="sidebar-entry-left tag" data-tag-id="<%= tag.get("id") %>">
             <div class="tag-name">
               <i class='fa fa-tag fa-lg'></i>&nbsp;
               <%= tag.get("name") %>
             </div>
-          </a>
-          <ul class="options-dropdown hidden">
+            <ul class="options-dropdown hidden">
             <li>
               <div class="show-modal"
                   data-action="edit-tag"
@@ -83,13 +81,11 @@
       </li>
     <% }) %>
     <li class="group dropdown-parent">
-      <div class="sidebar-entry-left show-modal" data-action="corgi">
-        <a href="<%= "/#/notes" %>">
+      <div class="sidebar-entry-left tag show-modal" data-action="corgi">
           <div class="tag-name">
             <i class='fa fa-tag fa-lg'></i>&nbsp;
             Corgi?
           </div>
-        </a>
       </div>
     </li>
   </ul>
