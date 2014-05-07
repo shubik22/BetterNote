@@ -67,9 +67,11 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
     var tagId = $(event.currentTarget).attr("data-tag-id")
     var tag = BetterNote.tags.get(tagId);
     
-    BetterNote.filter.set({
-      tag: tag
-    });
+    if (BetterNote.featuredNotes.id != "friend") {
+      BetterNote.filter.set({
+        tag: tag
+      });
+    }
   },
 
   showDropdown: function(event) {

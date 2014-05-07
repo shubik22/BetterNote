@@ -8,6 +8,7 @@ header.main {
   right: 0;
   z-index: 100;
   font-size: 14px;
+  position: relative;
 }
 
 .nav-right {
@@ -16,7 +17,6 @@ header.main {
 }
 
 .nav-right > li {
-  position: relative;
   float: left;
 }
 
@@ -35,7 +35,7 @@ header.main {
 .nav-right-item .options-dropdown {
   position: absolute;
   top: 28px;
-  left: 18px;
+  left: -30px;
   width: 120px;
   padding: 10px 0 5px 0;
   color: rgb(122, 125, 129);

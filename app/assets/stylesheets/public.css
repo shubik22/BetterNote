@@ -111,6 +111,7 @@ h3 {
 form {
   width: 340px;
   margin: auto;
+  margin-bottom: 30px;
   background: white;
   padding: 20px;
   border: 1px solid #bdbdbd;
@@ -129,6 +130,13 @@ h2 {
 
 .input {
   margin: 15px 0;
+}
+
+.errors {
+  text-align: center;
+  color: #ED0B0E;
+  margin-top: 8px;
+  border-radius: 3px;
 }
 
 .input > label {
@@ -181,8 +189,10 @@ h2 {
   box-shadow: 0 1.5px 0 0 #070;
   border-radius: 3px;
   color: white;
-  display: inline;
   cursor: pointer;
+  margin: auto;
+  width: 300px;
+  text-align: center;
 }
 
 .demo-user > a {

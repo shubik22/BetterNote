@@ -8,6 +8,12 @@
     </div>
   </div>
 
+  <% if flash[:errors] %>
+    <div class="errors">
+      <%= flash[:errors].join("<br>").html_safe %>
+    </div>
+  <% end %>
+
   <div class="input">
     <label for="user-email">Email</label>
     <input type="text" id="user-email" name="user[email]"
@@ -22,8 +28,5 @@
 
   <div class="submit sign-in">
     <input type="submit" value="Sign In">
-  </div>
-  <div class="demo-user">
-    <a href="/session/new/?demo=true">Demo User</a>
   </div>
 </form>

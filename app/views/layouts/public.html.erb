@@ -4,7 +4,7 @@
   <title>BetterNote</title>
   <%= stylesheet_link_tag    "public" %>
   <%= javascript_include_tag "application" %>
-  <link rel="shortcut icon" href="/assets/note_icon_green.png">
+  <link rel="shortcut icon" href="/assets/green_icon.png">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,17 +20,17 @@
   </div>
 </header>
 
-<div class="errors">
-  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
-</div>
-
 <h1>Welcome to BetterNote</h1>
 <h3>Like Evernote.  But Better*.</h3>
+
 
 <div class=content>
   <%= yield %>
 </div>
 
+<div class="demo-user">
+  <a href="/session/new/?demo=true">Use Demo User (Employers Click Here)</a>
+</div>
 
 <footer>
   <div class="disclaimer">
