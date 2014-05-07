@@ -22,4 +22,4 @@ Backbone
 -- fix unnecessary divs from rendering views in backbone
 -- demo account/good seed data
 -- overflow for top header on note show view
--- public/private setting for notes
+-- no tag filter option for friends
