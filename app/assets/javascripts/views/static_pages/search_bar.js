@@ -15,8 +15,14 @@ BetterNote.Views.SearchBar = Backbone.View.extend({
   },
 
   render: function() {
+    if (BetterNote.filter.get("tag") && BetterNote.featuredNotes.id != "friend") {
+      var tag = BetterNote.filter.get("tag")
+    } else {
+      var tag = false;
+    }
+    
     var renderedContent = this.template({
-      tag: BetterNote.filter.get("tag")
+      tag: tag
     });
     this.$el.html(renderedContent);
     return this;

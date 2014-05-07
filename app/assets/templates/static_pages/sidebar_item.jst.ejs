@@ -1,8 +1,8 @@
 <div class="sidebar-entry-left notebook group">
-  <a href="<%= "/#/notebooks/" + notebook.get("id") %>">
+  <a href="<%= "/#/notebooks/" + notebook.escape("id") %>">
     <div class="notebook-name">
       <i class='fa fa-book fa-lg'></i>&nbsp;
-      <%= notebook.get("name") %>&nbsp;
+      <%= notebook.escape("name") %>&nbsp;
     </div>
     <span class="notebook-notes-count">
       (<%= notebook.notes.length %>)
@@ -12,14 +12,14 @@
     <li>
       <div class="show-modal"
           data-action="edit-notebook"
-          data-item-id="<%= notebook.get("id") %>">
+          data-item-id="<%= notebook.escape("id") %>">
         Rename...
       </div>
     </li>
     <li>
       <div class="show-modal"
           data-action="delete-notebook"
-          data-item-id="<%= notebook.get("id") %>">
+          data-item-id="<%= notebook.escape("id") %>">
         Delete Notebook
       </div>
     </li>

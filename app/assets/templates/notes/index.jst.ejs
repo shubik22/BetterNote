@@ -5,11 +5,9 @@
   <% } else if (type === "notebook") { %>
     <i class="fa fa-book"></i>
     <%= model.get("name") %>
-  <% } else if (type === "tag") { %>
-    <i class="fa fa-tag"></i>
-    <%= model.get("name") %>
   <% } else if (type === "friend") { %>
-    Friend info here
+    <i class="fa fa-user"></i>
+    <%= model.get("username") %>
   <% } %>
 </div>
 <ul class="notes">

@@ -12,6 +12,8 @@
         <li>
           <form action="/session" method="post">
             <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token"
+              value="<%= $("head").find("meta[name='csrf-token']").attr("content") %>">
             <button>
               <i class="fa fa-sign-out"></i>
               Sign Out

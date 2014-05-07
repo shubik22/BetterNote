@@ -158,14 +158,35 @@ h2 {
   color: white;
 }
 
-.submit > input:hover {
+.submit > input:hover,
+.demo-user:hover {
   background: #56A225;
 }
 
-.submit > input:active {
+.submit > input:active,
+.demo-user:active {
   top: 3px;
   box-shadow: none;
   background: #488920;
+}
+
+.submit.sign-in {
+  display: inline;
+  margin-right: 8px;
+}
+
+.demo-user {
+  background: #69ad31;
+  padding: 8px 16px;
+  box-shadow: 0 1.5px 0 0 #070;
+  border-radius: 3px;
+  color: white;
+  display: inline;
+  cursor: pointer;
+}
+
+.demo-user > a {
+  color: white;
 }
 
 footer {

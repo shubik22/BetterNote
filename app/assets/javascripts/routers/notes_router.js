@@ -6,16 +6,22 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
 
   routes: {
     '': "notesIndex",
+    'notes/:id': 'showNote',
     'notes': "notesIndex",
     'notebooks/:id': 'showNotebook',
-    'tags/:id': 'showTag',
-    'notes/:id': 'showNote'
+    'users/:id': 'showFriend'
   },
 
   showNote: function(id) {
-    var view = new BetterNote.Views.NoteShow({
-      model: BetterNote.notes.get(id)
-    });
+    if (BetterNote.notes.get(id)) {
+      var view = new BetterNote.Views.NoteShow({
+        model: BetterNote.notes.get(id)
+      });
+    } else {
+      var view = new BetterNote.Views.FriendNoteShow({
+        model: BetterNote.friendNotes.findWhere({ id: parseInt(id) })
+      })
+    }
 
     this._swapShowView(view);
   },
@@ -46,25 +52,16 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
     this._swapListView(listView);
   },
 
-  showTag: function(id) {
-    var tag = BetterNote.tags.get(id);
-
+  showFriend: function(id) {
+    var friend = BetterNote.friends.get(id);
+    
     var listView = new BetterNote.Views.NotesIndex({
-      type: "tag",
-      model: tag,
-      collection: tag.notes
+      type: "friend",
+      model: friend,
+      collection: friend.notes,
+      $noteShowEl: this.$noteShowEl
     })
-
-    if (tag.notes.length > 0) {
-      var note = tag.notes.at(0)
-      var showView = new BetterNote.Views.NoteShow({
-        model: note
-      });
-      this._swapShowView(showView);
-    } else {
-      this.$noteShowEl.html("");
-    }
-
+    
     this._swapListView(listView);
   },
 

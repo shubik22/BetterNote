@@ -17,7 +17,12 @@ class SessionsController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if params[:demo] == "true"
+      @user = User.all.first
+      @user.password = "password"
+    else
+      @user = User.new
+    end
     render :new
   end
 

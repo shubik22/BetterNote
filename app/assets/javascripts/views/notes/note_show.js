@@ -24,9 +24,7 @@ BetterNote.Views.NoteShow = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     var infoView = new BetterNote.Views.NoteInfo({
-      model: this.model,
-      noteTags: this.model.noteTags,
-      likes: this.model.likes
+      model: this.model
     })
 
     var commentView = new BetterNote.Views.CommentsIndex({

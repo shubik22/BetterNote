@@ -1,14 +1,14 @@
-<a href="<%= "/#/notes/" + note.get("id") %>">
+<a href="<%= "/#/notes/" + note.escape("id") %>">
   <article class="note-preview
-      <%= (note.get('id') === BetterNote.featuredNote.get('id')) ? " selected" : "" %>">
+      <%= (note.escape('id') === BetterNote.featuredNote.escape('id')) ? " selected" : "" %>">
     <div class="note-preview-title">
-      <%= note.get("title") %>
+      <%= note.escape("title") %>
     </div>
     <div class="note-preview-body">
       <span class="note-preview-time">
-        <%= moment(note.get("created_at")).fromNow() %>
+        <%= moment(note.escape("created_at")).fromNow() %>
       </span>
-      <%= note.get("body") %>
+      <%= note.escape("body") %>
     </div>
   </article>
 </a>

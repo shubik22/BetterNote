@@ -7,18 +7,26 @@
 <div class="search-bar group">
   <form class="search group">
     <div class="search-bar-left group">
-        <ul class="tags<%= (tag) ? "" : " hidden" %>">
-            <li>
-              <i class="fa fa-tag"></i>
-              <%= (tag) ? tag.get("name") : "" %>
-              <span class="delete-tag"
-                data-tag-id="<%= (tag) ? tag.get("id") : "" %>">
-                &times;
-              </span>
-            </li>
-        </ul>
-        <input type="text" name="query"
-            value="<%= BetterNote.filter.get("text") %>">
+      <table>
+        <tr>
+          <td class="tags">
+            <ul class="tags<%= (tag) ? "" : " hidden" %>">
+              <li>
+                <i class="fa fa-tag"></i>
+                <%= (tag) ? tag.get("name") : "" %>
+                <span class="delete-tag"
+                  data-tag-id="<%= (tag) ? tag.get("id") : "" %>">
+                  &times;
+                </span>
+              </li>
+            </ul>
+          </td>
+          <td class="input">
+            <input type="text" name="query"
+                value="<%= BetterNote.filter.get("text") %>">
+          </td>
+        </tr>
+      </table>
     </div>
     <div class="search-bar-right group">
       <div class="clear-search">

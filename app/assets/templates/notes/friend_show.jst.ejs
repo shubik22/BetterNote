@@ -1,0 +1,46 @@
+<header class="note-show-top group">
+  <div class="note-show-header-left top">
+    <div class="notebook-name group">
+      <div class="notebook-name-text friend-note">
+        <i class="fa fa-book"></i>
+        <%= note.get("notebook") %>
+      </div>
+    </div>
+    <ul class="tags">
+      <% note.noteTags.each(function(noteTag) { %>
+        <li>
+          <i class="fa fa-tag"></i>
+          <%= noteTag.get("tag_name") %>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+  <div class="note-show-header-right top dropdown-parent">
+    <div class="info-text">
+      INFO&nbsp;
+      <i class="fa fa-info-circle"></i>
+    </div>
+  </div>
+</header>
+<header class="note-show-bottom group">
+  <div class="note-show-header-left">
+    <ul class="dates">
+      <li>
+        Created: <%= moment(note.get("created_at")).format('MMM D, YYYY') %>
+      </li>
+      <li>
+        Modified: <%= moment(note.get("updated_at")).format('MMM D, YYYY') %>
+      </li>
+    </ul>
+  </div>
+  <div class="note-show-header-right bottom">
+  </div>
+</header>
+<div class="note-content">
+  <div class="friend-note-title">
+    <%= note.get('title') %>
+  </div>
+  <div class="friend-note-body">
+    <%= note.get("body") %>
+  </div>
+</div>

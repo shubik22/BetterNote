@@ -33,11 +33,12 @@ BetterNote.Views.NavBar = Backbone.View.extend({
   showModal: function(event) {
     event.preventDefault();
 
+    var view = new BetterNote.Views.About();
     var $modal = $("#modal");
     var $modalContent = $(".modal-content")
 
     $modal.removeClass("hidden");
-    // $modalContent.html(view.render().$el);
+    $modalContent.html(view.render().$el);
   },
 
   closeModal: function(event) {

@@ -1,34 +1,34 @@
 <table class="">
   <tr>
     <td class="note-info-field">Title:</td>
-    <td class="note-info-data"><%= note.get("title") %></td>
+    <td class="note-info-data"><%= note.escape("title") %></td>
   </tr>
   <tr>
     <td class="note-info-field">Author:</td>
-    <td class="note-info-data"><%= note.author.get("username") %></td>
+    <td class="note-info-data"><%= note.author.escape("username") %></td>
   </tr>
   <tr>
     <td class="note-info-field">Created:</td>
     <td class="note-info-data">
-      <%= moment(note.get("created_at")).format('MMM D, YYYY') %>
+      <%= moment(note.escape("created_at")).format('MMM D, YYYY') %>
     </td>
   </tr>
   <tr>
     <td class="note-info-field">Updated:</td>
     <td class="note-info-data">
-      <%= moment(note.get("updated_at")).format('MMM D, YYYY') %>
+      <%= moment(note.escape("updated_at")).format('MMM D, YYYY') %>
     </td>
   </tr>
   <tr>
     <td class="note-info-field">Notebook:</td>
-    <td class="note-info-data"><%= note.notebook.get("name") %></td>
+    <td class="note-info-data"><%= (note.friendNote) ? note.escape("notebook") : note.notebook.escape("name") %></td>
   </tr>
   <tr>
     <td class="note-info-field">Tags:</td>
     <td class="note-info-data">
       <% if (note.noteTags.length > 0) { %>
         <%= note.noteTags.map(function(noteTag) {
-          return noteTag.get("tag_name")
+          return noteTag.escape("tag_name")
         }).join(", ") %>
       <% } else { %>
         No tags

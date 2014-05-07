@@ -13,10 +13,12 @@ window.BetterNote = {
     this.notebooks = new BetterNote.Collections.Notebooks(data.notebooks);
     this.tags = new BetterNote.Collections.Tags(data.tags);
     this.notes = new BetterNote.Collections.Notes(data.notes, { parse: true });
+    this.friendNotes = new BetterNote.Collections.Notes();
+    this.friends = new BetterNote.Collections.Users(data.friends, { parse: true });
     this.notebooks.each(function(notebook) {
       notebook.notes.sort();
     });
-
+    
     this.featuredNote = this.notes.at(0);
     this.featuredNotes = this.notes;
     this.featuredNotes.id = "all";
@@ -25,7 +27,7 @@ window.BetterNote = {
       text: "",
       tag: null
     });
-    
+
     this.router = new BetterNote.Routers.Notes($notesListEl, $noteShowEl);
 
     var sideBarView = new BetterNote.Views.Sidebar();

@@ -1,51 +1,25 @@
 TODOs
 
 -- add friend request drop-down
--- add second nav-bar
-    -- move "add note button"
 -- review CSS, standardize common elements
--- redo CSS to match Evernote
-    -- install correct font
-    -- steal icons
--- add clear/remove notification options
--- sort options for list of notes
--- add formatting options to text box
--- second view option
 -- all users view
--- compare code against Jonathan's demo
 -- DRY up views
--- add figaro
--- add AWS
 -- default "welcome to BetterNote" note in default notebook upon creation
 -- default notebook option
 -- on sign in/up pages, put errors in correct place
 
 Fix later/questions
--- sidebar: what to do if item name is too long for the line
--- delete button in dropdown: how to make it clickable across the whole line, not just on the text
--- on comment create, controller redirects :back, which includes new comment form (needs to be removed--shouldn't be a problem w/ javascript)
--- scroll bar for note page goes all the way up to top (next to nav bars): shouldn't go up all the way
--- see why images aren't uploading to heroku (irrelevant once AWS is set up)
--- refactor search query in notebooks/tags/users controllers
--- ask about gsub in notes controller, line 35
--- ask about use of "delete_at" in users controller#index
 -- fix edit note path (add back redirect to controllers where !params[:note_id]?)
 -- check bottom border on header on sign in page
--- check alignment of dropdown icons in sidebar
--- add "cancel" button to popup
--- width of notebook dropdown in show column
 
 
 Backbone
 -- notebook parse: how to set notebook of each note model as "this"--also same question for tags
--- overall organization of routers
 -- in better_note.js, is toJSON necessary when merging collections?
 -- DRY: common list view for all notes/notebooks/tags/friends
 -- why does blur stop click event?
 -- destroy click handlers on view change
 -- fix unnecessary divs from rendering views in backbone
--- anchor tags vs. event listeners
 -- demo account/good seed data
 -- overflow for top header on note show view
 -- public/private setting for notes
--- color of "new note" button after click

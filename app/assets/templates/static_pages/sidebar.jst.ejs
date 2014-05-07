@@ -53,23 +53,23 @@
   <ul class="sidebar-list">
     <% tags.each(function(tag) { %>
       <li class="group dropdown-parent">
-        <div class="sidebar-entry-left tag" data-tag-id="<%= tag.get("id") %>">
+        <div class="sidebar-entry-left tag" data-tag-id="<%= tag.escape("id") %>">
             <div class="tag-name">
               <i class='fa fa-tag fa-lg'></i>&nbsp;
-              <%= tag.get("name") %>
+              <%= tag.escape("name") %>
             </div>
             <ul class="options-dropdown hidden">
             <li>
               <div class="show-modal"
                   data-action="edit-tag"
-                  data-item-id="<%= tag.get("id") %>">
+                  data-item-id="<%= tag.escape("id") %>">
                 Edit Tag
               </div>
             </li>
             <li>
               <div class="show-modal"
                   data-action="delete-tag"
-                  data-item-id="<%= tag.get("id") %>">
+                  data-item-id="<%= tag.escape("id") %>">
                 Delete Tag
               </div>
             </li>
@@ -88,5 +88,44 @@
           </div>
       </div>
     </li>
+  </ul>
+</article>
+
+<article class="sidebar-item">
+  <div class="sidebar-header group">
+    <div class="sidebar-header-left">
+      <i class="fa fa-caret-down"></i>&nbsp;
+      Friends
+    </div>
+    <div class="sidebar-header-right">
+      <i class="fa fa-toggle-down dropdown"></i>
+    </div>
+  </div>
+
+  <ul class="sidebar-list">
+    <% friends.each(function(friend) { %>
+      <li class="group dropdown-parent">
+        <div class="sidebar-entry-left friend group">
+          <a href="<%= "/#/users/" + friend.escape("id") %>">
+            <div class="friend-name">
+              <i class='fa fa-user fa-lg'></i>&nbsp;
+              <%= friend.escape("username") %>&nbsp;
+            </div>
+          </a>
+          <ul class="options-dropdown hidden">
+            <li>
+              <div class="show-modal"
+                  data-action="unfriend"
+                  data-item-id="<%= friend.escape("id") %>">
+                Unfriend
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-entry-right">
+          <i class='fa fa-toggle-down dropdown'></i>
+        </div>
+      </li>
+    <% }) %>
   </ul>
 </article>

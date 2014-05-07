@@ -5,6 +5,7 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
     this.listenTo(BetterNote.notebooks, "add remove", this.render);
     this.listenTo(BetterNote.tags, "add remove", this.render);
     this.listenTo(BetterNote.notes, "add remove", this.render);
+    this.listenTo(BetterNote.friends, "add remove", this.render);
   },
 
   tagName: "section",
@@ -13,7 +14,7 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
 
   events: {
     "click .sidebar-header-left": "toggleList",
-    "click .sidebar-entry-left.notebook": "selectEntry",
+    "click .sidebar-entry-left.notebook, .sidebar-entry-left.friend": "selectEntry",
     "click .sidebar-entry-left.tag": "selectTag",
     "click i.dropdown": "showDropdown",
     "click .options-dropdown, i.dropdown": "stopPropagation",
@@ -23,7 +24,8 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
   render: function() {
     var renderedContent = this.template({
       notes: BetterNote.notes,
-      tags: BetterNote.tags
+      tags: BetterNote.tags,
+      friends: BetterNote.friends
     });
 
     this.$el.html(renderedContent);
@@ -146,6 +148,12 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
       case "delete-tag":
         var view = new BetterNote.Views.TagDelete({
           model: BetterNote.tags.get(itemId),
+          $modal: $("#modal")
+        });
+        break;
+      case "unfriend":
+        var view = new BetterNote.Views.Unfriend({
+          model: BetterNote.friends.get(itemId),
           $modal: $("#modal")
         });
         break;

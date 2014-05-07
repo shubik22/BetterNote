@@ -10,15 +10,20 @@
 
   <div class="input">
     <label for="user-email">Email</label>
-    <input type="text" id="user-email" name="user[email]">
+    <input type="text" id="user-email" name="user[email]"
+      value="<%= @user.email %>">
   </div>
 
   <div class="input">
     <label for="user-password">Password</label>
-    <input type="password" id="user-password" name="user[password]">
+    <input type="password" id="user-password" name="user[password]"
+      value="<%= @user.password %>">
   </div>
 
-  <div class="submit">
+  <div class="submit sign-in">
     <input type="submit" value="Sign In">
+  </div>
+  <div class="demo-user">
+    <a href="/session/new/?demo=true">Demo User</a>
   </div>
 </form>

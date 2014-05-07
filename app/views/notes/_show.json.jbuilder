@@ -1,4 +1,5 @@
 json.(note, :id, :title, :body, :notebook_id, :created_at, :updated_at)
+json.notebook note.notebook.name
 json.author do
   json.id note.author.id
   json.username note.author.username

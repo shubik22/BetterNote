@@ -25,7 +25,7 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     var filteredCollection = this._filteredCollection();
     var note = filteredCollection[0];
 
-    if (filteredCollection.length > 0 && !note.isNew()) {  
+    if (filteredCollection.length > 0 && !note.isNew()) {
       BetterNote.featuredNote = note;
       BetterNote.router.navigate("#/notes/" + note.get("id"), {
         trigger: true
@@ -52,6 +52,8 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     BetterNote.featuredNotes = this.collection;
     if (this.type === "all") {
       BetterNote.featuredNotes.id = "all";
+    } else if (this.type === "friend" ) {
+      BetterNote.featuredNotes.id = "friend";
     } else {
       BetterNote.featuredNotes.id = this.model.get("id");
     }
@@ -121,6 +123,8 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
   },
   
   _filterTagMatch: function(note) {
+    if (this.type === "friend") return true;
+    
     if (BetterNote.filter.get("tag")) {
       var tagMatchId = BetterNote.filter.get("tag").get("id")  
       var noteTagIds = note.noteTags.map(function(noteTag) {

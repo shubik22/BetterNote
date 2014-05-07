@@ -61,7 +61,8 @@ article.sidebar-item li:hover,
 }
 
 .sidebar-entry-left > a,
-.sidebar-entry-left.tag {
+.sidebar-entry-left.tag,
+.sidebar-entry-left.friend {
   font-size: 11px;
   line-height: 25px;
   float: left;
@@ -71,7 +72,8 @@ article.sidebar-item li:hover,
   height: 25px;
 }
 
-.sidebar-entry-left.tag:hover {
+.sidebar-entry-left.tag:hover,
+.sidebar-entry-left.friend:hover {
   cursor: pointer;
 }
 
@@ -112,7 +114,7 @@ a > .notes-count {
 ul.options-dropdown {
   position: absolute;
   top: 20px;
-  left: 82px;
+  left: 80px;
   z-index: 100;
   background: #f4f6f7;
   padding: 7px 0;

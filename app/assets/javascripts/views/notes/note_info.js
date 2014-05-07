@@ -1,9 +1,10 @@
 BetterNote.Views.NoteInfo = Backbone.View.extend({
   initialize: function(options) {
-    this.noteTags = options["noteTags"];
-    this.likes = options["likes"];
-    this.listenTo(this.noteTags, "add remove", this.render);
-    this.listenTo(this.likes, "add remove", this.render);
+    this.listenTo(this.model.likes, "add remove", this.render);
+    
+    if (!this.model.friendNote) {
+      this.listenTo(this.model.noteTags, "add remove", this.render);
+    }
   },
 
   template: JST['notes/info'],

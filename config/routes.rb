@@ -25,5 +25,6 @@ BetterNote::Application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
     resources :note_tags, only: [:create, :destroy]
+    resources :friendships, only: [:destroy]
   end
 end

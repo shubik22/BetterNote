@@ -3,20 +3,20 @@
     <div class="notebook-name dropdown-parent group">
       <div class="notebook-name-text">
         <i class="fa fa-book"></i>
-        <%= note.notebook.get("name") %>
+        <%= note.notebook.escape("name") %>
         &nbsp;<i class="fa fa-angle-down"></i>
       </div>
       <ul class="options-dropdown hidden">
         <% notebooks.each(function(notebook) { %>
-          <li data-notebook-id="<%= notebook.get("id") %>"
+          <li data-notebook-id="<%= notebook.escape("id") %>"
             <%= (notebook === note.notebook) ? "class='selected'" : "" %>>
             <form class="update-notebook">
               <input type="hidden" name="note[notebook_id]"
-                value="<%= notebook.get("id") %>">
+                value="<%= notebook.escape("id") %>">
               <div class="submit">
                 <button>
                   <i class="fa fa-book"></i>&nbsp;
-                  <%= notebook.get("name") %>
+                  <%= notebook.escape("name") %>
                 </button>
               </div>
             </form>
@@ -36,10 +36,10 @@
   <div class="note-show-header-left">
     <ul class="dates">
       <li>
-        Created: <%= moment(note.get("created_at")).format('MMM D, YYYY') %>
+        Created: <%= moment(note.escape("created_at")).format('MMM D, YYYY') %>
       </li>
       <li>
-        Modified: <%= moment(note.get("updated_at")).format('MMM D, YYYY') %>
+        Modified: <%= moment(note.escape("updated_at")).format('MMM D, YYYY') %>
       </li>
     </ul>
   </div>
@@ -53,9 +53,9 @@
 <div class="note-content">
   <form class="note-title">
     <input type="text" name="note[title]"
-      id="note-title" value="<%= note.get('title') %>">
+      id="note-title" value="<%= note.escape('title') %>">
   </form>
   <form class="note-body">
-    <textarea name="note[body]" id="note-body"><%= note.get("body") %></textarea>
+    <textarea name="note[body]" id="note-body"><%= note.escape("body") %></textarea>
   </form>
 </div>

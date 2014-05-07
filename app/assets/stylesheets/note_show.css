@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.notebook-name > .friend-note {
+  cursor: auto;
+}
+
 .notebook-name > .options-dropdown,
 .add-tag > .options-dropdown {
   max-height: 300px;
@@ -115,7 +119,6 @@
   font-size: 11px;
 }
 
-
 .note-show-header-right .info-text, .note-show-button {
   padding-right: 7px;
   color: #7a7d81;
@@ -177,7 +180,8 @@
   overflow: auto;
 }
 
-form.note-title > input#note-title {
+form.note-title > input#note-title,
+.friend-note-title {
   padding-bottom: 4px;
   border-bottom: 1px solid #A7A7A7;
   font-family: "Caecilia LT Std";
@@ -186,15 +190,17 @@ form.note-title > input#note-title {
   width: 100%;
 }
 
-form.note-title {
+form.note-title,
+.friend-note-title {
   margin-bottom: 8px;
 }
 
-form.note-body > textarea {
+form.note-body > textarea,
+.friend-note.body {
   padding: 0 4px;
 }
 
-textarea {
+textarea, .friend-note-body {
   -webkit-appearance: none;
   box-sizing: border-box;
   display: block;
@@ -211,7 +217,8 @@ textarea {
   resize: none;
 }
 
-textarea#note-body {
+textarea#note-body,
+.friend-note-body {
   font-size: 14px;
   line-height: 19px;
   min-height: 304px;

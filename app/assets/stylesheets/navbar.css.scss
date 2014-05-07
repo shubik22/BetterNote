@@ -124,13 +124,28 @@ header.search {
   width: 64px;
 }
 
+.search-bar-left > table {
+  border-spacing: 0;
+  width: 228px;
+}
+
+.search-bar-left td.tags {
+  padding: 0;
+  width: auto;
+  display: inline-block;
+}
+
+.search-bar-left td.input {
+  padding: 0;
+  width: 100%;
+}
+
 form.search {
   background: white;
   font-size: 11px;
   border: 1px solid #0992ca;
   border-radius: 4px;
   box-shadow: 0 0 4px #0992ca;
-  width: 300px;
 }
 
 form.search li {
@@ -138,14 +153,21 @@ form.search li {
   height: 11px;
   margin: 2px 0 2px 2px;
   padding: 2px 5px;
+  white-space: nowrap;
+}
+
+form.search ul {
+  float: left;
 }
 
 form.search input[type = "text"] {
   float: left;
+  display: block;
   padding: 4px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  max-width: 230px;
+  width: 100%;
+  overflow: visible;
 }
 
 form.search input[type="submit"] {
