@@ -14,7 +14,7 @@
     "notebooks": <%= current_user.notebooks.to_json.html_safe %>,
     "tags": <%= current_user.tags.to_json.html_safe %>,
    "user": <%= render(partial: "users/show.json", locals: { user: current_user }).html_safe %>,
-   "friends": <%= render(partial: "users/friends.json", locals: { friends: current_user.friends }).html_safe %>
+   "friends": <%= render(partial: "users/friends.json", locals: { friends: current_user.friends.includes(:tags, :notebooks, notes: [:comments, :likes, :note_tags]) }).html_safe %>
   }
 </script>
 

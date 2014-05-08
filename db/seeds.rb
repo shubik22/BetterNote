@@ -6,6 +6,237 @@ User.create({
 
 demo = User.all.first
 
+User.create({
+  username: "Elizabeth",
+  email: "friend1@betternote.us",
+  password: "password"
+})
+
+friend1 = User.all.last
+
+friend1.notebooks.create({
+  name: "Harry Potter fanfiction"
+})
+
+hp_notebook = friend1.notebooks.last
+
+Friendship.create({
+  in_friend_id: friend1.id,
+  out_friend_id: demo.id
+})
+
+Friendship.create({
+  in_friend_id: demo.id,
+  out_friend_id: friend1.id
+})
+
+User.create({
+  username: "Tom",
+  email: "friend3@betternote.us",
+  password: "password"
+})
+
+friend3 = User.all.last
+
+Friendship.create({
+  in_friend_id: friend3.id,
+  out_friend_id: demo.id
+})
+
+Friendship.create({
+  in_friend_id: demo.id,
+  out_friend_id: friend3.id
+})
+
+friend1.notes.create({
+  title: "Albus Dumbledore's First Love",
+  body: "Albus Dumbledore was having a decidedly unpleasant day. Ariana had blown up the kitchen and Aberforth was being unhelpful. Funnily enough this was not what had made the day so unpleasant. These occurrences were actually not abnormal. It was that infernal postcard from Doge. A lengthy letter detailing exactly all the things Albus was missing: Egypt, Rome, China. He should be there with his best friend exploring the world and extending his powers. Instead he was here playing house.
+  
+Albus sighed and sent Aberforth out, before proceeding in rebuilding the kitchen. Ariana fortunately was upstairs writing. She loved to write, silly poems and heart breaking stories. It was one of Kendra’s better ideas, to teach the girl to write. It helped her channel some of her inner torment onto the pages. Not that it had saved Kendra of course, but it was still a good idea. It took Albus the better part of an hour to assemble the kitchen properly. When he was finished he had meant to write an article for Potions Periodical, but he wanted some fresh air.
+
+He dusted himself off and stepped into the front garden. He knew he couldn’t abandon Ariana alone in the house so he just sat on the front steps.
+
+'Albus, can you come here a minute?' It was Bathilda Bagshot, Albus’s neighbor. Glad for the excuse, he stood up and walked over to his neighbor’s house. Bathilda was a soft looking middle-aged witch with mousy brow hair and charming smile. Albus knew better. That woman could be fierce. She was a famous magical historian and she had an odd knack of seeing past illusions. Now she stood in her doorway looking hopeful.",
+  notebook_id: hp_notebook.id
+})
+
+friend1.notes.last.comments.create({
+  author_id: demo.id,
+  body: "Great story!  I'm a big Dumbldore fan."
+})
+
+friend1.notes.last.comments.create({
+  author_id: friend1.id,
+  body: "I know!  He's one of my favorite wizards too."
+})
+
+friend1.notes.create({
+  title: "The Slytherin Challenge",
+  body: "Every Slytherin Head of House who ever was had been a Slytherin student. There were no exceptions to this nor would there ever be. And it was for one reason and only one reason, a most important reason that this was. Only the Head of House knew the Slytherin Challenge. 
+  
+Ever since the Slytherin house had been in existence there had been the secret competition. The competition took place every year during the last full moon before school let out and all the seventh years graduated. It was held at midnight in the deepest, darkest dungeon of Hogwarts and only seventh year students were allowed to compete. They had to compete, whether they wanted to or not, for every Slytherin student who had ever lived had competed. 
+
+All of the lower years were sent to bed by the Student Head of House at a quarter to twelve. The seventh years waited in the common room, fully dressed with their wands in their pockets, until the stroke of midnight. The Head of House opened the portrait on the twelfth stroke and led the group down. The hallways were without candles or torches and were eerily silent as the students followed their trusted professor. As they traveled deeper and deeper into the castle the halls became cold and the students’ breath became visible. The students kept in a tight group, trying to hide their fear from one another. Not one among their solemn group had any clues of what was to come, for every alumni who had ever partook in this event was sworn to secrecy. 
+
+At last they stopped at the very end of the hall, the ground had ceased to be covered with bricks and was now no more than dirt. The doorway in front of them was flanked on either side by flaming torches. The door was large and strong. It was made entirely of steel and bore the Slytherin coat of arms; it had no locks or handles and would never budge without the key. The key was a sacred oath passed down from Salazar himself and had to be spoken in the strange tongue of the snakes, only then would the door slowly open, silent as a ghost.",
+  notebook_id: hp_notebook.id
+})
+
+friend1.notes.last.likes.create({
+  owner_id: demo.id
+})
+
+friend1.notes.create({
+  title: "The Seakers",
+  body: "Cho sat at the far end of the Ravenclaw table in the Great Hall. This was as close to isolation as she could get. The din of a hundred different conversations echoed from the ancient stones that made up Castle Hogwarts. Several different strains of laughter could be made out coming from various directions. It was a happy cheerful noise. It was completely inappropriate to Cho’s mood.
+  
+'Are you okay, Cho?' asked a concerned voice.
+  
+Cho did not even turn to see who had asked, but simply nodded. She was so tired of people asking her that question. She was okay. She wasn’t good or great. She wasn’t bad or terrible. She was okay, and all things considered, that was more than enough. She really wanted to move on from all of this, but that simply would not be possible, until people stopped asking her whether or not she was okay.
+  
+She gazed around the Great Hall at her feasting schoolmates. They were joking, and laughing, and bringing their friends up to date on the experiences of summer. One might think, from their expressions, that absolutely nothing was wrong in the world. One might think that the previous year had ended just as every other year had ended. One might think that Cedric Diggory had not died. She did not have the luxury of that illusion. Every single ‘Are you okay?’ was just another reminder of that.",
+  notebook_id: hp_notebook.id
+})
+
+friend1.notes.last.comments.create({
+  author_id: demo.id,
+  body: "Poor Cho :("
+})
+
+friend1.notes.last.comments.create({
+  author_id: friend1.id,
+  body: "Yeah, I feel bad for her.  RIP Cedric :("
+})
+
+friend1.notes.last.likes.create({
+  owner_id: demo.id
+})
+
+User.create({
+  username: "Ryan",
+  email: "friend2@betternote.us",
+  password: "password"
+})
+
+friend2 = User.all.last
+
+
+Friendship.create({
+  in_friend_id: friend2.id,
+  out_friend_id: demo.id
+})
+
+Friendship.create({
+  in_friend_id: demo.id,
+  out_friend_id: friend2.id
+})
+
+friend2.notebooks.create({
+  name: "Todos"
+})
+
+todo_notebook = friend2.notebooks.last
+
+friend2.tags.create({
+  name: "IMPORTANT"
+})
+
+friend2.notes.create({
+  title: "Important stuff to do",
+  body: "Write more notes on BetterNote, ???, profit",
+  notebook_id: todo_notebook.id
+})
+
+friend2.notes.last.likes.create({
+  owner_id: demo.id
+})
+
+friend2.notes.last.note_tags.create({
+  tag_id: friend2.tags.last.id
+})
+
+friend3.notebooks.create({
+  name: "Cool Lyrics"
+})
+
+lyrics_notebook = friend3.notebooks.last
+
+friend3.tags.create({
+  name: "Rap Songs"
+})
+
+rap_tag = friend3.tags.last
+
+friend3.tags.create({
+  name: "Indie Songs"
+})
+
+indie_tag = friend3.tags.last
+
+friend3.notes.create({
+  title: "Hip Hop by Dead Prez",
+  body: "One thing bout music when it hit you feel no pain / White folks say it controls your brain; I know better than that, that's game / And we ready for that, two soldiers head of the pack / Matter of fact, who got the gat / And where my army at, rather attack and not react / Back to beats, it don't reflect on how many records get sold",
+  notebook_id: lyrics_notebook.id
+})
+
+friend3.notes.last.note_tags.create({
+  tag_id: rap_tag.id
+})
+
+friend3.notes.create({
+  title: "Jesus Walks by Kanye",
+  body: "I ain't here to argue about his facial features / Or here to convert atheists into believers / I'm just trying to say the way school need teachers / The way Kathie Lee needed Regis that's the way I need Jesus / So here go my single dog radio needs this / They say you can rap about anything except for Jesus / That means guns, sex, lies, video tapes / But if I talk about God my record won't get played Huh?",
+  notebook_id: lyrics_notebook.id
+})
+
+friend3.notes.last.note_tags.create({
+  tag_id: rap_tag.id
+})
+
+friend3.notes.last.likes.create({
+  owner_id: demo.id
+})
+
+friend3.notes.create({
+  title: "Pumped Up Kicks, Foster the People",
+  body: "Robert’s got a quick hand / He’ll look around the room / He won’t tell you his plan / He’s got a rolled cigarette / Hanging out his mouth he’s a cowboy kid / Yeah, he found a 6-shooter gun / In his dad's closet / Hidden in a box of fun things / And I don’t even know what / But he’s coming for you / Yeah, he’s coming for you",
+  notebook_id: lyrics_notebook.id
+})
+
+friend3.notes.last.note_tags.create({
+  tag_id: indie_tag.id
+})
+
+friend3.notes.last.comments.create({
+  author_id: demo.id,
+  body: "This song rocks."
+})
+
+friend3.notes.create({
+  title: "Two Weeks, Grizzly Bear",
+  body: "Save up all the days / A routine malaise / Just like yesterday / I told you I would stay / Would you always? / Maybe sometimes? / Make it easy? / Take your time",
+  notebook_id: lyrics_notebook.id
+})
+
+friend3.notes.last.note_tags.create({
+  tag_id: indie_tag.id
+})
+
+friend3.notes.create({
+  title: "I Love My Dad by Sun Kil Moon",
+  body: "When I was young my father told me, to each his own / The lady said as she kissed the cow / Some like the fiddle, some like the trombone / And I live by that rule",
+  notebook_id: lyrics_notebook.id
+})
+
+friend3.notes.last.comments.create({
+  author_id: demo.id,
+  body: "Such a beautiful song."
+})
+
+friend3.notes.last.note_tags.create({
+  tag_id: indie_tag.id
+})
+
 demo.notebooks.create({
   name: "Personal Stuff"
 })
@@ -59,6 +290,12 @@ demo.tags.create({
 })
 
 food_tag = demo.tags.last
+
+demo.tags.create({
+  name: "Sparky!"
+})
+
+sparky_tag = demo.tags.last
 
 demo.notes.create({
   title: "Baked Falafel with Tahini Sauce",
@@ -155,6 +392,33 @@ demo.notes.last.note_tags.create({
 })
 
 demo.notes.create({
+  title: "Possible gifts for Tom's birthday",
+  body: "Crosley Radio USB Turntable
+Das Horn Drinking Horn
+Spitfire Flask
+Herschel Ravine Gym Bag
+Self Cleaning Fish Tank
+Drone
+Game of Thrones Wax Seal Coasters
+Electronic FPS Laser Battle Jacket
+Boba Fett Hoodie
+Bose SoundLink Bluetooth Speaker
+Whiskey Stones
+Portal 2 Miniature Replica Portal Gun
+Star Wars Lightsaber Umbrella
+Rescue Portable USB Battery Pack",
+  notebook_id: gift_notebook.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: important_tag.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
+demo.notes.create({
   title: "Grandma's Apple Pie",
   body: "Ingredients:
 1 recipe pastry for a 9 inch double crust pie
@@ -183,6 +447,27 @@ demo.notes.last.note_tags.create({
 })
 
 demo.notes.create({
+  title: "Gift ideas for Grandpa's birthday",
+  body: "Crosley mini CD jukebox
+The Beatles Stereo Vinyl box set
+I'd Rather Be Fishing T-shirt
+Fly fishing gear
+Personalized Top Flight golf balls (1 dozen)
+'King of the Grill' wood cutting board
+Self chilling pint glasses
+Wooden mustache",
+  notebook_id: gift_notebook.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: important_tag.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: summer_tag.id
+})
+
+demo.notes.create({
   title: "New Year's Resolutions",
   body: "1.  Eat better
 2.  Friend a person with the same name as me on Facebook
@@ -200,6 +485,10 @@ Visit Yellowstone
 Wes Anderson movie marathon
 Clone Evernote",
   notebook_id: personal_notebook.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend1.id
 })
 
 demo.notes.last.note_tags.create({
@@ -232,6 +521,14 @@ Source: Bossypants",
 
 demo.notes.last.note_tags.create({
   tag_id: tattoo_tag.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend2.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: bmm_tag.id
 })
 
 demo.notes.create({
@@ -278,6 +575,10 @@ demo.notes.last.note_tags.create({
   tag_id: food_tag.id
 })
 
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
 demo.notes.create({
   title: "Favorite Quotes",
   body: "'If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.'
@@ -285,6 +586,9 @@ demo.notes.create({
   
 'I love deadlines. I love the whooshing noise they make as they go by.'
 - Douglas Adams, The Salmon of Doubt
+
+'Woof!'
+- Sparky
 
 'If you can't explain it to a six year old, you don't understand it yourself.'
 - Albert Einstein
@@ -300,6 +604,10 @@ Very well then I contradict myself,
 
 Source: Goodreads.com",
   notebook_id: quote_notebook.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: bmm_tag.id
 })
 
 demo.notes.create({
@@ -371,6 +679,42 @@ Source: Mark Bittman",
   notebook_id: recipe_notebook.id
 })
 
+demo.notes.last.likes.create({
+  owner_id: friend2.id
+})
+
+demo.notes.create({
+  title: "Gifts for Mom",
+  body: "-- Kitten Journal
+-- Keep Calm And Drink Tea Mug
+-- Bunny Brooch
+-- Ryan Gosling Tea Set
+-- Vintage Picnic Basket
+-- Victorian House Tea Towel
+-- Peony Art Print
+-- Home Print
+-- Dachshund Figurine
+-- Koala Cross Stitch Pattern
+-- Concrete And Glass Vase
+-- Rhino Planter
+-- Mason Jar Soap Dispenser
+-- Vegan Lip Balm
+-- Sloth Sleep Mask",
+  notebook_id: gift_notebook.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: tattoo_tag.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: summer_tag.id
+})
+
 demo.notes.create({
   title: "Braised Beef Short Ribs",
   body: "Ingredients:
@@ -404,7 +748,7 @@ demo.notes.last.note_tags.create({
 
 demo.notes.create({
   title: "Songs I should download",
-  body: "-- Drunk in Love, Beyonce
+  body: "-- Get Lucky by Daft Punk
 -- that really catchy (but kind of annoying) Pharrell song
 -- Fare Thee Well by Oscar Isaac (Inside Llewyn Davis soundtrack)
 -- January Wedding by the Avett Brothers
@@ -422,6 +766,14 @@ demo.notes.last.note_tags.create({
   tag_id: important_tag.id
 })
 
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: bmm_tag.id
+})
+
 demo.notes.create({
   title: "Todo List re: Sparky",
   body: "Weekly Sparky photoshoot (post photos to Sparky's FB after)
@@ -434,11 +786,19 @@ Tell Sparky about my day",
 })
 
 demo.notes.last.note_tags.create({
+  tag_id: sparky_tag.id
+})
+
+demo.notes.last.note_tags.create({
   tag_id: important_tag.id
 })
 
 demo.notes.last.note_tags.create({
   tag_id: summer_tag.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend2.id
 })
 
 demo.notes.last.note_tags.create({
@@ -478,6 +838,10 @@ nobody,not even the rain,has such small hands",
 
 demo.notes.last.note_tags.create({
   tag_id: tattoo_tag.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend1.id
 })
 
 demo.notes.create({
@@ -549,6 +913,40 @@ demo.notes.last.note_tags.create({
 })
 
 demo.notes.create({
+  title: "Gift ideas for Sparky",
+  body: "-- Dr. Fosters and Smith Turkey Leg Rawhide Dog Bones, ($5)
+-- Kyjen Dog Games Star Spinner Treat Toy ($14)
+-- Petco's Brown and Tan Memory Foam Rectangular Pillow Dog Bed ($50)
+-- Lands End Wood Chuck Orbee-Tuff Chew and Fetch Ball ($25)
+-- Puppia Santa Harness ($20)
+-- Lands End Hand-Knit Cable Pet Sweater ($40)
+-- Lands End Doggie Jackets ($15)",
+  notebook_id: gift_notebook.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: important_tag.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: sparky_tag.id
+})
+
+demo.notes.last.comments.create({
+  author_id: friend3.id,
+  body: "SPARKY.  Love that dog."
+})
+
+demo.notes.last.comments.create({
+  author_id: demo.id,
+  body: "I KNOW RIGHT"
+})
+
+demo.notes.create({
   title: "Great Mitch Hedberg Lines",
   body: "11.  I don’t have a girlfriend. I just know a girl who would get really mad if she heard me say that.
 10. I used to be a hot tar roofer. Yeah, I remember that ... day.
@@ -570,37 +968,17 @@ demo.notes.last.note_tags.create({
   tag_id: tattoo_tag.id
 })
 
-demo.notes.create({
-  title: "Workout Schedule",
-  body: "Monday: Chest and biceps
-
-  1) Incline DB press 4x10 (60lbs)
-  2) Chest Flies 3x12 (25lbs)
-  3) Seated Inclined Hammer Curls 3x10 (20lbs)
-  4) push ups 2x15
-
-Wednesday: Back and triceps
-
-  1) Lat pull downs 4x10
-  2) EZ bar rows 3x10
-  3) Skull Crushers 3x10
-  4) Tricep pressdown with rope 2x15
-
-Friday: Legs
-
-  1) leg extensions 3x15
-  2) Do chest and back again
-
-Sunday: 10 mile run",
-  notebook_id: personal_notebook.id
+demo.notes.last.likes.create({
+  owner_id: friend2.id
 })
 
-demo.notes.last.note_tags.create({
-  tag_id: summer_tag.id
+demo.notes.last.comments.create({
+  author_id: friend1.id,
+  body: "Mitch was the best.  I love number 8."
 })
 
-demo.notes.last.note_tags.create({
-  tag_id: tattoo_tag.id
+demo.notes.last.likes.create({
+  owner_id: friend1.id
 })
 
 demo.notes.create({
@@ -648,6 +1026,116 @@ demo.notes.last.note_tags.create({
   tag_id: tattoo_tag.id
 })
 
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
+demo.notes.last.comments.create({
+  author_id: friend3.id,
+  body: "Yummmmm.  I need to try this one out"
+})
+
+demo.notes.last.comments.create({
+  author_id: demo.id,
+  body: "So good!!!  FYI sometimes I use spicy sausage instead of sweet--makes it a ton better IMO."
+})
+
+demo.notes.last.comments.create({
+  author_id: friend3.id,
+  body: "Sweet, thanks for the tip."
+})
+
+demo.notes.create({
+  title: "Workout Schedule",
+  body: "Monday: Chest and biceps
+
+  1) Incline DB press 4x10 (60lbs)
+  2) Chest Flies 3x12 (25lbs)
+  3) Seated Inclined Hammer Curls 3x10 (20lbs)
+  4) push ups 2x15
+
+Wednesday: Back and triceps
+
+  1) Lat pull downs 4x10
+  2) EZ bar rows 3x10
+  3) Skull Crushers 3x10
+  4) Tricep pressdown with rope 2x15
+
+Friday: Legs
+
+  1) leg extensions 3x15
+  2) Do chest and back again
+
+Sunday: 10 mile run",
+  notebook_id: personal_notebook.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: summer_tag.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: tattoo_tag.id
+})
+
+demo.notes.last.comments.create({
+  author_id: friend2.id,
+  body: "Hahaha Aiden you're gonna get HUGE"
+})
+
+demo.notes.create({
+  title: "Doggie Biscuits for Sparky",
+  body: "Prep Time: 25 Minutes
+Cook Time: 20 Minutes
+Ready In: 1 Hour 15 Minutes
+Servings: 36
+
+Ingredients:
+1 1/2 cups whole wheat flour
+1/2 cup all-purpose flour
+1/2 cup cornmeal
+1/2 cup rolled oats
+1 1/2 cups water, or as needed
+1/2 cup canola oil
+2 eggs
+3 tablespoons peanut butter
+2 tablespoons vanilla extract
+
+Directions:
+1.	Preheat oven to 400 degrees F (200 degrees C). Grease cookie sheets.
+2.	Mix together whole-wheat flour, all-purpose flour, cornmeal and oats. Make a well in the center of the dry ingredients and gradually pour in water, oil, eggs, peanut butter and vanilla. Mix well.
+3.	On a flat surface use a rolling pin to roll out the dough. Cut the dough into dog biscuit shapes using a cookie cutter. Place the biscuits onto the prepared cookie sheet.
+4.	Bake the cookies for 20 minutes. After the biscuits have cooked 20 minutes turn off the oven off but let the biscuits remain inside the oven for another 20 minutes to harden.",
+  notebook_id: recipe_notebook.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: sparky_tag.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend2.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
+demo.notes.last.comments.create({
+  author_id: friend1.id,
+  body: "You spoil that dog!  What a lucky corgi..."
+})
+
+demo.notes.last.comments.create({
+  author_id: demo.id,
+  body: "Yeah, maybe I do..... ;)"
+})
+
+demo.notes.last.comments.create({
+  author_id: friend3.id,
+  body: "Ahhhhh I miss Sparky!  You need to let me puppysit him more."
+})
+
 demo.notes.create({
   title: "Todo List",
   body: "Daily
@@ -673,6 +1161,19 @@ Clean out fridge",
   notebook_id: personal_notebook.id
 })
 
+demo.notes.last.comments.create({
+  author_id: friend1.id,
+  body: "Go grocery shopping for me too!!!  ;)"
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend2.id
+})
+
+demo.notes.last.likes.create({
+  owner_id: friend1.id
+})
+
 demo.notes.last.note_tags.create({
   tag_id: important_tag.id
 })
@@ -681,118 +1182,6 @@ demo.notes.last.note_tags.create({
   tag_id: summer_tag.id
 })
 
-User.create({
-  username: "Elizabeth",
-  email: "friend1@betternote.us",
-  password: "password"
-})
-
-friend1 = User.all.last
-
-friend1.notebooks.create({
-  name: "Harry Potter fanfiction"
-})
-
-hp_notebook = friend1.notebooks.last
-
-Friendship.create({
-  in_friend_id: friend1.id,
-  out_friend_id: demo.id
-})
-
-Friendship.create({
-  in_friend_id: demo.id,
-  out_friend_id: friend1.id
-})
-
-friend1.notes.create({
-  title: "Albus Dumbledore's First Love",
-  body: "Albus Dumbledore was having a decidedly unpleasant day. Ariana had blown up the kitchen and Aberforth was being unhelpful. Funnily enough this was not what had made the day so unpleasant. These occurrences were actually not abnormal. It was that infernal postcard from Doge. A lengthy letter detailing exactly all the things Albus was missing: Egypt, Rome, China. He should be there with his best friend exploring the world and extending his powers. Instead he was here playing house.
-  
-Albus sighed and sent Aberforth out, before proceeding in rebuilding the kitchen. Ariana fortunately was upstairs writing. She loved to write, silly poems and heart breaking stories. It was one of Kendra’s better ideas, to teach the girl to write. It helped her channel some of her inner torment onto the pages. Not that it had saved Kendra of course, but it was still a good idea. It took Albus the better part of an hour to assemble the kitchen properly. When he was finished he had meant to write an article for Potions Periodical, but he wanted some fresh air.
-
-He dusted himself off and stepped into the front garden. He knew he couldn’t abandon Ariana alone in the house so he just sat on the front steps.
-
-'Albus, can you come here a minute?' It was Bathilda Bagshot, Albus’s neighbor. Glad for the excuse, he stood up and walked over to his neighbor’s house. Bathilda was a soft looking middle-aged witch with mousy brow hair and charming smile. Albus knew better. That woman could be fierce. She was a famous magical historian and she had an odd knack of seeing past illusions. Now she stood in her doorway looking hopeful.
-
-'What can I do for you Ms. Bagshot?' Albus asked politely.
-
-'My great nephew Gellert Grindelwald is staying with me for the summer,' She said, 'I thought you might appreciate having someone your own age to talk to. I suspect you have much in conmen.'  Albus was curious as Bathilda stepped aside. Behind her stood a boy of about Albus’s age. He was tall and pale, with golden hair and a calculating expression behind matching golden eyes.
-
-'It is vey nice to meet you.' He said in a voice like melting butter, extending his hand. Albus shook it and replied with similar niceties. They talked for a few minutes, before Albus remembered Ariana and departed. In that short time he really got a sense of the other boy’s intelligence. Every word was obviously calculated but that didn’t stop him from being charming. Albus, almost despite himself began to feel less depressed when thinking about the summer.",
-  notebook_id: hp_notebook.id
-})
-
-friend1.notes.create({
-  title: "The Slytherin Challenge",
-  body: "Every Slytherin Head of House who ever was had been a Slytherin student. There were no exceptions to this nor would there ever be. And it was for one reason and only one reason, a most important reason that this was. Only the Head of House knew the Slytherin Challenge. 
-  
-Ever since the Slytherin house had been in existence there had been the secret competition. The competition took place every year during the last full moon before school let out and all the seventh years graduated. It was held at midnight in the deepest, darkest dungeon of Hogwarts and only seventh year students were allowed to compete. They had to compete, whether they wanted to or not, for every Slytherin student who had ever lived had competed. 
-
-All of the lower years were sent to bed by the Student Head of House at a quarter to twelve. The seventh years waited in the common room, fully dressed with their wands in their pockets, until the stroke of midnight. The Head of House opened the portrait on the twelfth stroke and led the group down. The hallways were without candles or torches and were eerily silent as the students followed their trusted professor. As they traveled deeper and deeper into the castle the halls became cold and the students’ breath became visible. The students kept in a tight group, trying to hide their fear from one another. Not one among their solemn group had any clues of what was to come, for every alumni who had ever partook in this event was sworn to secrecy. 
-
-At last they stopped at the very end of the hall, the ground had ceased to be covered with bricks and was now no more than dirt. The doorway in front of them was flanked on either side by flaming torches. The door was large and strong. It was made entirely of steel and bore the Slytherin coat of arms; it had no locks or handles and would never budge without the key. The key was a sacred oath passed down from Salazar himself and had to be spoken in the strange tongue of the snakes, only then would the door slowly open, silent as a ghost.
-
-The room that lay in front of the students was completely dark. None of the light from the torches penetrated past the edge of the door. The Head of House stood at the threshold, not quite entering the room, and he spoke slowly, 'Once you enter into this room, you may not exit until the competition is over.' The students gathered around in a half circle said nothing to this, they did not respond in any way, they knew it was expected of them. 
-
-All of their parents were Slytherin alumni and would disown anyone of them if they did not enter into the competition. With a wave of his hand the Head of House motioned the students into the room, his feet staying firmly planted in the hallway, 'Instructions will be given to you once you enter.' There was a moment’s hesitation before the Student Head of House stepped into the large circular room, his classmates followed with not a word being spoken. As the last student’s feet passed over into the room the doors slid shut, again in complete silence. When they were secure and the lock had been put it place with a soft click, a large green ring of fire rose up from the floor and then settled down. When it was no more than a half a foot off the ground small circular stands became visible, one stand for each student, each with their name engraved in it. The students filed along and stood atop their stand, when each student was in place the flames rose again and a cold voice could be heard, 
-
-'Slytherins. My dear, beloved Slytherins, it is now, in this room, that you will each prove whether you are a Slytherin or not.' 
-
-The voice had an evil cackle as it pronounced 'Slytherin.' At once, when it had finished a last stand became clear in the center of the room, the fire around it burned as red as the sun and immediately it became clear that each student would stand there in turn and face what evil awaited.",
-  notebook_id: hp_notebook.id
-})
-
-friend1.notes.create({
-  title: "The Seakers",
-  body: "Cho sat at the far end of the Ravenclaw table in the Great Hall. This was as close to isolation as she could get. The din of a hundred different conversations echoed from the ancient stones that made up Castle Hogwarts. Several different strains of laughter could be made out coming from various directions. It was a happy cheerful noise. It was completely inappropriate to Cho’s mood.
-  
-'Are you okay, Cho?' asked a concerned voice.
-  
-Cho did not even turn to see who had asked, but simply nodded. She was so tired of people asking her that question. She was okay. She wasn’t good or great. She wasn’t bad or terrible. She was okay, and all things considered, that was more than enough. She really wanted to move on from all of this, but that simply would not be possible, until people stopped asking her whether or not she was okay.
-  
-She gazed around the Great Hall at her feasting schoolmates. They were joking, and laughing, and bringing their friends up to date on the experiences of summer. One might think, from their expressions, that absolutely nothing was wrong in the world. One might think that the previous year had ended just as every other year had ended. One might think that Cedric Diggory had not died. She did not have the luxury of that illusion. Every single ‘Are you okay?’ was just another reminder of that.
-  
-Feeling as if she were the only unhappy person in the world, Cho continued to scan the faces of those around her. She was sure there was not a single person in the entire room who could understand how she felt. As her eyes went across the Gryffindor table they came upon a small, pale, dark haired figure idly picking at the plate in front of him. She had been wrong. That one knew exactly how she felt.
-  
-Knowing it was pointless to continue scanning, she kept her eyes fixed on him. He looked terrible. He was emaciated and his skin was sallow. His eyes, which were normally his best feature, looked tired and dull. Looking at him, one got the impression they were looking at a very old man, much older than was possible for one with his features. On either side of him sat Hermione Granger and Ronald Weasley, his constant companions since he had come to the school. Hermione was fussing over him and putting more food on his plate.
-  
-It wasn’t unusual for Harry to come back to Hogwarts looking pale and malnourished, but he had never looked this bad before. Cho had heard rumors that he spent his summers with Muggles who beat him and starved him. She had no idea whether the rumors were true or not, and she rather doubted that Professor Dumbledore would allow such a thing to happen, but it was obvious that summers were not kind to Harry Potter.
-  
-He had been there when Cedric had died. Cedric’s parents had told her the complete story. He had gone to great risk to bring back Cedric’s body so that it could be given a proper burial. No one had ever doubted that Harry was brave. He had proven that to everyone many times before. Bravery seemed to have its price though. It was bad enough that Cedric was dead, Harry looked as if he were going to become a casualty too.
-
-'Cho, are you all right?' It was another nameless voice. Cho once again answered with a nod.
-
-She wondered if Harry were asked about his well being as often as she was. Probably more, she thought, because in Harry’s case the matter was visibly open to debate. As if sensing her attentions, Harry looked up and for a second theirs eyes met. Cho gave him a thin smile. Harry instantly averted his eyes downward and seemed to sink even further into his chair, looking even more downcast than before.",
-  notebook_id: hp_notebook.id
-})
-
-User.create({
-  username: "Ryan",
-  email: "friend2@betternote.us",
-  password: "password"
-})
-
-friend2 = User.all.last
-
-friend2.notebooks.create({
-  name: "Todos"
-})
-
-todo_notebook = friend2.notebooks.last
-
-Friendship.create({
-  in_friend_id: friend2.id,
-  out_friend_id: demo.id
-})
-
-Friendship.create({
-  in_friend_id: demo.id,
-  out_friend_id: friend2.id
-})
-
-friend2.notes.create({
-  title: "Important stuff to do",
-  body: "Write more notes on BetterNote, ???, profit",
-  notebook_id: todo_notebook.id
+demo.notes.last.note_tags.create({
+  tag_id: sparky_tag.id
 })

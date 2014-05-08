@@ -6,6 +6,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
+      @user.notebooks.create({
+        name: "First notebook!"
+      })
+      @user.notes.create({
+        title: "Welcome to BetterNote!",
+        body: "",
+        notebook_id: @user.notebooks.first.id
+      })
       redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages

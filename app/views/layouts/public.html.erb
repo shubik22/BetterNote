@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application" %>
   <link rel="shortcut icon" href="/assets/green_icon.png">
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
 
@@ -29,7 +30,7 @@
 </div>
 
 <div class="demo-user">
-  <a href="/session/new/?demo=true">Use Demo User (Employers Click Here)</a>
+  Demo User (Employers Click Here)
 </div>
 
 <footer>
@@ -40,6 +41,13 @@
     Copyright 2014 BetterNote Corporation. All rights reserved.
   </div>
 </footer>
+
+<script>
+  $(".demo-user").on("click", function() {
+    $("input[type='text']").attr("value", "demo@betternote.us");
+    $("input[type='password']").attr("value", "password");
+  })
+</script>
 
 </body>
 </html>
