@@ -22,15 +22,20 @@ BetterNote.Routers.Notes = Backbone.Router.extend({
         model: BetterNote.friendNotes.findWhere({ id: parseInt(id) })
       })
     }
+    
+    if (this.$notesListEl.html().length === 1) {
+      this.notesIndex(true);
+    }
 
     this._swapShowView(view);
   },
 
-  notesIndex: function() {
+  notesIndex: function(skipNoteShow) {
     var listView = new BetterNote.Views.NotesIndex({
       type: "all",
       collection: BetterNote.notes,
-      $noteShowEl: this.$noteShowEl
+      $noteShowEl: this.$noteShowEl,
+      skipNoteShow: skipNoteShow
     });
 
     BetterNote.featuredNotebook = BetterNote.notebooks.at(0);

@@ -2,6 +2,7 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
   initialize: function(options) {
     this.type = options["type"];
     this.$noteShowEl = options["$noteShowEl"];
+    this.skipNoteShow = options["skipNoteShow"];
 
     this.listenTo(this.collection, "sort", this.render);
     this.listenTo(BetterNote.filter, "change", this.render);
@@ -25,13 +26,15 @@ BetterNote.Views.NotesIndex = Backbone.View.extend({
     var filteredCollection = this._filteredCollection();
     var note = filteredCollection[0];
 
-    if (filteredCollection.length > 0 && !note.isNew()) {
-      BetterNote.featuredNote = note;
-      BetterNote.router.navigate("#/notes/" + note.get("id"), {
-        trigger: true
-      });
-    } else {
-      this.$noteShowEl.html("");
+    if (!this.skipNoteShow) {    
+      if (filteredCollection.length > 0 && !note.isNew()) {
+        BetterNote.featuredNote = note;
+        BetterNote.router.navigate("#/notes/" + note.get("id"), {
+          trigger: true
+        });
+      } else {
+        this.$noteShowEl.html("");
+      }
     }
 
     var renderedContent = this.template({

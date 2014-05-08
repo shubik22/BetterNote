@@ -31,10 +31,12 @@ BetterNote.Views.TagForm = Backbone.View.extend({
     this.model.set(attrs);
     if (this.model.isNew()) {
       BetterNote.tags.create(this.model, {
+        wait: true,
         success: success
       });
     } else {
       this.model.save({}, {
+        wait: true,
         success: success
       })
     }
