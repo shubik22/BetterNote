@@ -38,4 +38,5 @@ Additional features to implement include:
 ## Praise for BetterNote
 
 > "Nice app.  Love, Mom"
-/- _My mom_
+
+\- _My mom_
