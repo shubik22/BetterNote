@@ -1,7 +1,7 @@
 # BetterNote: an Evernote Clone
 ## Summary
 
-[BetterNote](http://www.betternote.us) is a clone of [EverNote](http://www.evernote.com), the popular note-taking app.  It was built by [Sam Sweeney](https://www.linkedin.com/profile/view?id=52435518) in Spring 2014.
+[BetterNote](http://www.betternote.us) is a clone of [EverNote](http://www.evernote.com), the popular note-taking app.  It was built by [Sam Sweeney](https://www.linkedin.com/profile/view?id=52435518) in Spring 2014.  You can view it at (http://www.betternote.us).
 
 ## Features
 
@@ -39,11 +39,11 @@ Additional features to implement include:
 
 > Why bother copying a website that already exists?  Isn't Evernote good enough?
 
-Great question!  My main goal in creating BetterNote was to hone (and demonstrate) my Rails and Backbone skills and to become a better developer in general.  BetterNote is meant to be an homage to Evernote, not a substitue.
+Great question!  My main goal in creating BetterNote was to hone (and demonstrate) my Rails and Backbone skills and to become a better developer in general.  BetterNote is meant as an homage to Evernote, not a substitue.
 
 > What are the main differences between Evernote and BetterNote?
 
-Well, their names for starters.  BetterNote also has a number of social aspects (liking notes, commenting on notes, viewing friends' notes) that aren't in Evernote.  There just might be a few features in Evernote that are missing from BetterNote as well.
+Well, their names for starters.  BetterNote also has a number of social aspects (liking notes, commenting on notes, viewing friends' notes) that (as far as I know) aren't in Evernote.  There just might be a few features in Evernote that are missing from BetterNote as well.
 
 > What was the most challenging part about building BetterNote?
 
@@ -57,4 +57,4 @@ Thanks!  Unfortunately, we just closed our most recent round, in which we sold 1
 
 > "Nice app.  Love, Mom"
 
-\- _My mom_
+\- My mom
