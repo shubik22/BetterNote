@@ -35,6 +35,24 @@ Additional features to implement include:
 * Allow users to filter notes by multiple tags at once
 * Use TinyMCE to allow rich text editing of notes
 
+## Frequently Asked Questions
+
+> Why bother copying a website that already exists?  Isn't Evernote good enough?
+
+Great question!  My main goal in creating BetterNote was to hone (and demonstrate) my Rails and Backbone skills and to become a better developer in general.  BetterNote is meant to be an homage to Evernote, not a substitue.
+
+> What are the main differences between Evernote and BetterNote?
+
+Well, their names for starters.  BetterNote also has a number of social aspects (liking notes, commenting on notes, viewing friends' notes) that aren't in Evernote.  There just might be a few features in Evernote that are missing from BetterNote as well.
+
+> What was the most challenging part about building BetterNote?
+
+Hard to say.  Styling BetterNote to look as much like Evernote as possible definitely took some time, as did setting up the myriad Backbone views (they're everywhere!) so everything on the page is synced up and listening properly.
+
+> Wow, I'm blown away!  How can I be a part of BetterNote's next fundraising round?
+
+Thanks!  Unfortunately, we just closed our most recent round, in which we sold 10% of BetterNote for a diet coke and bag of SunChips (they were delicious!).  We're unlikely to raise additional funding prior to our IPO (currently scheduled for the Fall of 2062), so you'll just have to wait until then.
+
 ## Praise for BetterNote
 
 > "Nice app.  Love, Mom"
