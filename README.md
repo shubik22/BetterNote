@@ -47,7 +47,7 @@ Well, their names for starters.  BetterNote also has a number of social aspects 
 
 > What was the most challenging part about building BetterNote?
 
-Hard to say.  Styling BetterNote to look as much like Evernote as possible definitely took some time, as did setting up the myriad Backbone views (they're everywhere!) so everything on the page is synced up and listening properly.
+Hard to say.  Styling BetterNote to look as much like Evernote as possible definitely took some time, as did setting up the myriad Backbone views (they're everywhere!) so everything on the page is synced up and listening properly to all the Backbone models and collections.
 
 > Wow, I'm blown away!  How can I be a part of BetterNote's next fundraising round?
 
