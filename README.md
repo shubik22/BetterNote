@@ -4,7 +4,7 @@
 
 ## Features
 
-BetterNote has most of the core features of Evernote with a few extras sprinkled in.  Users can:
+BetterNote has most of the core features of Evernote with a few additional features sprinkled in.  Users can:
 
 * Create notes, notebooks, and tags
 * Organize their notes into notebooks
@@ -13,7 +13,7 @@ BetterNote has most of the core features of Evernote with a few extras sprinkled
 * View their friends' notes
 * Comment on their friends' notes and respond to comments on their notes
 * Like notes
-* One Easter Egg (try to find it!)
+* View one Easter Egg (try to find it!)
 
 ## Technologies
 
@@ -21,7 +21,7 @@ BetterNote was built using the following technologies:
 
 * **Back-End**: BetterNote has a Rails 4 back-end with a RESTful API.
 * **Front-End**: Betternote has a Backbone.js front-end to provide a smoother user experience and minimize requests to the server.
-* **Styling**: BetterNote was styled with custom CSS without the use of any themes or tools like Bootstrap.
+* **Styling**: BetterNote was styled with custom CSS without the use of any third-party themes or tools.
 
 ## Todos
 
@@ -46,11 +46,11 @@ Well, their names for starters.  BetterNote also has a number of social aspects 
 
 > What was the most challenging part about building BetterNote?
 
-Hard to say.  Styling BetterNote to look as much like Evernote as possible definitely took some time, as did setting up the myriad Backbone views (they're everywhere!) so everything on the page is synced up and listening properly to all the Backbone models and collections.
+Hard to say.  Styling BetterNote to look like Evernote definitely took some time, as did setting up the myriad Backbone views (they're everywhere!) so that everything on the page is synced up.
 
 > Wow, I'm blown away!  How can I be a part of BetterNote's next fundraising round?
 
-Thanks!  Unfortunately, we just closed our most recent round, in which we sold 10% of BetterNote for a diet coke and bag of SunChips (they were delicious!).  We're unlikely to raise additional funding prior to our IPO (currently scheduled for the Fall of 2062), so you'll just have to wait until then.
+Thanks!  Unfortunately, we just closed our most recent round, in which we sold 10% of BetterNote for a Diet Coke and bag of SunChips (they were delicious!).  We're unlikely to raise additional funding prior to our IPO (currently scheduled for the Fall of 2062), so you'll just have to wait until then.
 
 ## Praise for BetterNote
 
