@@ -1161,6 +1161,9 @@ Clean out fridge",
   notebook_id: personal_notebook.id
 })
 
+
+
+
 demo.notes.last.comments.create({
   author_id: friend1.id,
   body: "Go grocery shopping for me too!!!  ;)"
@@ -1180,6 +1183,35 @@ demo.notes.last.note_tags.create({
 
 demo.notes.last.note_tags.create({
   tag_id: summer_tag.id
+})
+
+demo.notes.last.note_tags.create({
+  tag_id: sparky_tag.id
+})
+
+demo.notes.create({
+  title: "Welcome to BetterNote!",
+  body: "Thanks for checking out BetterNote, a clone of Evernote, the popular note-taking app.  Some features to try out:
+
+Notes
+-- Create a note using the 'New Note' button next to the search bar
+-- Edit a note's content by clicking its title and body on the right side of the page
+-- Change a note's notebook by clicking on the notebook dropdown under the 'New Note' button
+-- Add a tag to a note by clicking on the '+ Tag' button
+-- Like or delete a note by clicking on the like and delete buttons at the top right of the screen
+-- Comment on a note by clicking 
+
+Notebook/Tags
+-- Add a notebook by clicking on the button to the right of the 'Notebooks' subhead in the sidebar
+-- Add a tag by clicking on the button to the right of the 'Tags' subhead in the sidebar
+-- Edit (or delete) a notebook or tag by clicking on the icon that appears when you hover on a notebook/tag item in the sidebar
+
+Note Collections
+-- Sort the selected notes by clicking on the 'View Options' menu at the bottom of the note preview section
+-- Filter notes by search term using the search bar
+-- Filter notes by tag by clicking on the tags in the sidebar
+-- View friends' notes by clicking on the friend items in the sidebar",
+  notebook_id: personal_notebook.id
 })
 
 demo.notes.last.note_tags.create({
