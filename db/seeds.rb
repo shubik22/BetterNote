@@ -1215,5 +1215,5 @@ Note Collections
 })
 
 demo.notes.last.note_tags.create({
-  tag_id: sparky_tag.id
+  tag_id: important_tag.id
 })
