@@ -191,6 +191,7 @@ h2 {
   color: white;
   cursor: pointer;
   margin: auto;
+  margin-bottom: 30px;
   width: 300px;
   text-align: center;
 }

@@ -3,7 +3,7 @@ BetterNote.Views.Sidebar = Backbone.View.extend({
     $("html").on("click", this.hideDropdowns);
     $("html").on("click", ".close-modal", this.closeModal);
     this.listenTo(BetterNote.notebooks, "add remove", this.render);
-    this.listenTo(BetterNote.tags, "add remove", this.render);
+    this.listenTo(BetterNote.tags, "add change remove", this.render);
     this.listenTo(BetterNote.notes, "add remove", this.render);
     this.listenTo(BetterNote.friends, "add remove", this.render);
   },
