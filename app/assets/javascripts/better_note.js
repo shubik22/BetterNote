@@ -37,6 +37,7 @@ window.BetterNote = {
     $content.prepend(sideBarView.render().$el);
     $content.prepend(searchBarView.render().$el);
     Backbone.history.start();
+    this.router.navigate("#/");
   }
 };
 
