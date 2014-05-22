@@ -1,6 +1,6 @@
 # BetterNote: an Evernote Clone
 
-[BetterNote](http://www.betternote.us) is a clone of [EverNote](http://www.evernote.com), the popular note-taking app.  It was built by [Sam Sweeney](www.linkedin.com/in/samsweeney/) in Spring 2014.  You can view it at http://www.betternote.us.
+[BetterNote](http://www.betternote.us) is a clone of [EverNote](http://www.evernote.com), the popular note-taking app.  It was built by [Sam Sweeney](http://sweeneysam.com) in Spring 2014.  You can view it at http://www.betternote.us.
 
 ## Features
 
